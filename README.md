@@ -10,5 +10,7 @@ A calculator in the terminal:
 3) Character formatting (x = X = *), (/ = :); (2^2 = 2^2), etc.
 
 4) A history saved in a JSON file.
+
+
 ![image1](Images/ex1.png)
 ![image2](Images/ex2.png)
