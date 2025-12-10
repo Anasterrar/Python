@@ -10,3 +10,5 @@ A calculator in the terminal:
 3) Character formatting (x = X = *), (/ = :); (2^2 = 2^2), etc.
 
 4) A history saved in a JSON file.
+![alt text](Python\Images\ex1.png)
+![alt text](Python\Images\ex2.png)
