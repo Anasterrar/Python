@@ -2,6 +2,7 @@ import os
 import Caesar
 import Rot
 import pyfiglet
+import poly
 from colorama import Fore, Style, init
 init(autoreset=True)
 
@@ -45,7 +46,7 @@ def show_result(result):
             else:
                 print("⚠️ Repondez par 'y'(yes) ou 'n'(no)")
 
-def creatFile(data):
+def createFile(data):
     formated_data = f"Text : {data[0]}\nKey : {str(data[1])}\nCoded text : {data[2]}\nMethode: {data[3]}"
     a = 1
     while True:
@@ -86,4 +87,14 @@ while True:
         header("Rot")
         b = show_result(code)
         if b == True:
-            creatFile(code)
+            createFile(code)
+    elif a == 3:
+        os.system("cls")
+        header("Chiffrement polyalphabétique")
+        code = poly.poly_cipher()
+        os.system("cls")
+        header("Chiffrement polyalphabétique")
+        b = show_result(code)
+        if b == True:
+            createFile(code)
+        
