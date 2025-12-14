@@ -12,5 +12,5 @@ A calculator in the terminal:
 4) A history saved in a JSON file.
 
 
-![image1](Images/ex1.png)
-![image2](Images/ex2.png)
+![image1](img/ex1.png)
+![image2](img/ex2.png)
