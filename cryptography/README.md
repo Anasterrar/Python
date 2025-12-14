@@ -21,5 +21,5 @@ A Python command-line application that demonstrates classical encryption methods
 Run the main script and follow the on-screen menu:
 ```bash
 python main.py
-
+```
 This is an educational project built to learn Python fundamentals, modular code, and basic cryptography.
