@@ -1,10 +1,11 @@
 import os
-import Caesar_cipher
+import Caesar
+import Rot
 import pyfiglet
 from colorama import Fore, Style, init
 init(autoreset=True)
 
-path = "../key"
+path = "key/"
 if not os.path.isdir(path):
    os.makedirs(path)
 
@@ -33,6 +34,7 @@ def show_result(result):
         print(f"Texte : {result[0]}")
         print(f"Clé : {result[1]}")
         print(f"Texte codé : {result[2]}")
+        print(f"Methode : {result[3]}")
         while True:
             answer = input("Voulez-vous stocker ces informations dans un fichier texte ? (y/n): ")
             print(answer)
@@ -44,10 +46,10 @@ def show_result(result):
                 print("⚠️ Repondez par 'y'(yes) ou 'n'(no)")
 
 def creatFile(data):
-    formated_data = f"Text : {data[0]}\nKey : {str(data[1])}\nCoded text : {data[2]}"
+    formated_data = f"Text : {data[0]}\nKey : {str(data[1])}\nCoded text : {data[2]}\nMethode: {data[3]}"
     a = 1
     while True:
-        path = f"../key/key{a}.txt"
+        path = f"key/key{a}.txt"
         if os.path.isfile(path) == True:
             a += 1
         else:
@@ -65,9 +67,23 @@ while True:
     if a == 1:
         os.system("cls")
         header("Caesar cipher")
-        code = Caesar_cipher.Caesar_cipher()
+        code = Caesar.Caesar_cipher()
         os.system("cls")
         header("Caesar cipher")
+        b = show_result(code)
+        if b == True:
+            creatFile(code)
+    elif a == 2:
+        os.system("cls")
+        header("Rot")
+        m = Rot.Rot_menu()
+        print(m)
+        os.system("cls")
+        header("Rot")
+        code = Rot.select_rot(m)
+        print(code)
+        os.system("cls")
+        header("Rot")
         b = show_result(code)
         if b == True:
             creatFile(code)

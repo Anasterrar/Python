@@ -1,4 +1,5 @@
 def Caesar_cipher():
+    methode = "Code cesar"
     string = input("Veuillez entrer ce qui doit etre chiffré: \n")
     value = int(input("Veuillez entrer la valeur de chiffrement: \n"))
     string_coded = ""
@@ -11,4 +12,4 @@ def Caesar_cipher():
             string_coded += chr((ord(c) - 65 + value) % 26 + 65)
         else:
             string_coded += c
-    return string, value, string_coded
+    return string, value, string_coded, methode
