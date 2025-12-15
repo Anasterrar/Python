@@ -3,6 +3,7 @@ import Caesar
 import Rot
 import pyfiglet
 import poly
+import vigenere
 from colorama import Fore, Style, init
 init(autoreset=True)
 
@@ -94,6 +95,15 @@ while True:
         code = poly.poly_cipher()
         os.system("cls")
         header("Chiffrement polyalphabétique")
+        b = show_result(code)
+        if b == True:
+            createFile(code)
+    elif a == 4:
+        os.system("cls")
+        header("Vigenère")
+        code = vigenere.vigenere()
+        os.system("cls")
+        header("Vigenère")
         b = show_result(code)
         if b == True:
             createFile(code)
