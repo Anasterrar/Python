@@ -2,7 +2,7 @@ from Cipher import Caesar
 from Cipher import Rot
 from Cipher import poly
 from Cipher import vigenere
-from Components import header
+from Cipher import Caesar_affine
 from Components import menu
 from Components import show_result
 from Components import create_file
@@ -28,6 +28,11 @@ while True:
             create_file.create_file(result)
     elif a == 4:
         result = vigenere.vigenere()
+        if show_result.show_result(result) == True:
+            create_file.create_file(result)
+    elif a == 5:
+        m = Caesar_affine.affine_menu()
+        result = Caesar_affine.select_affine(m)
         if show_result.show_result(result) == True:
             create_file.create_file(result)
 
