@@ -1,7 +1,15 @@
-def Caesar_cipher():
+from Components.header import header
+
+def Caesar_affine():
     methode = "Code cesar"
     string = input("Veuillez entrer ce qui doit etre chiffré: \n")
+    if not string:
+        print("❌ La chaine de carractere doit contenir au moins une lettre.")
+        Caesar_affine()
     value = int(input("Veuillez entrer la valeur de chiffrement: \n"))
+    if not value:
+        print("❌ La chaine de carractere doit contenir au moins une lettre.")
+        Caesar_affine()
     string_coded = ""
     for c in string:
         #Minuscule
