@@ -15,6 +15,7 @@ def create_file(data):
         else:
             with open(path, "w") as f:
                 f.write(formated_data)
+            header(data[3])
             print(f"Votre fichier 'key{a}.txt' a été créé dans le dossier key")
             input("Appuyez sur entrer pour continuer")
             break
