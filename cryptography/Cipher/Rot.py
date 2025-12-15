@@ -1,4 +1,3 @@
-import os
 from Components.header import header
 
 def Rot_menu():
