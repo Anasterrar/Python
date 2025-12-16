@@ -1,12 +1,14 @@
 import os
 from Components.header import header
+from Components import text_selection
+data = text_selection.text_selection("text")
 
 path = "key/"
 if not os.path.isdir(path):
    os.makedirs(path)
 
-def create_file(data):
-    formated_data = f"Text : {data[0]}\nKey : {str(data[1])}\nCoded text : {data[2]}\nMethode: {data[3]}"
+def create_file(result_brut):
+    result_formatted = f"{data["text"]} : {result_brut[0]}\n{data["key"]} : {str(result_brut[1])}\n{data["coded_text"]} : {result_brut[2]}\n{data["method"]}: {result_brut[3]}"
     a = 1
     while True:
         path = f"key/key{a}.txt"
@@ -14,8 +16,8 @@ def create_file(data):
             a += 1
         else:
             with open(path, "w") as f:
-                f.write(formated_data)
-            header(data[3])
-            print(f"Votre fichier 'key{a}.txt' a été créé dans le dossier key")
-            input("Appuyez sur entrer pour continuer")
+                f.write(result_formatted)
+            header(result_brut[3])
+            print(f"{data["file_saved"]} 'key{a}.txt' {data["in"]}")
+            input(data["press_enter"])
             break

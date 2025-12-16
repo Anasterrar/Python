@@ -1,4 +1,6 @@
 from Components.header import header
+from Components import text_selection
+data = text_selection.text_selection("text")
 
 def formalize(data):
     data = data.replace(",", " ")
@@ -8,37 +10,36 @@ def formalize(data):
 def poly_cipher():
     error = False
     while True:
-        methode = "Cesar polyalphabétique"
-        header(methode)
+        method = data["menu_Caesar_poly"]
+        header(method)
         if error == True:
-            print("❌ La chaine de carractere doit contenir au moins une lettre.")
-            print("❌ La valeur de chiffrement doit contenir au moins un chiffre.")
-        string = input("Veuillez entrer ce qui doit etre chiffré: \n")
+            print(data["error_empty_text"])
+            print(data["error_empty_key"])
+        string = input(data["input_text"])
         if not string:
             error = True
             continue
-        value = input("Veuillez entrer les valeurs de chiffrement séparées par des espaces ou des virgules : \n")
-        value = formalize(value)
-        if not value:
+        key = input(data["input_multiple_key"])
+        if not key:
             error = True
             continue 
         string_coded = ""
         i = 0
         for c in string:
-            if i > len(value)- 1:
+            if i > len(key)- 1:
                 i = 0
         #Minuscule
             if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((ord(c) - 97 + int(value[i])) % 26 + 97)
+                string_coded += chr((ord(c) - 97 + int(key[i])) % 26 + 97)
                 i += 1
         #Majuscule
             elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((ord(c) - 65 + int(value[i])) % 26 + 65)
+                string_coded += chr((ord(c) - 65 + int(key[i])) % 26 + 65)
                 i += 1
             else:
                 string_coded += c
-        value = " ".join(value)
+        key = " ".join(key)
         error = False
-        return string, value, string_coded, methode
+        return string, key, string_coded, method
 
  
