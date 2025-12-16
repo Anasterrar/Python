@@ -6,12 +6,14 @@ from Cipher import Caesar_affine
 from Components import menu
 from Components import show_result
 from Components import create_file
-import os
+from Components import settings
+
 
 # -----------------
 # Programme
 #------------------
 while True:
+    settings.settings()
     a = menu.menu()
     if a == 1:
         result = Caesar.Caesar_cipher()
