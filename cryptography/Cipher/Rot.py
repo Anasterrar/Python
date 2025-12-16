@@ -1,12 +1,13 @@
 from Components.header import header
-
+from Components import text_selection
+data = text_selection.text_selection("text")
 def Rot_menu():
     while True:
         options = ["1. ROT13", "2. ROT47", "3. ROT18"]
-        header("ROT")
+        header(data["menu_rot"])
         for opt in options:
             print(opt)
-        answer = input("Entrez le numero de la methode de cryptage : ")
+        answer = input(data["input_menu"])
         if answer.isdigit() == True:
             return int(answer)
 
@@ -24,76 +25,76 @@ def select_rot(num):
 def Rot13_cipher():
     error = False
     while True:
-        methode = "ROT 13"
-        header(methode)
+        method = "ROT 13"
+        header(method)
         if error == True:
-            print("❌ La chaine de carractere doit contenir au moins une lettre.")
-        string = input("Veuillez entrer ce qui doit etre chiffré: \n")
+            print(data["error_empty_text"])
+        string = input(data["input_text"])
         if not string:
             error = True
             continue
-        value = 13
+        key = 13
         string_coded = ""
         for c in string:
             #Minuscule
             if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((ord(c) - 97 + value) % 26 + 97)
+                string_coded += chr((ord(c) - 97 + key) % 26 + 97)
             #Majuscule
             elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((ord(c) - 65 + value) % 26 + 65)
+                string_coded += chr((ord(c) - 65 + key) % 26 + 65)
             else:
                 string_coded += c
         error = False
-        return string, value, string_coded, methode
+        return string, key, string_coded, method
 
 def Rot47_cipher():
     error = False
     while True:
-        methode = "ROT 47"
-        header(methode)
+        method = "ROT 47"
+        header(method)
         if error == True:
-            print("❌ La chaine de carractere doit contenir au moins une lettre.")
-        string = input("Veuillez entrer ce qui doit etre chiffré: \n")
+            print(data["error_empty_text"])
+        string = input(data["input_text"])
         if not string:
             error = True
             continue
-        value = 47
+        key = 47
         string_coded = ""
         for c in string:
             #Minuscule
             if ord(c) >= 33 and ord(c) <= 126:
-                string_coded += chr((ord(c) - 33 + value) % 94 + 33)
+                string_coded += chr((ord(c) - 33 + key) % 94 + 33)
             else:
                 string_coded += c
         error = False
-        return string, value, string_coded, methode
+        return string, key, string_coded, method
 
 def Rot18_cipher():
     error = False
     while True:
-        methode = "ROT 18"
-        header(methode)
+        method = "ROT 18"
+        header(method)
         if error == True:
-            print("❌ La chaine de carractere doit contenir au moins une lettre.")
-        string = input("Veuillez entrer ce qui doit etre chiffré: \n")
+            print(data["error_empty_text"])
+        string = input(data["input_text"])
         if not string:
             error = True
             continue
-        value1 = 13
-        value2 = 5
-        values = f"{value1} pour les lettres et {value2} pour les chiffres"
+        key1 = 13
+        key2 = 5
+        keys = f"{key1} {data["rot_for_key1"]} {key2} {data["rot_for_key2"]}"
         string_coded = ""
         for c in string:
             #Minuscule
             if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((ord(c) - 97 + value1) % 26 + 97)
+                string_coded += chr((ord(c) - 97 + key1) % 26 + 97)
             #Majuscule
             elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((ord(c) - 65 + value1) % 26 + 65)
+                string_coded += chr((ord(c) - 65 + key1) % 26 + 65)
             #Chiffre
             elif ord(c) >= 48 and ord(c) <= 57:
-                string_coded += chr((ord(c) - 48 + value2) % 10 + 48)
+                string_coded += chr((ord(c) - 48 + key2) % 10 + 48)
             else:
                 string_coded += c
         error = False
-        return string, values, string_coded, methode
+        return string, keys, string_coded, method

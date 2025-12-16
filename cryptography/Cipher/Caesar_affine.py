@@ -1,13 +1,15 @@
 from Components.header import header
 import random
+from Components import text_selection
+data = text_selection.text_selection("text")
 
 def affine_menu():
     while True:
-        options = ["1. Clé manuelle (avancé)", "2. Clé automatique (recommandé)"]
-        header("Caesar affine")
+        options = [f"1. {data["manual_key"]}", f"2. {data["auto_key"]}"]
+        header(data["menu_Caesar_affine"])
         for opt in options:
             print(opt)
-        answer = input("Entrez le numero de la methode de cryptage : ")
+        answer = input(data["input_menu"])
         if answer.isdigit() == True:
             return int(answer)
         
@@ -31,30 +33,30 @@ def isValidA(a):
 def Caesar_affine(auto):
     error = False
     while True:
-        methode = "Caesar affine"
-        header(methode)
+        method = data["menu_Caesar_affine"]
+        header(method)
         if error == True:
-            print("❌ La chaine de carractere doit contenir au moins une lettre.")
-            print("❌ Les valeur de chiffrement doivent contenir au moins un chiffre.")
-            print("❌ La premiere valeur de chiffrement doit etre premiere avec 26 (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25)")
-        string = input("Veuillez entrer ce qui doit etre chiffré: \n")
+            print(data["error_empty_text"])
+            print(data["error_empty_key"])
+            print(data["error_invalid_key_affine"])
+        string = input(data["input_text"])
         if not string:
             error = True
             continue
         if auto == True:
-            a_value = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
-            a = str(random.choice(a_value))
+            a_key = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
+            a = str(random.choice(a_key))
         if auto == False:
-            a = input("Veuillez entrer la premiere valeur de chiffrement: \n")
+            a = input(data["input_first_key"])
         if not a or a.isdigit() == False or isValidA(int(a)) == False:
             error = True
             continue
-        b = input("Veuillez entrer la deuxieme valeur de chiffrement: \n")
+        b = input(data["input_second_key"])
         if not b or b.isdigit() == False:
             error = True
             continue
         string_coded = ""
-        key = f"a = {a} et b = {b}"
+        keys = f"a = {a} et b = {b}"
         for c in string:
             #Minuscule
             if ord(c) >= 97 and ord(c) <= 122:
@@ -65,4 +67,4 @@ def Caesar_affine(auto):
             else:
                 string_coded += c
         error = False
-        return string, key, string_coded, methode
+        return string, keys, string_coded, method

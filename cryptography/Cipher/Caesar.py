@@ -1,31 +1,33 @@
 from Components.header import header
+from Components import text_selection
+data = text_selection.text_selection("text")
 
 def Caesar_cipher():
     error = False
     while True:
-        methode = "Caesar cipher"
-        header(methode)
+        method = data["menu_caesar"]
+        header(method)
         if error == True:
-            print("❌ La chaine de carractere doit contenir au moins une lettre.")
-            print("❌ La valeur de chifferement doit contenir au moins un chiffre.")
-        string = input("Veuillez entrer ce qui doit etre chiffré: \n")
+            print(data["error_empty_text"])
+            print(data["error_empty_key"])
+        string = input(data["input_text"])
         if not string:
             error = True
             continue
-        value = input("Veuillez entrer la valeur de chiffrement: \n")
-        if not value:
+        key = input(data["input_unique_key"])
+        if not key:
             error = True
             continue
         string_coded = ""
-        value = int(value)
+        key = int(key)
         for c in string:
             #Minuscule
             if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((ord(c) - 97 + value) % 26 + 97)
+                string_coded += chr((ord(c) - 97 + key) % 26 + 97)
             #Majuscule
             elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((ord(c) - 65 + value) % 26 + 65)
+                string_coded += chr((ord(c) - 65 + key) % 26 + 65)
             else:
                 string_coded += c
         error = False
-        return string, value, string_coded, methode
+        return string, key, string_coded, method

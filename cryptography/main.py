@@ -7,8 +7,6 @@ from Components import menu
 from Components import show_result
 from Components import create_file
 from Components import settings
-
-
 # -----------------
 # Programme
 #------------------
