@@ -1,8 +1,9 @@
 from Components.header import header
 from Components import text_selection
-data = text_selection.text_selection("text")
+
 
 def show_result(result):
+        data = text_selection.text_selection("text")
         while True:
             header(result[3])
             print(f"{data["text"]} : {result[0]}")

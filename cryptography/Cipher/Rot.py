@@ -1,7 +1,8 @@
 from Components.header import header
 from Components import text_selection
-data = text_selection.text_selection("text")
+
 def Rot_menu():
+    data = text_selection.text_selection("text")
     while True:
         options = ["1. ROT13", "2. ROT47", "3. ROT18"]
         header(data["menu_rot"])
@@ -23,6 +24,7 @@ def select_rot(num):
         return code
 
 def Rot13_cipher():
+    data = text_selection.text_selection("text")
     error = False
     while True:
         method = "ROT 13"
@@ -48,6 +50,7 @@ def Rot13_cipher():
         return string, key, string_coded, method
 
 def Rot47_cipher():
+    data = text_selection.text_selection("text")
     error = False
     while True:
         method = "ROT 47"
@@ -70,6 +73,7 @@ def Rot47_cipher():
         return string, key, string_coded, method
 
 def Rot18_cipher():
+    data = text_selection.text_selection("text")
     error = False
     while True:
         method = "ROT 18"

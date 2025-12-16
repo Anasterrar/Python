@@ -1,9 +1,9 @@
 from Components.header import header
 import random
 from Components import text_selection
-data = text_selection.text_selection("text")
 
 def affine_menu():
+    data = text_selection.text_selection("text")
     while True:
         options = [f"1. {data["manual_key"]}", f"2. {data["auto_key"]}"]
         header(data["menu_Caesar_affine"])
@@ -31,6 +31,7 @@ def isValidA(a):
 
 #(ax + b) modulo 26, a premier avec 27
 def Caesar_affine(auto):
+    data = text_selection.text_selection("text")
     error = False
     while True:
         method = data["menu_Caesar_affine"]

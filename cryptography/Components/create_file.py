@@ -1,13 +1,14 @@
 import os
 from Components.header import header
 from Components import text_selection
-data = text_selection.text_selection("text")
+
 
 path = "key/"
 if not os.path.isdir(path):
    os.makedirs(path)
 
 def create_file(result_brut):
+    data = text_selection.text_selection("text")
     result_formatted = f"{data["text"]} : {result_brut[0]}\n{data["key"]} : {str(result_brut[1])}\n{data["coded_text"]} : {result_brut[2]}\n{data["method"]}: {result_brut[3]}"
     a = 1
     while True:

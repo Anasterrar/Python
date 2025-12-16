@@ -1,8 +1,8 @@
 from Components.header import header
 from Components import text_selection
-data = text_selection.text_selection("text")
 
 def Caesar_cipher():
+    data = text_selection.text_selection("text")
     error = False
     while True:
         method = data["menu_caesar"]
