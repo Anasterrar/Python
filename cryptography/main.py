@@ -15,26 +15,18 @@ while True:
     a = menu.menu()
     if a == 1:
         result = Caesar.Caesar_cipher()
-        if show_result.show_result(result) == True:
-            create_file.create_file(result)
     elif a == 2:
         m = Rot.Rot_menu()
         result = Rot.select_rot(m)
-        if show_result.show_result(result) == True:
-            create_file.create_file(result)
     elif a == 3:
         result = poly.poly_cipher()
-        if show_result.show_result(result) == True:
-            create_file.create_file(result)
     elif a == 4:
         result = vigenere.vigenere()
-        if show_result.show_result(result) == True:
-            create_file.create_file(result)
     elif a == 5:
         m = Caesar_affine.affine_menu()
         result = Caesar_affine.select_affine(m)
-        if show_result.show_result(result) == True:
+    # Resultat
+    if show_result.show_result(result) == True:
             create_file.create_file(result)
-
     
         
