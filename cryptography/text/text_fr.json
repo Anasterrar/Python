@@ -1,0 +1,16 @@
+{
+  "app_title": "Cryptographie",
+  "menu_caesar": "César classique",
+  "menu_rot": "Chiffrement ROT",
+  "menu_Caesar_poly": "César polyalphabetique",
+  "menu_vigenere": "Chiffre de Vigenère",
+  "menu_Caesar_affine": "César affine",
+
+  "input_text": "Veuillez entrer le texte à chiffrer :",
+  "input_key": "Veuillez entrer la clé :",
+
+  "error_empty_text": "❌ Le texte ne peut pas être vide",
+  "error_invalid_key": "❌ Clé invalide",
+
+  "save_question": "Voulez-vous enregistrer ce résultat ? (y/n)"
+}

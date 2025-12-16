@@ -1,0 +1,16 @@
+{
+  "app_title": "Cryptography",
+  "menu_caesar": "Classic Caesar",
+  "menu_rot": "ROT Cipher",
+  "menu_Caesar_poly": "Polyalphabetic Caesar",
+  "menu_vigenere": "Vigenere Cipher",
+  "menu_Caesar_affine": "Affine cipher",
+
+  "input_text": "Please enter the text to encrypt:",
+  "input_key": "Please enter the key:",
+
+  "error_empty_text": "❌ Text cannot be empty",
+  "error_invalid_key": "❌ Invalid key",
+
+  "save_question": "Do you want to save this result? (y/n)"
+}
