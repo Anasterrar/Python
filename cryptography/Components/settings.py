@@ -1,6 +1,6 @@
 import os
 import json
-from Components.header import header
+from Components.header import title
 
 def settings():
         #Cree le dossier config et le fichier setting si necessaire
@@ -12,7 +12,7 @@ def settings():
             with open(path_file, "w") as f:
                     json.dump({"language": ""}, f)
 
-        header("Language")
+        title("Language")
         #Configure la langue, anglais par defaut si erreur
         with open("config/settings.json", "r") as (f):
             settings = json.load(f)

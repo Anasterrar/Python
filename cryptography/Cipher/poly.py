@@ -1,6 +1,5 @@
 from Components.header import header
 from Components import text_selection
-data = text_selection.text_selection("text")
 
 def formalize(data):
     data = data.replace(",", " ")
@@ -8,6 +7,7 @@ def formalize(data):
     return data
 
 def poly_cipher():
+    data = text_selection.text_selection("text")
     error = False
     while True:
         method = data["menu_Caesar_poly"]

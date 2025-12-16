@@ -1,6 +1,5 @@
 from Components.header import header
 from Components import text_selection
-data = text_selection.text_selection("text")
 
 def formalize(string):
     for c in string:
@@ -9,6 +8,7 @@ def formalize(string):
     return string
 
 def vigenere():
+    data = text_selection.text_selection("text")
     error = False
     while True:
         method = data["menu_vigenere"]
