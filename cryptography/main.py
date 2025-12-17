@@ -11,7 +11,7 @@ from Components import settings
 # Programme
 #------------------
 while True:
-    settings.settings()
+    settings.settings(True)
     a = menu.menu()
     if a == 1:
         result = Caesar.Caesar_cipher()
@@ -25,6 +25,9 @@ while True:
     elif a == 5:
         m = Caesar_affine.affine_menu()
         result = Caesar_affine.select_affine(m)
+    elif a == 6:
+        settings.settings(False)
+        continue
     # Resultat
     if show_result.show_result(result) == True:
             create_file.create_file(result)

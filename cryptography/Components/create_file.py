@@ -18,7 +18,7 @@ def create_file(result_brut):
         else:
             with open(path, "w") as f:
                 f.write(result_formatted)
-            header(result_brut[3])
+            header(result_brut[4], None)
             print(f"{data["file_saved"]} 'key{a}.txt' {data["in"]}")
             input(data["press_enter"])
             break

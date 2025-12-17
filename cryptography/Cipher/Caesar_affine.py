@@ -6,7 +6,7 @@ def affine_menu():
     data = text_selection.text_selection("text")
     while True:
         options = [f"1. {data["manual_key"]}", f"2. {data["auto_key"]}"]
-        header(data["menu_Caesar_affine"])
+        header("menu_Caesar_affine", None)
         for opt in options:
             print(opt)
         answer = input(data["input_menu"])
@@ -35,7 +35,7 @@ def Caesar_affine(auto):
     error = False
     while True:
         method = data["menu_Caesar_affine"]
-        header(method)
+        header("menu_Caesar_affine", "affine")
         if error == True:
             print(data["error_empty_text"])
             print(data["error_empty_key"])
@@ -68,4 +68,4 @@ def Caesar_affine(auto):
             else:
                 string_coded += c
         error = False
-        return string, keys, string_coded, method
+        return string, keys, string_coded, method, "menu_Caesar_affine"

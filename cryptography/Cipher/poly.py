@@ -11,7 +11,7 @@ def poly_cipher():
     error = False
     while True:
         method = data["menu_Caesar_poly"]
-        header(method)
+        header("menu_Caesar_poly", "poly")
         if error == True:
             print(data["error_empty_text"])
             print(data["error_empty_key"])
@@ -40,6 +40,6 @@ def poly_cipher():
                 string_coded += c
         key = " ".join(key)
         error = False
-        return string, key, string_coded, method
+        return string, key, string_coded, method, "menu_Caesar_poly"
 
  

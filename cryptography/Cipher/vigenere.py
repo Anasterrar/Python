@@ -12,9 +12,9 @@ def vigenere():
     error = False
     while True:
         method = data["menu_vigenere"]
+        header("menu_vigenere", "vigenere")
         string_coded = ""
         i = 0
-        header(method)
         if error == True:
             print(data["error_empty_text"])
             print(data["error_empty_key"])
@@ -47,4 +47,4 @@ def vigenere():
             else:
                 string_coded += c
         error = False
-        return string, key, string_coded, method
+        return string, key, string_coded, method, "menu_vigenere"
