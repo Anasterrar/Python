@@ -1,18 +1,36 @@
+import msvcrt
 from Components.header import header
 from Components.text_selection import text_selection
 from Components.error_message import error_message
 from Components.input_message import input_message
+from colorama import Fore, Style, init
 
 def Rot_menu():
-    data = text_selection("text")
+    options = ["ROT13", "ROT47", "ROT18"]
+    selected = 0
     while True:
-        options = ["1. ROT13", "2. ROT47", "3. ROT18"]
         header("menu_rot", None)
-        for opt in options:
-            print(opt)
-        answer = input(data["input_menu"])
-        if answer.isdigit() == True:
-            return int(answer)
+        for i, option in enumerate(options):
+                if i == selected:
+                    print(f"> {" "}{option}")
+                else:
+                    print(f"  {option}")
+        print(Fore.YELLOW + Style.BRIGHT + f"{options[selected]} ?")
+
+        key = msvcrt.getch()
+            
+        if key == b'\xe0':
+            key2 = msvcrt.getch()
+            
+            if key2 == b'H':
+                selected = (selected - 1) % len(options)
+                print(selected)
+            elif key2 == b'P':
+                    selected = (selected + 1) % len(options)
+        elif key == b'\r':
+                return selected + 1
+        elif key == b'\x1b':
+                return None
 
 def select_rot(num):
     if num == 1:

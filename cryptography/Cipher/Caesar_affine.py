@@ -1,19 +1,38 @@
-from Components.header import header
 import random
+import msvcrt
+from Components.header import header
 from Components.text_selection import text_selection
 from Components.error_message import error_message
 from Components.input_message import input_message
+from colorama import Fore, Style, init
 
 def affine_menu():
     data = text_selection("text")
+    selected = 0
     while True:
-        options = [f"1. {data["manual_key"]}", f"2. {data["auto_key"]}"]
+        options = [f"{data["manual_key"]}", f"{data["auto_key"]}"]
         header("menu_Caesar_affine", None)
-        for opt in options:
-            print(opt)
-        answer = input(data["input_menu"])
-        if answer.isdigit() == True:
-            return int(answer)
+        for i, option in enumerate(options):
+            if i == selected:
+                print(f"> {" "}{option}")
+            else:
+                print(f"  {option}")
+        print(Fore.YELLOW + Style.BRIGHT + f"{options[selected]} ?")
+
+        key = msvcrt.getch()
+        
+        if key == b'\xe0':
+            key2 = msvcrt.getch()
+          
+            if key2 == b'H':
+                selected = (selected - 1) % len(options)
+                print(selected)
+            elif key2 == b'P':
+                selected = (selected + 1) % len(options)
+        elif key == b'\r':
+            return selected + 1
+        elif key == b'\x1b':
+            return None
         
 def select_affine(num):
     auto = False

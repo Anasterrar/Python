@@ -1,6 +1,8 @@
 import os
 import json
+import msvcrt
 from Components.header import header
+from colorama import Fore, Style, init
 
 def settings(init):
         if init == True:
@@ -26,13 +28,35 @@ def settings(init):
                 with open("config/settings.json", "w", encoding="utf-8") as f:
                     json.dump({"language": lang}, f)
         if init == False :
-            header("app_title", None)
-            print("Choose language / Choisissez la langue")
-            print("1. Français")
-            print("2. English")
-            choice = input("> ")
-            lang = "fr" if choice == "1" else "en"
-            with open("config/settings.json", "w", encoding="utf-8") as f:
-                json.dump({"language": lang}, f)
+            selected = 0
+            while True:
+                header("app_title", None)
+                print("Choose language / Choisissez la langue")
+                options = ["Français", "English"]
+                for i, option in enumerate(options):
+                    if i == selected:
+                        print(f"> {" "}{option}")
+                    else:
+                        print(f"  {option}")
+                print(Fore.YELLOW + Style.BRIGHT + f"{options[selected]} ?")
+
+                key = msvcrt.getch()
+        
+                if key == b'\xe0':
+                    key2 = msvcrt.getch()
+                
+                    if key2 == b'H':
+                        selected = (selected - 1) % len(options)
+                        print(selected)
+                    elif key2 == b'P':
+                        selected = (selected + 1) % len(options)
+                elif key == b'\r':
+                    lang = "fr" if selected == 0 else "en"
+                    with open("config/settings.json", "w", encoding="utf-8") as f:
+                        json.dump({"language": lang}, f)
+                        break
+                    
+                elif key == b'\x1b':
+                    return None
              
 
