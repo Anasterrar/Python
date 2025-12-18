@@ -8,7 +8,7 @@
   "menu_Caesar_poly": "Polyalphabetic Caesar",
   "menu_vigenere": "Vigenere Cipher",
   "menu_Caesar_affine": "Affine cipher",
-  "menu_setting": "settings",
+  "menu_setting": "Settings",
   "input_menu": "Please enter the encryption method number : ",
   "header_message1": "🔒 Encryption utility",
   "header_message2": "💡 Ctrl+C to exit",

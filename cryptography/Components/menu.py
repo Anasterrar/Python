@@ -1,4 +1,5 @@
 import msvcrt
+import os
 from Components.header import header
 from Components.text_selection import text_selection
 from colorama import Fore, Style, init
@@ -11,7 +12,7 @@ def menu():
         header("app_title", None)
         for i, option in enumerate(options):
             if i == selected:
-                print(f"> {" "}{option}")
+                print(f"▶️ {" "}{option}")
             else:
                 print(f"  {option}")
         print(Fore.YELLOW + Style.BRIGHT + f"{options[selected]} ?")
@@ -29,4 +30,5 @@ def menu():
         elif key == b'\r':
             return selected + 1
         elif key == b'\x1b':
+            os.system("cls")
             return None
