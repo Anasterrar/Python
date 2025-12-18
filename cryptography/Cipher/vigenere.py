@@ -1,5 +1,6 @@
 from Components.header import header
-from Components import text_selection
+from Components.error_message import error_message
+from Components.input_message import input_message
 
 def formalize(string):
     for c in string:
@@ -8,21 +9,19 @@ def formalize(string):
     return string
 
 def vigenere():
-    data = text_selection.text_selection("text")
     error = False
     while True:
-        method = data["menu_vigenere"]
-        header("menu_vigenere", "vigenere")
+        method = "menu_vigenere"
+        header(method, "vigenere")
         string_coded = ""
         i = 0
         if error == True:
-            print(data["error_empty_text"])
-            print(data["error_empty_key"])
-        string = input(data["input_text"])
+            error_message(["error_empty_text", "error_empty_key"])
+        string = input_message("input_text")
         if not string:
             error = True
             continue
-        key = input(data["input_word_key"])            
+        key = input_message("input_word_key")            
         key = formalize(key)
         if not key:
             error = True
@@ -47,4 +46,4 @@ def vigenere():
             else:
                 string_coded += c
         error = False
-        return string, key, string_coded, method, "menu_vigenere"
+        return string, key, string_coded, method

@@ -38,7 +38,7 @@
     "title": "Polyalphabetic Cipher",
     "description": "The polyalphabetic cipher uses multiple successive shifts instead of a single one. Each letter is encrypted with a different shift.",
     "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
-    "example": "With key [1, 2, 3]: A → B, B → D, C → F. The key pattern repeats across the message."
+    "example": "With key '1, 2, 3': A → B, B → D, C → F. The key pattern repeats across the message."
   },
 
   "vigenere": {

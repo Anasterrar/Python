@@ -1,18 +1,24 @@
 import os
 import pyfiglet
+import unicodedata
 from colorama import Fore, Style, init
-from Components import text_selection
+from Components.text_selection import text_selection
 init(autoreset=True)
 
+def normalize_text(text):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', text)
+        if unicodedata.category(c) != 'Mn'
+    )
+
 def title(text):
-    data = text_selection.text_selection("text")
+    data = text_selection("text")
     os.system("cls")
-    header = pyfiglet.figlet_format(data[text], font="slant")
-    print(Fore.CYAN + header)
-    return
+    title = pyfiglet.figlet_format(normalize_text(data[text]), font="slant")
+    print(Fore.CYAN + title)
 
 def instruction():
-    data = text_selection.text_selection("text")
+    data = text_selection("text")
     print(Fore.MAGENTA + "───────────────────────────────")
     print(f"🌍 {data["language"]}")
     print(Fore.YELLOW + data["header_message1"])
@@ -20,8 +26,8 @@ def instruction():
     print(Fore.MAGENTA + "───────────────────────────────")
 
 def explication(text2):
-    data = text_selection.text_selection("explication")
-    data2 = text_selection.text_selection("text")
+    data = text_selection("explication")
+    data2 = text_selection("text")
     print(Fore.YELLOW + data2["description"])
     print(data[text2]["description"])
     print(Fore.YELLOW + data2["formula"])
@@ -35,3 +41,5 @@ def header(text, text2):
     if text2 == None:
         return
     explication(text2)
+
+title("menu_caesar")

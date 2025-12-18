@@ -1,8 +1,10 @@
 from Components.header import header
-from Components import text_selection
+from Components.text_selection import text_selection
+from Components.error_message import error_message
+from Components.input_message import input_message
 
 def Rot_menu():
-    data = text_selection.text_selection("text")
+    data = text_selection("text")
     while True:
         options = ["1. ROT13", "2. ROT47", "3. ROT18"]
         header("menu_rot", None)
@@ -24,14 +26,13 @@ def select_rot(num):
         return code
 
 def Rot13_cipher():
-    data = text_selection.text_selection("text")
     error = False
     while True:
-        method = data["menu_rot13"]
-        header("menu_rot13", "rot13")
+        method = "menu_rot13"
+        header(method, "rot13")
         if error == True:
-            print(data["error_empty_text"])
-        string = input(data["input_text"])
+            error_message(["error_empty_text"])
+        string = input_message("input_text")
         if not string:
             error = True
             continue
@@ -47,17 +48,16 @@ def Rot13_cipher():
             else:
                 string_coded += c
         error = False
-        return string, key, string_coded, method, "menu_rot13"
+        return string, key, string_coded, method
 
 def Rot47_cipher():
-    data = text_selection.text_selection("text")
     error = False
     while True:
-        method = data["menu_rot47"]
-        header("menu_rot47", "rot47")
+        method = "menu_rot47"
+        header(method, "rot47")
         if error == True:
-            print(data["error_empty_text"])
-        string = input(data["input_text"])
+            error_message(["error_empty_text"])
+        string = input_message("input_text")
         if not string:
             error = True
             continue
@@ -70,17 +70,17 @@ def Rot47_cipher():
             else:
                 string_coded += c
         error = False
-        return string, key, string_coded, method, "menu_rot47"
+        return string, key, string_coded, method
 
 def Rot18_cipher():
     data = text_selection.text_selection("text")
     error = False
     while True:
-        method = data["menu_rot18"]
+        method = "menu_rot18"
         header("menu_rot18", "rot18")
         if error == True:
-            print(data["error_empty_text"])
-        string = input(data["input_text"])
+            error_message(["error_empty_text"])
+        string = input_message("input_text")
         if not string:
             error = True
             continue
@@ -101,4 +101,4 @@ def Rot18_cipher():
             else:
                 string_coded += c
         error = False
-        return string, keys, string_coded, method, "menu_rot18"
+        return string, keys, string_coded, method
