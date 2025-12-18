@@ -5,7 +5,7 @@ from Components import text_selection
 def show_result(result):
         data = text_selection.text_selection("text")
         while True:
-            header(result[3])
+            header(result[4], None)
             print(f"{data["text"]} : {result[0]}")
             print(f"{data["key"]} : {result[1]}")
             print(f"{data["coded_text"]} : {result[2]}")

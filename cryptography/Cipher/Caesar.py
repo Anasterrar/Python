@@ -3,10 +3,10 @@ from Components import text_selection
 
 def Caesar_cipher():
     data = text_selection.text_selection("text")
+    method = data["menu_caesar"]
     error = False
     while True:
-        method = data["menu_caesar"]
-        header(method)
+        header("menu_caesar", "caesar")
         if error == True:
             print(data["error_empty_text"])
             print(data["error_empty_key"])
@@ -30,4 +30,4 @@ def Caesar_cipher():
             else:
                 string_coded += c
         error = False
-        return string, key, string_coded, method
+        return string, key, string_coded, method, "menu_caesar"

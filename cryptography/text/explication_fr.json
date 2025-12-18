@@ -3,7 +3,7 @@
     "title": "Chiffrement de César",
     "description": "Le chiffrement de César consiste à décaler chaque lettre du message d’un nombre fixe de positions dans l’alphabet. Les lettres dépassant la fin de l’alphabet recommencent au début.",
     "formula": "E(x) = (x + k) mod 26",
-    "example": "Avec k = 3 : A → D, B → E, Z → C. Le mot \"BONJOUR\" devient \"ERQM RXU\"."
+    "example": "Avec k = 3 : A → D, B → E, Z → C. Le mot \"BONJOUR\" devient \"ERQMRXU\"."
 },
 
   "rot13": {

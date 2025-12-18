@@ -5,9 +5,14 @@
   "menu_Caesar_poly": "Cesar polyalphabetique",
   "menu_vigenere": "Chiffre de Vigenère",
   "menu_Caesar_affine": "César affine",
+  "menu_setting": "Paramettres",
   "input_menu": "Veuillez entrer le numero de la methode de cryptage : ",
   "header_message1": "🔒 Coder un texte",
   "header_message2": "💡 Ctrl+C pour quitter",
+
+  "description": "Description",
+  "formula": "Formule",
+  "example": "Exemple",
 
   "input_text": "Veuillez entrer le texte à chiffrer : ",
   "input_unique_key": "Veuillez entrer la clé : ",
@@ -34,5 +39,7 @@
   "press_enter": "Appuyez sur entrer pour continuer",
 
   "manual_key" : "Clé manuelle (avancée)",
-  "auto_key" : "Clé automatique (recommandée)"
+  "auto_key" : "Clé automatique (recommandée)",
+
+  "language": "Francais"
 }
