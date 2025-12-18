@@ -37,6 +37,7 @@
   "key": "Key",
   "coded_text": "coded_text",
   "method" : "Method",
+  "and": "and",
   "file_saved": "Your file",
   "in" : "has been created in the key folder",
   "press_enter": "Press enter to continue",

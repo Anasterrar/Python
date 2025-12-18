@@ -1,20 +1,19 @@
 from Components.header import header
-from Components import text_selection
+from Components.error_message import error_message
+from Components.input_message import input_message
 
 def Caesar_cipher():
-    data = text_selection.text_selection("text")
-    method = data["menu_caesar"]
+    method = "menu_caesar"
     error = False
     while True:
-        header("menu_caesar", "caesar")
+        header(method, "caesar")
         if error == True:
-            print(data["error_empty_text"])
-            print(data["error_empty_key"])
-        string = input(data["input_text"])
+            error_message(["error_empty_text", "error_empty_key"])
+        string = input_message("input_text")
         if not string:
             error = True
             continue
-        key = input(data["input_unique_key"])
+        key = input_message("input_unique_key")
         if not key:
             error = True
             continue
@@ -30,4 +29,4 @@ def Caesar_cipher():
             else:
                 string_coded += c
         error = False
-        return string, key, string_coded, method, "menu_caesar"
+        return string, key, string_coded, method

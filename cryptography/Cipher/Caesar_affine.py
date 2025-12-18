@@ -1,9 +1,11 @@
 from Components.header import header
 import random
-from Components import text_selection
+from Components.text_selection import text_selection
+from Components.error_message import error_message
+from Components.input_message import input_message
 
 def affine_menu():
-    data = text_selection.text_selection("text")
+    data = text_selection("text")
     while True:
         options = [f"1. {data["manual_key"]}", f"2. {data["auto_key"]}"]
         header("menu_Caesar_affine", None)
@@ -31,16 +33,14 @@ def isValidA(a):
 
 #(ax + b) modulo 26, a premier avec 27
 def Caesar_affine(auto):
-    data = text_selection.text_selection("text")
+    data = text_selection("text")
     error = False
     while True:
-        method = data["menu_Caesar_affine"]
-        header("menu_Caesar_affine", "affine")
+        method = "menu_Caesar_affine"
+        header(method, "affine")
         if error == True:
-            print(data["error_empty_text"])
-            print(data["error_empty_key"])
-            print(data["error_invalid_key_affine"])
-        string = input(data["input_text"])
+            error_message(["error_empty_text", "error_empty_key", "error_invalid_key_affine"])
+        string = input_message("input_text")
         if not string:
             error = True
             continue
@@ -48,16 +48,16 @@ def Caesar_affine(auto):
             a_key = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
             a = str(random.choice(a_key))
         if auto == False:
-            a = input(data["input_first_key"])
+            a = input_message("input_first_key")
         if not a or a.isdigit() == False or isValidA(int(a)) == False:
             error = True
             continue
-        b = input(data["input_second_key"])
+        b = input_message("input_second_key")
         if not b or b.isdigit() == False:
             error = True
             continue
         string_coded = ""
-        keys = f"a = {a} et b = {b}"
+        keys = f"a = {a} {data["and"]} b = {b}"
         for c in string:
             #Minuscule
             if ord(c) >= 97 and ord(c) <= 122:
@@ -68,4 +68,4 @@ def Caesar_affine(auto):
             else:
                 string_coded += c
         error = False
-        return string, keys, string_coded, method, "menu_Caesar_affine"
+        return string, keys, string_coded, method

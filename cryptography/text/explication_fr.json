@@ -38,7 +38,7 @@
     "title": "Chiffrement polyalphabétique",
     "description": "Le chiffrement polyalphabétique utilise plusieurs décalages successifs au lieu d’un seul. Chaque lettre est chiffrée avec un décalage différent, ce qui renforce la sécurité.",
     "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
-    "example": "Avec la clé [1, 2, 3] : A → B, B → D, C → F. Le motif de clés se répète sur tout le message."
+    "example": "Avec la clé '1, 2, 3' : A → B, B → D, C → F. Le motif de clés se répète sur tout le message."
 },
 
   "vigenere": {
