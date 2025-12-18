@@ -1,48 +1,48 @@
 {
   "caesar": {
-    "title": "Chiffrement de César",
+    "title": "César classique",
     "description": "Le chiffrement de César consiste à décaler chaque lettre du message d’un nombre fixe de positions dans l’alphabet. Les lettres dépassant la fin de l’alphabet recommencent au début.",
     "formula": "E(x) = (x + k) mod 26",
     "example": "Avec k = 3 : A → D, B → E, Z → C. Le mot \"BONJOUR\" devient \"ERQMRXU\"."
 },
 
   "rot13": {
-  "title": "Chiffrement ROT13",
+  "title": "ROT13",
   "description": "Le chiffrement ROT13 est une variante du chiffre de César utilisant un décalage fixe de 13 positions sur l’alphabet. Il est particulier car il est symétrique : chiffrer et déchiffrer utilisent la même opération.",
   "formula": "E(x) = (x + 13) mod 26",
   "example": "ROT13 : A → N, B → O, N → A. Le mot \"PYTHON\" devient \"CLGUBA\"."
 },
 
 "rot18": {
-  "title": "Chiffrement ROT18",
+  "title": "ROT18",
   "description": "Le chiffrement ROT18 combine deux chiffrements : ROT13 pour les lettres (A–Z) et ROT5 pour les chiffres (0–9). Les autres caractères ne sont pas modifiés.",
   "formula": "Lettres : E(x) = (x + 13) mod 26 | Chiffres : E(n) = (n + 5) mod 10",
   "example": "ROT18 : A → N, 1 → 6. Le texte \"HELLO123\" devient \"URYYB678\"."
 },
 
 "rot47": {
-  "title": "Chiffrement ROT47",
+  "title": "ROT47",
   "description": "Le chiffrement ROT47 est une extension du chiffre de César qui s’applique aux caractères ASCII imprimables (de '!' à '~'). Il utilise un décalage de 47 positions et chiffre lettres, chiffres et symboles.",
   "formula": "E(x) = 33 + ((x − 33 + 47) mod 94)",
   "example": "ROT47 : A → p, ! → P. Le texte \"Hello!\" devient \"w6==@P\"."
 },
 
   "affine": {
-    "title": "Chiffrement de César affine",
+    "title": "César affine",
     "description": "Le chiffrement affine améliore le César classique en utilisant une fonction mathématique affine avec deux clés. La première clé doit être première avec 26 afin de permettre le déchiffrement.",
     "formula": "E(x) = (a × x + b) mod 26",
     "example": "Avec a = 5 et b = 8 : A → I, B → N. Le mot \"HELLO\" devient \"RCLLA\"."
 },
 
   "poly": {
-    "title": "Chiffrement polyalphabétique",
+    "title": "César polyalphabétique",
     "description": "Le chiffrement polyalphabétique utilise plusieurs décalages successifs au lieu d’un seul. Chaque lettre est chiffrée avec un décalage différent, ce qui renforce la sécurité.",
     "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
     "example": "Avec la clé '1, 2, 3' : A → B, B → D, C → F. Le motif de clés se répète sur tout le message."
 },
 
   "vigenere": {
-    "title": "Chiffrement de Vigenère",
+    "title": "Vigenère",
     "description": "Le chiffrement de Vigenère est un chiffrement polyalphabétique basé sur un mot-clé. Chaque lettre du message est décalée selon la lettre correspondante du mot-clé.",
     "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
     "example": "Avec la clé \"CLE\" : A → C, B → M, C → G. Le mot \"BONJOUR\" devient \"DZYNSFV\"."

@@ -41,5 +41,3 @@ def header(text, text2):
     if text2 == None:
         return
     explication(text2)
-
-title("menu_caesar")

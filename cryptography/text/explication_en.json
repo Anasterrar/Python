@@ -1,48 +1,48 @@
 {
   "caesar": {
-    "title": "Caesar Cipher",
+    "title": "Classic Caesar",
     "description": "The Caesar cipher shifts each letter of the message by a fixed number of positions in the alphabet. Letters that go past Z wrap around to the beginning.",
     "formula": "E(x) = (x + k) mod 26",
     "example": "With k = 3: A → D, B → E, Z → C. The word \"HELLO\" becomes \"KHOOR\"."
   },
 
   "rot13": {
-  "title": "ROT13 Cipher",
+  "title": "ROT13",
   "description": "ROT13 is a simple substitution cipher and a variant of the Caesar cipher using a fixed shift of 13 positions in the alphabet. It is symmetrical, meaning the same operation is used for both encryption and decryption.",
   "formula": "E(x) = (x + 13) mod 26",
   "example": "ROT13: A → N, B → O, N → A. The word \"PYTHON\" becomes \"CLGUBA\"."
 },
 
 "rot18": {
-  "title": "ROT18 Cipher",
+  "title": "ROT18",
   "description": "ROT18 is a combination of two ciphers: ROT13 applied to letters (A–Z) and ROT5 applied to digits (0–9). All other characters remain unchanged.",
   "formula": "Letters: E(x) = (x + 13) mod 26 | Digits: E(n) = (n + 5) mod 10",
   "example": "ROT18: A → N, 1 → 6. The text \"HELLO123\" becomes \"URYYB678\"."
 },
 
 "rot47": {
-  "title": "ROT47 Cipher",
+  "title": "ROT47",
   "description": "ROT47 is an extension of the Caesar cipher that operates on all printable ASCII characters (from '!' to '~'). It uses a fixed shift of 47 positions and encrypts letters, digits, and symbols.",
   "formula": "E(x) = 33 + ((x − 33 + 47) mod 94)",
   "example": "ROT47: A → p, ! → P. The text \"Hello!\" becomes \"w6==@P\"."
 },
 
   "affine": {
-    "title": "Affine Caesar Cipher",
+    "title": "Affine Caesar",
     "description": "The affine cipher improves the classic Caesar cipher by using an affine mathematical function with two keys. The first key must be coprime with 26 to allow decryption.",
     "formula": "E(x) = (a × x + b) mod 26",
     "example": "With a = 5 and b = 8: A → I, B → N. The word \"HELLO\" becomes \"RCLLA\"."
   },
 
   "poly": {
-    "title": "Polyalphabetic Cipher",
+    "title": "Polyalphabetic Caesar",
     "description": "The polyalphabetic cipher uses multiple successive shifts instead of a single one. Each letter is encrypted with a different shift.",
     "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
     "example": "With key '1, 2, 3': A → B, B → D, C → F. The key pattern repeats across the message."
   },
 
   "vigenere": {
-    "title": "Vigenere Cipher",
+    "title": "Vigenere",
     "description": "The Vigenere cipher is a polyalphabetic encryption method based on a keyword. Each letter of the message is shifted according to the corresponding letter of the keyword.",
     "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
     "example": "With key \"KEY\": A → K, B → F, C → A. The word \"HELLO\" becomes \"RIJVS\"."
