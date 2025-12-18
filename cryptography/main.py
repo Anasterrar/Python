@@ -28,6 +28,8 @@ while True:
     elif a == 6:
         settings.settings(False)
         continue
+    elif a == None:
+         break
     # Resultat
     if show_result.show_result(result) == True:
             create_file.create_file(result)
