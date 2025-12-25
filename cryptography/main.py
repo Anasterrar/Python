@@ -1,37 +1,37 @@
-from Cipher import Caesar
-from Cipher import Rot
-from Cipher import poly
-from Cipher import vigenere
-from Cipher import Caesar_affine
-from Components import menu
-from Components import show_result
-from Components import create_file
-from Components import settings
+from Cipher.Caesar import Caesar_cipher
+from Cipher.Rot import select_rot
+from Cipher.Poly import poly_cipher
+from Cipher.Vigenere import vigenere
+from Cipher.Caesar_affine import select_affine
+from Components.menus import main_menu, Rot_menu, affine_menu
+from Components.show_result import show_result
+from Components.create_file import create_file
+from Components.settings import settings
 # -----------------
 # Programme
 #------------------
 while True:
-    settings.settings(True)
-    a = menu.menu()
+    settings(True)
+    a = main_menu()
     if a == 1:
-        result = Caesar.Caesar_cipher()
+        result = Caesar_cipher()
     elif a == 2:
-        m = Rot.Rot_menu()
-        result = Rot.select_rot(m)
+        m = Rot_menu()
+        result = select_rot(m)
     elif a == 3:
-        result = poly.poly_cipher()
+        result = poly_cipher()
     elif a == 4:
-        result = vigenere.vigenere()
+        result = vigenere()
     elif a == 5:
-        m = Caesar_affine.affine_menu()
-        result = Caesar_affine.select_affine(m)
+        m = affine_menu()
+        result = select_affine(m)
     elif a == 6:
-        settings.settings(False)
+        settings(False)
         continue
     elif a == None:
          break
     # Resultat
-    if show_result.show_result(result) == True:
-            create_file.create_file(result)
+    if show_result(result) == True:
+            create_file(result)
     
         
