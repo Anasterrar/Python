@@ -15,9 +15,7 @@ def arrow_menu(options, title):
             else:
                 print(f"  {option}")
         print(Fore.YELLOW + Style.BRIGHT + f"{options[selected]} ?")
-
         key = msvcrt.getch()
-            
         if key == b'\xe0':
             key2 = msvcrt.getch()
             

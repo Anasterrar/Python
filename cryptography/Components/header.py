@@ -1,7 +1,7 @@
 import os
 import pyfiglet
 import unicodedata
-from colorama import Fore, init
+from colorama import Fore, init, Back, Style
 from Components.text_selection import text_selection
 init(autoreset=True)
 
@@ -34,7 +34,7 @@ def explication(text2):
     print(Fore.YELLOW + data2["description"])
     print(data[text2]["description"])
     print(Fore.YELLOW + data2["formula"])
-    print(data[text2]["formula"])
+    print(Back.WHITE + Fore.BLACK + data[text2]["formula"])
     print(Fore.YELLOW + data2["example"])
     print(data[text2]["example"])
 
