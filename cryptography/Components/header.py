@@ -17,12 +17,15 @@ def title(text):
     title = pyfiglet.figlet_format(normalize_text(data[text]), font="slant")
     print(Fore.CYAN + title)
 
-def instruction():
+def instruction(t):
     data = text_selection("text")
     print(Fore.MAGENTA + "───────────────────────────────")
     print(f"🌍 {data["language"]}")
     print(Fore.YELLOW + data["header_message1"])
-    print(Fore.YELLOW + data["header_message2"])
+    if t == "esc":
+        print(Fore.YELLOW + data["header_message3"])
+    else:
+        print(Fore.YELLOW + data["header_message2"])
     print(Fore.MAGENTA + "───────────────────────────────")
 
 def explication(text2):
@@ -37,7 +40,8 @@ def explication(text2):
 
 def header(text, text2):
     title(text)
-    instruction()
     if text2 == None:
+        instruction("esc")
         return
+    instruction("C")
     explication(text2)

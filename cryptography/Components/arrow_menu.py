@@ -1,7 +1,8 @@
+import os
 import msvcrt
 from colorama import Fore, Style
 from Components.header import header
-import os
+
 def arrow_menu(options, title):
     selected = 0
     while True:

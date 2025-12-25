@@ -8,7 +8,7 @@ def formalize(string):
             string = string.replace(c, '')
     return string
 
-def vigenere():
+def vigenere_cipher():
     error = False
     while True:
         method = "menu_vigenere"

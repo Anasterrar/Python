@@ -33,5 +33,3 @@ def settings_menu(init):
     if result == "escape":
         result = "back"
     return result
-
-        

@@ -1,43 +1,37 @@
 import os
 from Cipher.Caesar import Caesar_cipher
-from Cipher.Rot import select_rot
+from Cipher.Rot import rot
 from Cipher.Poly import poly_cipher
-from Cipher.Vigenere import vigenere
-from Cipher.Caesar_affine import select_affine
-from Components.menus import main_menu, Rot_menu, affine_menu
+from Cipher.Vigenere import vigenere_cipher
+from Cipher.Caesar_affine import affine
+from Components.menus import main_menu
 from Components.show_result import show_result
 from Components.create_file import create_file
-from Components.settings import settings
+from Components.settings import run_settings, settings
+
+DISPATCH_MAIN = {
+    1: Caesar_cipher,
+    2: rot,
+    3: poly_cipher,
+    4: vigenere_cipher,
+    5: affine,
+    6: run_settings,
+}
 # -----------------
 # Programme
 #------------------
 while True:
     settings(True)
-    a = main_menu()
-    if a == 1:
-        result = Caesar_cipher()
-    elif a == 2:
-        m = Rot_menu()
-        if m == "back":
-             continue
-        result = select_rot(m)
-    elif a == 3:
-        result = poly_cipher()
-    elif a == 4:
-        result = vigenere()
-    elif a == 5:
-        m = affine_menu()
-        if m == "back":
-             continue
-        result = select_affine(m)
-    elif a == 6:
-        settings(False)
-        continue
-    elif a == "quit":
-         os.system("cls")
-         break
+    choice = main_menu()
+    if choice == "quit":
+          os.system("cls")
+          break
+    action = DISPATCH_MAIN.get(choice)
+    if action is None:
+          continue
+    result = action()
+    if result is None:
+          continue
     # Resultat
     if show_result(result) == True:
             create_file(result)
-    
-        
