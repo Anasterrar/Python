@@ -41,5 +41,3 @@ def poly_cipher():
         keys = " ".join(keys)
         error = False
         return string, keys, string_coded, method
-
- 

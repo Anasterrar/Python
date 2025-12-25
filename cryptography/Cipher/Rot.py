@@ -2,7 +2,13 @@ from Components.header import header
 from Components.text_selection import text_selection
 from Components.error_message import error_message
 from Components.input_message import input_message
+from Components.menus import Rot_menu
 
+def rot():
+    m = Rot_menu()
+    if m == "back":
+        return None
+    return select_rot(m)
 
 def select_rot(num):
     if num == 1:

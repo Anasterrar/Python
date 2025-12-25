@@ -2,7 +2,6 @@ import os
 from Components.header import header
 from Components.text_selection import text_selection
 
-
 path = "key/"
 if not os.path.isdir(path):
    os.makedirs(path)

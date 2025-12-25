@@ -2,6 +2,9 @@ import os
 import json
 from Components.menus import settings_menu
 
+def run_settings():
+    return settings(False)
+
 def settings(init):
     if init == True:
         #Cree le dossier config et le fichier setting si necessaire
@@ -27,6 +30,3 @@ def settings(init):
         lang = "fr" if selected == 1 else "en"
         with open("config/settings.json", "w", encoding="utf-8") as f:
             json.dump({"language": lang}, f)
-
-             
-
