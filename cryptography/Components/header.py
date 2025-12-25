@@ -1,7 +1,7 @@
 import os
 import pyfiglet
 import unicodedata
-from colorama import Fore, Style, init
+from colorama import Fore, init
 from Components.text_selection import text_selection
 init(autoreset=True)
 

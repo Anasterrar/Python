@@ -29,4 +29,4 @@ def arrow_menu(options, title):
             return selected + 1
         elif key == b'\x1b':
             os.system("cls")
-            return None
+            return "escape"

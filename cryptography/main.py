@@ -1,3 +1,4 @@
+import os
 from Cipher.Caesar import Caesar_cipher
 from Cipher.Rot import select_rot
 from Cipher.Poly import poly_cipher
@@ -17,6 +18,8 @@ while True:
         result = Caesar_cipher()
     elif a == 2:
         m = Rot_menu()
+        if m == "back":
+             continue
         result = select_rot(m)
     elif a == 3:
         result = poly_cipher()
@@ -24,11 +27,14 @@ while True:
         result = vigenere()
     elif a == 5:
         m = affine_menu()
+        if m == "back":
+             continue
         result = select_affine(m)
     elif a == 6:
         settings(False)
         continue
-    elif a == None:
+    elif a == "quit":
+         os.system("cls")
          break
     # Resultat
     if show_result(result) == True:
