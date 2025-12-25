@@ -19,7 +19,6 @@ def isValidA(a):
     else:
         return False
 
-#(ax + b) modulo 26, a premier avec 27
 def Caesar_affine(auto):
     data = text_selection("text")
     error = False
