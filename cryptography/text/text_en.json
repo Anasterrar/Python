@@ -5,7 +5,7 @@
   "menu_rot13": "ROT 13",
   "menu_rot47": "ROT 47",
   "menu_rot18": "ROT 18",
-  "menu_Caesar_poly": "Polyalphabetic Caesar",
+  "menu_Caesar_poly": "Polyalphabetic",
   "menu_vigenere": "Vigenere Cipher",
   "menu_Caesar_affine": "Affine cipher",
   "menu_setting": "Settings",

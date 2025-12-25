@@ -1,6 +1,5 @@
 import os
 import json
-from Components.header import header
 from Components.menus import settings_menu
 
 def settings(init):

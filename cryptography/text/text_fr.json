@@ -5,7 +5,7 @@
   "menu_rot13": "ROT 13",
   "menu_rot47": "ROT 47",
   "menu_rot18": "ROT 18",
-  "menu_Caesar_poly": "César polyalphabetique",
+  "menu_Caesar_poly": "Polyalphabetique",
   "menu_vigenere": "Chiffre de Vigenère",
   "menu_Caesar_affine": "César affine",
   "menu_setting": "Paramettres",
