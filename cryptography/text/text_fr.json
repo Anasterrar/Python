@@ -11,8 +11,9 @@
   "menu_setting": "Paramettres",
   "input_menu": "Veuillez entrer le numero de la methode de cryptage : ",
   "header_message1": "🔒 Coder un texte",
-  "header_message2": "💡 Ctrl+C pour quitter",
-  "header_message3": "💡 Esc pour quitter",
+  "header_message2": "💡 Esc pour quitter",
+  "header_message3": "💡 Ctrl+C pour quitter",
+  "header_message4": "💡 Utilisez les flèches de votre clavier pour naviguer",
 
   "description": "Description",
   "formula": "Formule",

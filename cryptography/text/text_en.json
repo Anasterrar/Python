@@ -11,9 +11,9 @@
   "menu_setting": "Settings",
   "input_menu": "Please enter the encryption method number : ",
   "header_message1": "🔒 Encryption utility",
-  "header_message2": "💡 Ctrl+C to exit",
-  "header_message3": "💡 Esc to exit",
-
+  "header_message2": "💡 Esc to exit",
+  "header_message3": "💡 Ctrl+C to exit",
+  "header_message4": "💡 Use the arrow keys on your keyboard to navigate",
 
   "description": "Description",
   "formula": "Formula",
