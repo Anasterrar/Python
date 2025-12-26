@@ -23,9 +23,10 @@ def instruction(t):
     print(f"🌍 {data["language"]}")
     print(Fore.YELLOW + data["header_message1"])
     if t == "esc":
-        print(Fore.YELLOW + data["header_message3"])
-    else:
+        print(Fore.YELLOW + data["header_message4"])
         print(Fore.YELLOW + data["header_message2"])
+    else:
+        print(Fore.YELLOW + data["header_message3"])
     print(Fore.MAGENTA + "───────────────────────────────")
 
 def explication(text2):
