@@ -1,6 +1,6 @@
 import os
 import json
-from Components.menus import settings_menu
+from Components.Menus.settings_menu import settings_menu
 
 def run_settings():
     return settings(False)
