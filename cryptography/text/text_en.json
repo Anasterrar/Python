@@ -1,5 +1,10 @@
 {
   "app_title": "Cryptography",
+
+  "menu_encryption": "Encryption",
+  "menu_decryption": "Decryption",
+  "menu_setting": "Settings",
+
   "menu_caesar": "Classic Caesar",
   "menu_rot": "ROT Cipher",
   "menu_rot13": "ROT 13",
@@ -8,8 +13,7 @@
   "menu_Caesar_poly": "Polyalphabetic",
   "menu_vigenere": "Vigenere Cipher",
   "menu_Caesar_affine": "Affine cipher",
-  "menu_setting": "Settings",
-  "input_menu": "Please enter the encryption method number : ",
+
   "header_message1": "🔒 Encryption utility",
   "header_message2": "💡 Esc to exit",
   "header_message3": "💡 Ctrl+C to exit",
@@ -46,6 +50,6 @@
 
   "manual_key" : "Manual key (advanced)",
   "auto_key" : "Automatic key (recommended)",
-  "language": "English"
   
+  "language": "English"
 }

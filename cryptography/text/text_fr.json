@@ -1,15 +1,19 @@
 {
   "app_title": "Cryptographie",
+
+  "menu_encryption": "Chiffrement",
+  "menu_decryption": "Déchiffrement",
+  "menu_setting": "Paramettres",
+
   "menu_caesar": "César classique",
-  "menu_rot": "ROT Cipher",
+  "menu_rot": "ROT",
   "menu_rot13": "ROT 13",
   "menu_rot47": "ROT 47",
   "menu_rot18": "ROT 18",
   "menu_Caesar_poly": "Polyalphabetique",
   "menu_vigenere": "Chiffre de Vigenère",
   "menu_Caesar_affine": "César affine",
-  "menu_setting": "Paramettres",
-  "input_menu": "Veuillez entrer le numero de la methode de cryptage : ",
+
   "header_message1": "🔒 Coder un texte",
   "header_message2": "💡 Esc pour quitter",
   "header_message3": "💡 Ctrl+C pour quitter",

@@ -3,7 +3,7 @@ from Components.header import header
 from Components.text_selection import text_selection
 from Components.error_message import error_message
 from Components.input_message import input_message
-from Components.menus import affine_menu
+from Components.Menus.affine_menu import affine_menu
 
 def affine():
     m = affine_menu()
