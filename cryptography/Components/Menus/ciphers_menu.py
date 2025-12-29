@@ -18,7 +18,7 @@ DISPATCH_CIPHER = {
 def cipher_menu():
     data = text_selection("text")
     options = [f"{data["menu_caesar"]}", f"{data["menu_rot"]}", f"{data["menu_Caesar_poly"]}", f"{data["menu_vigenere"]}", f"{data["menu_Caesar_affine"]}"]
-    description = ["caesar", None, "poly", "vigenere", "affine"]
+    description = ["caesar", "rot", "poly", "vigenere", "affine"]
     result =  arrow_menu(options, "app_title", description)
     if result == "escape":
         result = "quit"
