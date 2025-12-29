@@ -2,13 +2,13 @@ from Components.text_selection import text_selection
 from Components.arrow_menu import arrow_menu
 
 from Decipher.Caesar import Caesar_Decipher
-from Cipher.Rot import rot
+from Decipher.Rot import rot_decipher
 from Decipher.Poly import poly_decipher
 from Decipher.Vigenere import vigenere_decipher
 
 DISPATCH_DECIPHER = {
     1: Caesar_Decipher,
-    2: rot,
+    2: rot_decipher,
     3: poly_decipher,
     4: vigenere_decipher,
 }

@@ -9,10 +9,11 @@ def formalize(string):
     return string
 
 def vigenere_decipher():
+    mode = "menu_encryption"
     error = False
     while True:
         method = "menu_vigenere"
-        header(method, "vigenere")
+        header(method, "vigenere", mode)
         string_coded = ""
         i = 0
         if error == True:

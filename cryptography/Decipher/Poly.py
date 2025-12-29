@@ -8,10 +8,11 @@ def formalize(data):
     return data
 
 def poly_decipher():
+    mode = "menu_encryption"
     error = False
     while True:
         method = "menu_Caesar_poly"
-        header(method, "poly")
+        header(method, "poly", mode)
         if error == True:
             error_message(["error_empty_text", "error_empty_key"])
         string = input_message("input_text")
