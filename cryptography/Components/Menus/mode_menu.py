@@ -13,7 +13,7 @@ DISPATCH_MODE = {
 def mode_menu():
     data = text_selection("text")
     options = [f"{data["menu_encryption"]}", f"{data["menu_decryption"]}", f"{data["menu_setting"]}"]
-    result =  arrow_menu(options, "app_title")
+    result =  arrow_menu(options, "app_title", None)
     if result == "escape":
         result = "quit"
     return result

@@ -10,7 +10,7 @@ DISPATCH_DECIPHER = {
 def decipher_menu():
     data = text_selection("text")
     options = [f"{data["menu_caesar"]}"]
-    result =  arrow_menu(options, "app_title")
+    result =  arrow_menu(options, "app_title", None)
     if result == "escape":
         result = "quit"
         return result
