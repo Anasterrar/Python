@@ -2,14 +2,12 @@ from Components.header import header
 from Components.error_message import error_message
 from Components.input_message import input_message
 
-def ceasar():
-    return Caesar_cipher()
-
 def Caesar_cipher():
+    mode = "menu_encryption"
     method = "menu_caesar"
     error = False
     while True:
-        header(method, "caesar")
+        header(method, "caesar", mode)
         if error == True:
             error_message(["error_empty_text", "error_empty_key"])
         string = input_message("input_text")

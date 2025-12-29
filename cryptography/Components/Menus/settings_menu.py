@@ -5,7 +5,7 @@ def settings_menu(init):
     if init == True:
         result = arrow_menu(options, None, None)
     if init == False:
-        result = arrow_menu(options, "app_title", None)
+        result = arrow_menu(options, "app_title", None, None)
     if result == "escape":
         result = "back"
     return result

@@ -3,15 +3,15 @@ import msvcrt
 from colorama import Fore, Style
 from Components.header import header
 
-def arrow_menu(options, title, explication):
+def arrow_menu(options, title, explication, mode):
     selected = 0
     while True:
         os.system("cls")
         if title != None:
             if explication == None:
-                header(title, None)
+                header(title, None, None)
             else :
-                header(title, explication[selected])
+                header(title, explication[selected], mode)
         for i, option in enumerate(options):
             if i == selected:
                 print(f"> {" "}{option}")

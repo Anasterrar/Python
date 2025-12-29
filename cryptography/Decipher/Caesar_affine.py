@@ -27,12 +27,11 @@ def isValidA(a):
         return False
 
 def Caesar_affine(auto):
-    mode = "menu_encryption"
     data = text_selection("text")
     error = False
     while True:
         method = "menu_Caesar_affine"
-        header(method, "affine", mode)
+        header(method, "affine")
         if error == True:
             error_message(["error_empty_text", "error_empty_key", "error_invalid_key_affine"])
         string = input_message("input_text")

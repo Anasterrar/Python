@@ -14,10 +14,10 @@
   "menu_vigenere": "Chiffre de Vigenère",
   "menu_Caesar_affine": "César affine",
 
-  "header_message1": "🔒 Coder un texte",
+  "header_message1": "🔒 Cryptage et 🔓 Décryptage",
   "header_message2": "💡 Esc pour quitter",
   "header_message3": "💡 Ctrl+C pour quitter",
-  "header_message4": "💡 Utilisez les flèches de votre clavier pour naviguer",
+  "header_message4": "💡 ⭡⭣ pour naviguer, tapez entrer pour valider",
 
   "description": "Description",
   "formula": "Formule",

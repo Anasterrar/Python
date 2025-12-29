@@ -7,7 +7,7 @@
 },
 
 "rot": {
-  "title": "ROT",
+  "title": "ROT Cipher",
   "description": "ROT ciphers are a family of substitution ciphers derived from the Caesar cipher. The principle consists of rotating characters by a fixed number of positions within a defined character set. Depending on the chosen ROT variant, the rotation can apply to letters only, digits only, or a wider range of characters such as printable ASCII symbols.",
   "formula": "E(x) = (x + k) mod N",
   "example": "ROT ciphers apply a fixed rotation: ROT13 shifts letters by 13 positions, ROT18 combines ROT13 for letters and ROT5 for digits, and ROT47 rotates all printable ASCII characters. The same operation is often used for both encryption and decryption."
@@ -35,7 +35,7 @@
 },
 
 "poly": {
-  "title": "Polyalphabetic Caesar",
+  "title": "Polyalphabetic",
   "description": "The polyalphabetic cipher uses multiple successive shifts instead of a single one. Each letter is encrypted with a different shift.",
   "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
   "example": "With key '1, 2, 3': A → B, B → D, C → F. The key pattern repeats across the message."
