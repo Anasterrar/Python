@@ -1,7 +1,7 @@
 import os
 import pyfiglet
 import unicodedata
-from colorama import Fore, init, Back, Style
+from colorama import Fore, init, Back
 from Components.text_selection import text_selection
 init(autoreset=True)
 
@@ -13,12 +13,14 @@ def normalize_text(text):
 
 def title(text):
     data = text_selection("text")
+
     os.system("cls")
     title = pyfiglet.figlet_format(normalize_text(data[text]), font="slant")
     print(Fore.CYAN + title)
 
 def instruction(t):
     data = text_selection("text")
+
     print(Fore.MAGENTA + "───────────────────────────────")
     print(f"🌍 {data["language"]}")
     print(Fore.YELLOW + data["header_message1"])
@@ -32,13 +34,16 @@ def instruction(t):
 def explication(text2):
     data = text_selection("explication")
     data2 = text_selection("text")
+
+    print(Fore.YELLOW + data2["method"])
+    print(data[text2]["title"])
     print(Fore.YELLOW + data2["description"])
     print(data[text2]["description"])
     print(Fore.YELLOW + data2["formula"])
     print(Back.WHITE + Fore.BLACK + data[text2]["formula"])
     print(Fore.YELLOW + data2["example"])
     print(data[text2]["example"])
-
+    print(Fore.MAGENTA + "───────────────────────────────")
 def header(text, text2):
     title(text)
     if text2 == None:
