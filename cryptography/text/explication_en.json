@@ -47,4 +47,5 @@
     "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
     "example": "With key \"KEY\": A → K, B → F, C → A. The word \"HELLO\" becomes \"RIJVS\"."
   }
+  
 }

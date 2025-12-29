@@ -36,7 +36,10 @@
   "error_invalid_key_affine": "❌ Invalid key, The first encryption key must be prime with 26 (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25)",
   "error_invalid_YesOrNo": "⚠️ Answer with 'y'(yes) or 'n'(no)",
   
-  "save_question": "Do you want to save this result? (y/n)",
+  "save_question": "Do you want to save this result in a file?",
+  "yes": "Yes",
+  "no": "No",
+  
   "rot_for_key1": "for letters and",
   "rot_for_key2": "for numbers",
   "text": "Text",

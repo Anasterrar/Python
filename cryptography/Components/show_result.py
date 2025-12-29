@@ -1,25 +1,43 @@
 from Components.header import header
 from Components.text_selection import text_selection
-from Components.error_message import error_message
-from Components.input_message import input_message
-
-
+from colorama import Fore, Style
+import msvcrt
+    
 def show_result(result):
         data = text_selection("text")
-        error = False
+        options = [f"{data["yes"]}", f"{data["no"]}"]
+        selected = 0
         while True:
             header(result[3], None)
             print(f"{data["text"]} : {result[0]}")
             print(f"{data["key"]} : {result[1]}")
             print(f"{data["coded_text"]} : {result[2]}")
             print(f"{data["method"]} : {data[result[3]]}")
-            if error == True:
-                error_message(["error_invalid_YesOrNo"])
-            answer = input_message("save_question")
-            print(answer)
-            if answer in ["y", "Y", "yes", "Yes", "YES"]:
-                return True
-            elif answer in ["n", "N", "no", "No", "NO"]:
-                return False
-            else:
-                error = True
+            print(Fore.YELLOW + Style.BRIGHT + data["save_question"])
+
+            for i, option in enumerate(options):
+                if i == selected:
+                    print(f"> {" "}{option}")
+                else:
+                    print(f"  {option}")
+            print(Fore.YELLOW + Style.BRIGHT + f"{options[selected]} ?")
+
+            key = msvcrt.getch()
+
+            if key == b'\xe0':
+                key2 = msvcrt.getch()
+                
+                if key2 == b'H':
+                    selected = (selected - 1) % len(options)
+                    print(selected)
+                elif key2 == b'P':
+                    selected = (selected + 1) % len(options)
+            elif key == b'\r':
+                if selected + 1 == 1:
+                    return True
+                if selected + 1 == 2:
+                    return False
+
+
+            
+            
