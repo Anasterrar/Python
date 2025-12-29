@@ -17,17 +17,26 @@ def title(text):
     os.system("cls")
     title = pyfiglet.figlet_format(normalize_text(data[text]), font="slant")
     print(Fore.CYAN + title)
+    print(f"🌍 {data["language"]}")
 
-def instruction(t):
+def instruction(t, mode):
     data = text_selection("text")
 
     print(Fore.MAGENTA + "───────────────────────────────")
-    print(f"🌍 {data["language"]}")
-    print(Fore.YELLOW + data["header_message1"])
+    if mode:
+        if mode == "menu_encryption":
+            emoji = "🔒"
+        if mode == "menu_decryption":
+            emoji = "🔓"
+        print(f"{emoji} {data[mode]}")
+    else:
+        print(Fore.YELLOW + data["header_message1"])
+
     if t == "esc":
         print(Fore.YELLOW + data["header_message4"])
         print(Fore.YELLOW + data["header_message2"])
     else:
+        print(Fore.YELLOW + data["header_message4"])
         print(Fore.YELLOW + data["header_message3"])
     print(Fore.MAGENTA + "───────────────────────────────")
 
@@ -44,10 +53,11 @@ def explication(text2):
     print(Fore.YELLOW + data2["example"])
     print(data[text2]["example"])
     print(Fore.MAGENTA + "───────────────────────────────")
-def header(text, text2):
+
+def header(text, text2, mode):
     title(text)
     if text2 == None:
-        instruction("esc")
+        instruction("esc", mode)
         return
-    instruction("C")
+    instruction("C", mode)
     explication(text2)

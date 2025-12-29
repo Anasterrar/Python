@@ -14,10 +14,10 @@
   "menu_vigenere": "Vigenere Cipher",
   "menu_Caesar_affine": "Affine cipher",
 
-  "header_message1": "🔒 Encryption utility",
+  "header_message1": "🔒 Encryption and 🔓 Decryption utility",
   "header_message2": "💡 Esc to exit",
   "header_message3": "💡 Ctrl+C to exit",
-  "header_message4": "💡 Use the arrow keys on your keyboard to navigate",
+  "header_message4": "💡 ⭡⭣ to navigate, press Enter to validate",
 
   "description": "Description",
   "formula": "Formula",

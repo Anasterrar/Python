@@ -2,9 +2,6 @@ from Components.header import header
 from Components.error_message import error_message
 from Components.input_message import input_message
 
-def ceasar():
-    return Caesar_Decipher()
-
 def Caesar_Decipher():
     method = "menu_caesar"
     error = False
@@ -33,5 +30,3 @@ def Caesar_Decipher():
                 string_coded += c
         error = False
         return string, key, string_coded, method
-    
-    Caesar_cipher()

@@ -3,6 +3,7 @@ from Components.text_selection import text_selection
 from Components.error_message import error_message
 from Components.input_message import input_message
 from Components.Menus.rot_menu import Rot_menu
+mode = "menu_encryption"
 
 def rot():
     m = Rot_menu()
@@ -11,21 +12,22 @@ def rot():
     return select_rot(m)
 
 def select_rot(num):
+    mode = "menu_encryption"
     if num == 1:
-        code = Rot13_cipher()
+        code = Rot13_cipher(mode)
         return code
     elif num == 2:
-        code = Rot47_cipher()
+        code = Rot47_cipher(mode)
         return code
     elif num == 3:
-        code = Rot18_cipher()
+        code = Rot18_cipher(mode)
         return code
 
 def Rot13_cipher():
     error = False
     while True:
         method = "menu_rot13"
-        header(method, "rot13")
+        header(method, "rot13", mode)
         if error == True:
             error_message(["error_empty_text"])
         string = input_message("input_text")
@@ -50,7 +52,7 @@ def Rot47_cipher():
     error = False
     while True:
         method = "menu_rot47"
-        header(method, "rot47")
+        header(method, "rot47", mode)
         if error == True:
             error_message(["error_empty_text"])
         string = input_message("input_text")
@@ -73,7 +75,7 @@ def Rot18_cipher():
     error = False
     while True:
         method = "menu_rot18"
-        header("menu_rot18", "rot18")
+        header("menu_rot18", "rot18", mode)
         if error == True:
             error_message(["error_empty_text"])
         string = input_message("input_text")

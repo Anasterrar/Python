@@ -7,12 +7,11 @@ def formalize(data):
     data = data.split()
     return data
 
-def poly_cipher():
-    mode = "menu_encryption"
+def poly_decipher():
     error = False
     while True:
         method = "menu_Caesar_poly"
-        header(method, "poly", mode)
+        header(method, "poly")
         if error == True:
             error_message(["error_empty_text", "error_empty_key"])
         string = input_message("input_text")
@@ -31,11 +30,11 @@ def poly_cipher():
                 i = 0
         #Minuscule
             if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((ord(c) - 97 + int(keys[i])) % 26 + 97)
+                string_coded += chr((ord(c) - 97 - int(keys[i])) % 26 + 97)
                 i += 1
         #Majuscule
             elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((ord(c) - 65 + int(keys[i])) % 26 + 65)
+                string_coded += chr((ord(c) - 65 - int(keys[i])) % 26 + 65)
                 i += 1
             else:
                 string_coded += c
