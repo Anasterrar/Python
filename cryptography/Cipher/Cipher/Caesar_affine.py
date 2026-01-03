@@ -6,7 +6,8 @@ from Components.input_message import input_message
 from Components.Menus.affine_menu import affine_menu
 
 def affine():
-    m = affine_menu()
+    mode = "menu_decryption"
+    m = affine_menu(mode)
     if m == "back":
         return None
     return select_affine(m)
@@ -27,7 +28,7 @@ def isValidA(a):
         return False
 
 def Caesar_affine(auto):
-    mode = "menu_encryption"
+    mode = "menu_decryption"
     data = text_selection("text")
     error = False
     while True:

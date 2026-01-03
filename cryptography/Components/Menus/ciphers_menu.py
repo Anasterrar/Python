@@ -1,11 +1,11 @@
 from Components.text_selection import text_selection
 from Components.arrow_menu import arrow_menu
 
-from Cipher.Caesar import Caesar_cipher
-from Cipher.Rot import rot_cipher
-from Cipher.Poly import poly_cipher
-from Cipher.Vigenere import vigenere_cipher
-from Cipher.Caesar_affine import affine
+from Cipher.Cipher.Caesar import Caesar_cipher
+from Cipher.Cipher.Rot import rot_cipher
+from Cipher.Cipher.Poly import poly_cipher
+from Cipher.Cipher.Vigenere import vigenere_cipher
+from Cipher.Cipher.Caesar_affine import affine
 
 DISPATCH_CIPHER = {
     1: Caesar_cipher,
