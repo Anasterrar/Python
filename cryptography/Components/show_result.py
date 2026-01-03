@@ -8,7 +8,7 @@ def show_result(result):
         options = [f"{data["yes"]}", f"{data["no"]}"]
         selected = 0
         while True:
-            header(result[3], None)
+            header(result[3], None, None)
             print(f"{data["text"]} : {result[0]}")
             print(f"{data["key"]} : {result[1]}")
             print(f"{data["coded_text"]} : {result[2]}")
