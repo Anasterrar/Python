@@ -9,10 +9,10 @@ def show_result(result):
         selected = 0
         while True:
             header(result[3], None, None)
+            print(f"{data["method"]} : {data[result[3]]}")
             print(f"{data["text"]} : {result[0]}")
             print(f"{data["key"]} : {result[1]}")
             print(f"{data["coded_text"]} : {result[2]}")
-            print(f"{data["method"]} : {data[result[3]]}")
             print(Fore.YELLOW + Style.BRIGHT + data["save_question"])
 
             for i, option in enumerate(options):
@@ -37,7 +37,3 @@ def show_result(result):
                     return True
                 if selected + 1 == 2:
                     return False
-
-
-            
-            

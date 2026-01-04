@@ -67,5 +67,12 @@
   "description": "The affine cipher improves the classic Caesar cipher by using an affine mathematical function with two keys. The first key must be coprime with 26 to allow decryption.",
   "formula": "E(x) = (a × x + b) mod 26",
   "example": "With a = 5 and b = 8: A → I, B → N. The word \"HELLO\" becomes \"RCLLA\"."
+},
+
+"otp": {
+  "title": "One-Time Pad (OTP)",
+  "description": "The One-Time Pad is a symmetric encryption technique that uses a key as long as the message. Each character of the plaintext is combined with the corresponding key character using a bitwise XOR operation. The key must be truly random and used only once to guarantee perfect secrecy.",
+  "formula": "Cᵢ = Pᵢ ⊕ Kᵢ",
+  "example": "Message: 'HELLO', Key: [30, 190, 165, 67, 46], Cipher: ['Z', 'ì', '¦', ']', 't']. Decryption uses the same key with XOR again."
 }
 }

@@ -13,6 +13,7 @@
   "menu_Caesar_poly": "Polyalphabetic",
   "menu_vigenere": "Vigenere Cipher",
   "menu_Caesar_affine": "Affine cipher",
+  "menu_otp": "One-Time Pad (OTP)",
 
   "header_message1": "🔒 Encryption and 🔓 Decryption utility",
   "header_message2": "💡 Esc to exit",
