@@ -6,6 +6,7 @@ from Cipher.Decipher.Rot import rot_decipher
 from Cipher.Decipher.Poly import poly_decipher
 from Cipher.Decipher.Vigenere import vigenere_decipher
 from Cipher.Decipher.Caesar_affine import Caesar_affine
+from Cipher.Decipher.One_time_pad import OTP_Decipher
 
 DISPATCH_DECIPHER = {
     1: Caesar_Decipher,
@@ -13,13 +14,14 @@ DISPATCH_DECIPHER = {
     3: poly_decipher,
     4: vigenere_decipher,
     5: Caesar_affine,
+    6: OTP_Decipher,
 }
 
 def decipher_menu():
     mode = "menu_decryption"
     data = text_selection("explication")
-    options = [f"{data["caesar"]["title"]}", f"{data["rot"]["title"]}", f"{data["poly"]["title"]}", f"{data["vigenere"]["title"]}", f"{data["affine"]["title"]}"]
-    description = ["caesar", "rot", "poly", "vigenere", "affine"]
+    options = [f"{data["caesar"]["title"]}", f"{data["rot"]["title"]}", f"{data["poly"]["title"]}", f"{data["vigenere"]["title"]}", f"{data["affine"]["title"]}", f"{data["otp"]["title"]}"]
+    description = ["caesar", "rot", "poly", "vigenere", "affine", "otp"]
     result =  arrow_menu(options, "app_title", description, mode)
     if result == "escape":
         result = "quit"
@@ -27,4 +29,3 @@ def decipher_menu():
     action = DISPATCH_DECIPHER.get(result)
     result = action()
     return result
-    

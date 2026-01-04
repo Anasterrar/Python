@@ -13,6 +13,7 @@
   "menu_Caesar_poly": "Polyalphabetique",
   "menu_vigenere": "Chiffre de Vigenère",
   "menu_Caesar_affine": "César affine",
+  "menu_otp": "Masque jetable (OTP)",
 
   "header_message1": "🔒 Cryptage et 🔓 Décryptage",
   "header_message2": "💡 Esc pour quitter",

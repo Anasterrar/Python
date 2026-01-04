@@ -3,6 +3,7 @@ from Components.show_result import show_result
 from Components.create_file import create_file
 from Components.settings import settings
 from Components.Menus import mode_menu
+from Components.debug_file import debug_file
 
 # -----------------
 # Programme
@@ -18,7 +19,9 @@ while True:
           continue
     result = action()
     if result is None or result == "quit":
+          debug_file("None")
           continue
+    debug_file("TRUE")
     # Resultat
     if show_result(result) == True:
             create_file(result)

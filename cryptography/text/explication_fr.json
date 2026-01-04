@@ -67,5 +67,12 @@
   "description": "Le chiffrement affine améliore le César classique en utilisant une fonction mathématique affine avec deux clés. La première clé doit être première avec 26 afin de permettre le déchiffrement.",
   "formula": "E(x) = (a × x + b) mod 26",
   "example": "Avec a = 5 et b = 8 : A → I, B → N. Le mot \"HELLO\" devient \"RCLLA\"."
+},
+
+"otp": {
+  "title": "Masque Jetable (OTP)",
+  "description": "Le Masque Jetable est une technique de chiffrement symétrique qui utilise une clé aussi longue que le message. Chaque caractère du texte clair est combiné avec le caractère correspondant de la clé grâce à une opération XOR binaire. La clé doit être véritablement aléatoire et utilisée une seule fois pour garantir une sécurité parfaite.",
+  "formula": "Cᵢ = Pᵢ ⊕ Kᵢ",
+  "example": "Message : 'BONJOUR', Clé : [30, 190, 165, 67, 46, 153, 251], Chiffre : ['Z', 'ì', '¦', ']', 't', ...]. Le déchiffrement utilise la même clé avec l'opération XOR."
 }
 }
