@@ -19,17 +19,12 @@ def One_time_pad(mode):
         print(string)
         if not string:
             error = True
-            print(string)
             continue
         if mode == "menu_decryption":
             string = ast.literal_eval(string)
-            print(string)
         string_coded = [None] * len(string)
         if mode == "menu_decryption":
-            keys = input_message("input_unique_key")
-            print(keys)
-            keys = ast.literal_eval(keys)
-            print(keys)
+            keys = ast.literal_eval(input_message("input_unique_key"))
         else:
             keys = random.sample(range(0, 256), len(string))
         for i in range(0, len(string)):
