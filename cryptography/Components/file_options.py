@@ -1,6 +1,6 @@
-import os
 import msvcrt
 from colorama import Fore, Style, init
+from Components.header import header
 init(autoreset=True)
 
 def file_options():
@@ -15,7 +15,7 @@ def file_options():
     ]
     selected = 0
     while True:
-        os.system("cls")
+        header("app_title", None, None)
         print("do you want save the file ?")
         
         for i, option in enumerate(options):
@@ -41,15 +41,8 @@ def file_options():
                 options[selected]["enabled"] = not options[selected]["enabled"]
             
             if selected == len(options) - 1:
-                print(options)
-                break
+                return options
                  
         elif key == b'\x1b':
             print(options)
             break
-
-def main():
-    file_options()
-
-
-main()
