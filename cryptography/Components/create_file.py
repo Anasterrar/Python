@@ -1,23 +1,42 @@
 import os
+import datetime
 from Components.header import header
 from Components.text_selection import text_selection
+from Components.file_options import file_options
+import pyfiglet
 
-path = "key/"
+
+path = "exports/"
 if not os.path.isdir(path):
    os.makedirs(path)
 
 def create_file(result_brut):
+    preference = file_options()
     data = text_selection("text")
-    result_formatted = f"{data["method"]}: {data[result_brut[3]]}\n{data["text"]} : {result_brut[0]}\n{data["key"]} : {str(result_brut[1])}\n\n{data["coded_text"]} :\n{result_brut[2]}"
+    title = pyfiglet.figlet_format(data["app_title"], font="slant")
+    date = datetime.datetime.now()
+    result_formatted = [f"{data["method"]}: {data[result_brut[3]]}",
+                        f"{data["text"]} : {result_brut[0]}",
+                        f"{data["key"]} : {str(result_brut[1])}",
+                        f"{data["coded_text"]} :{result_brut[2]}"]
     a = 1
+    i = 1
+    file_name = f"{date.year}_{date.month}_{date.day}__{date.hour}_{date.minute}"
     while True:
-        path = f"key/key{a}.txt"
+        path = f"exports/{file_name}_{a}.txt"
         if os.path.isfile(path) == True:
             a += 1
         else:
-            with open(path, "w") as f:
-                f.write(result_formatted)
+            with open(path, "a") as f:
+                if preference[0]["enabled"] == True:
+                    f.write(title + "\n")
+                for line in result_formatted:
+                    if preference[i]["enabled"] == True:
+                        f.write(line + "\n")
+                    i += 1
+                if preference[5]["enabled"] == True:
+                    f.write(f"{data["date"]} : {str(date)}")
             header(result_brut[3], None, None)
-            print(f"{data["file_saved"]} 'key{a}.txt' {data["in"]}")
+            print(f"{data["file_saved"]} '{file_name}_{a}.txt' {data["in"]}")
             input(data["press_enter"])
             break
