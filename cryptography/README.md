@@ -98,12 +98,14 @@ Every line of code is written by me, understood, and adapted.
 
 ---
 ### Video and resource that inspired this project
-  (French 🇫🇷)
+  (French)
 1. https://youtu.be/iy4egJKTKtE?si=1bso1Rhrr243sUay
 2. https://youtu.be/0JnC1jJa8C8?si=zRNn1OkSzV_yE8VK
 3. https://youtu.be/-gJuGFFTsgo?si=7nvwjWRtHGbvSnib
 4. https://youtu.be/f7VBEserHxs?si=TBPUmiPwxEvGXBpR
 5. https://youtu.be/mHkTzO6U_Ag?si=8gCDuJsg5jAkgjZ1
-  (English 🇬🇧)
-6. https://youtu.be/QYng_rXg5OQ?si=3wnI6d3UlI4p2KPr
-7. https://youtu.be/a64NnBSq8oA?si=awDKOspuVZBUnqve
+   
+  (English)
+
+1. https://youtu.be/QYng_rXg5OQ?si=3wnI6d3UlI4p2KPr
+2. https://youtu.be/a64NnBSq8oA?si=awDKOspuVZBUnqve
