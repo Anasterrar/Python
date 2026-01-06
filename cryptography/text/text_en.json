@@ -30,6 +30,7 @@
   "input_first_key": "Please enter first the key : ",
   "input_second_key": "Please enter second the key : ",
   "input_word_key": "Please enter the encryption key (word): ",
+  
 
   "error_empty_text": "❌ Text cannot be empty",
   "error_empty_key": "❌ Key cannot be empty",
@@ -41,6 +42,8 @@
   "save_question": "Do you want to save this result in a file?",
   "yes": "Yes",
   "no": "No",
+  "input_previous_choice": "Press S to select previous settings",
+  "input_choice": "Check the items you want to include in the file",
   
   "rot_for_key1": "for letters and",
   "rot_for_key2": "for numbers",

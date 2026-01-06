@@ -1,0 +1,32 @@
+{
+    "options": [
+        {
+            "label": "Header",
+            "enabled": true
+        },
+        {
+            "label": "Methode",
+            "enabled": false
+        },
+        {
+            "label": "Texte original",
+            "enabled": false
+        },
+        {
+            "label": "Clé",
+            "enabled": false
+        },
+        {
+            "label": "Texte codé",
+            "enabled": true
+        },
+        {
+            "label": "Date et heure",
+            "enabled": false
+        },
+        {
+            "label": "Valider",
+            "enabled": false
+        }
+    ]
+}

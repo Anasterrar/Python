@@ -41,6 +41,8 @@
   "save_question": "Voulez-vous enregistrer ce résultat dans un fichier ?",
   "yes": "Oui",
   "no": "Non",
+  "input_choice": "Cochez les éléments que vous souhaitez inclure dans le fichier",
+  "input_previous_choice": "Appuyez sur S pour sélectionner les paramètres précédents",
 
   "rot_for_key1": "pour les lettres et",
   "rot_for_key2": "pour les nombres",
