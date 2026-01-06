@@ -36,6 +36,7 @@
   "error_invalid_key": "❌ Clé invalide",
   "error_invalid_key_affine": "La premiere clé doit etre premiere avec 26 (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25)",
   "error_invalid_YesOrNo": "⚠️ Repondez par 'y'(yes) ou 'n'(no)",
+  "error_invalid_selection": "⚠️ Veuillez sélectionner au moins une option",
 
   "save_question": "Voulez-vous enregistrer ce résultat dans un fichier ?",
   "yes": "Oui",
@@ -46,6 +47,7 @@
   "text": "Texte",
   "key": "Clé",
   "coded_text": "Texte codé",
+  "decoded_text": "Texte décodé",
   "method" : "Methode",
   "and": "et",
   "date": "Date",

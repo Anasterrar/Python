@@ -1,7 +1,19 @@
 import msvcrt
 from colorama import Fore, Style, init
 from Components.header import header
+from Components.error_message import error_message
 init(autoreset=True)
+
+
+def error_options(options):
+    a = 0
+    for line in options:
+        if line["enabled"] == True:
+            a +=1
+    if a == 0:
+        return True
+    else:
+        return False
 
 def file_options():
     options = [
@@ -14,9 +26,12 @@ def file_options():
     {"label": "Valider", "enabled": False},
     ]
     selected = 0
+    error = False
     while True:
         header("app_title", None, None)
-        print("do you want save the file ?")
+
+        if error == True:
+            error_message(["error_invalid_selection"])
         
         for i, option in enumerate(options):
             cursor = ">" if i == selected else ""
@@ -41,7 +56,11 @@ def file_options():
                 options[selected]["enabled"] = not options[selected]["enabled"]
             
             if selected == len(options) - 1:
-                return options
+                if error_options(options) == True:
+                    error = True
+                    continue
+                else:
+                    return options
                  
         elif key == b'\x1b':
             print(options)
