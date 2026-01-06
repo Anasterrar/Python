@@ -3,7 +3,7 @@ from Components.text_selection import text_selection
 from colorama import Fore, Style
 import msvcrt
     
-def show_result(result):
+def show_result(result, mode):
         data = text_selection("text")
         options = [f"{data["yes"]}", f"{data["no"]}"]
         selected = 0
@@ -12,7 +12,7 @@ def show_result(result):
             print(f"{data["method"]} : {data[result[3]]}")
             print(f"{data["text"]} : {result[0]}")
             print(f"{data["key"]} : {result[1]}")
-            print(f"{data["coded_text"]} : {result[2]}")
+            print(f"{data[mode[1]]} : {result[2]}")
             print(Fore.YELLOW + Style.BRIGHT + data["save_question"])
 
             for i, option in enumerate(options):

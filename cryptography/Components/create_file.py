@@ -1,42 +1,47 @@
 import os
 import datetime
+import pyfiglet
+
 from Components.header import header
 from Components.text_selection import text_selection
 from Components.file_options import file_options
-import pyfiglet
 
 
 path = "exports/"
 if not os.path.isdir(path):
    os.makedirs(path)
 
-def create_file(result_brut):
-    preference = file_options()
+def create_file(result_brut, mode):
+    preferences = file_options()
     data = text_selection("text")
+
     title = pyfiglet.figlet_format(data["app_title"], font="slant")
     date = datetime.datetime.now()
-    result_formatted = [f"{data["method"]}: {data[result_brut[3]]}",
-                        f"{data["text"]} : {result_brut[0]}",
-                        f"{data["key"]} : {str(result_brut[1])}",
-                        f"{data["coded_text"]} :{result_brut[2]}"]
-    a = 1
-    i = 1
-    file_name = f"{date.year}_{date.month}_{date.day}__{date.hour}_{date.minute}"
+    date = date.strftime("%Y_%m_%d_%H_%M")
+
+    sections = [
+        ("header", title),
+        ("method", f"{data['method']}: {data[result_brut[3]]}"),
+        ("text", f"{data['text']} : {result_brut[0]}"),
+        ("key", f"{data['key']} : {result_brut[1]}"),
+        ("coded_text", f"{data[mode[1]]} : {result_brut[2]}"),
+        ("date", f"{data['date']} : {date}")
+    ]
+
+    a = 0
     while True:
-        path = f"exports/{file_name}_{a}.txt"
+        path = f"exports/{date}_{a}.txt"
         if os.path.isfile(path) == True:
             a += 1
         else:
             with open(path, "a") as f:
-                if preference[0]["enabled"] == True:
-                    f.write(title + "\n")
-                for line in result_formatted:
-                    if preference[i]["enabled"] == True:
-                        f.write(line + "\n")
-                    i += 1
-                if preference[5]["enabled"] == True:
-                    f.write(f"{data["date"]} : {str(date)}")
+                for pair in zip(preferences, sections):
+                    pref = pair[0]
+                    section = pair[1]
+                    content = section[1]
+                    if pref["enabled"]:
+                        f.write(content + "\n")
             header(result_brut[3], None, None)
-            print(f"{data["file_saved"]} '{file_name}_{a}.txt' {data["in"]}")
+            print(f"{data["file_saved"]} '{date}_{a}.txt' {data["in"]} {path}")
             input(data["press_enter"])
             break

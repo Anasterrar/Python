@@ -81,7 +81,7 @@ python main.py
 
 This is an educational project built to learn Python fundamentals, modular code, and basic cryptography. I intentionally chose **not to use Object-Oriented Programming** in this project I focused on **functional and procedural logic**, clarity, and readability
 
-### 🤖 How I Use AI (and how I don’t)
+### Views on AI
 
 I didn’t use AI to generate code.
 
@@ -97,7 +97,7 @@ My workflow is:
 Every line of code is written by me, understood, and adapted.
 
 ---
-### Video and resource that inspired this project
+### Videos and resources that inspired this project
   (French)
 1. https://youtu.be/iy4egJKTKtE?si=1bso1Rhrr243sUay
 2. https://youtu.be/0JnC1jJa8C8?si=zRNn1OkSzV_yE8VK
