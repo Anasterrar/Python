@@ -14,7 +14,7 @@
         },
         {
             "label": "Clé",
-            "enabled": false
+            "enabled": true
         },
         {
             "label": "Texte codé",

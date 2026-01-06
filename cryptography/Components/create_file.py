@@ -11,7 +11,7 @@ path = "exports/"
 if not os.path.isdir(path):
    os.makedirs(path)
 
-def create_file(result_brut):
+def create_file(result_brut, mode):
     preferences = file_options()
     data = text_selection("text")
 
@@ -24,7 +24,7 @@ def create_file(result_brut):
         ("method", f"{data['method']}: {data[result_brut[3]]}"),
         ("text", f"{data['text']} : {result_brut[0]}"),
         ("key", f"{data['key']} : {result_brut[1]}"),
-        ("coded_text", f"{data['coded_text']} : {result_brut[2]}"),
+        ("coded_text", f"{data[mode[1]]} : {result_brut[2]}"),
         ("date", f"{data['date']} : {date}")
     ]
 
@@ -42,6 +42,6 @@ def create_file(result_brut):
                     if pref["enabled"]:
                         f.write(content + "\n")
             header(result_brut[3], None, None)
-            print(f"{data["file_saved"]} '{date}_{a}.txt' {data["in"]}")
+            print(f"{data["file_saved"]} '{date}_{a}.txt' {data["in"]} {path}")
             input(data["press_enter"])
             break
