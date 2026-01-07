@@ -16,7 +16,6 @@ def One_time_pad(mode):
         if error == True:
             error_message(["error_empty_text", "error_empty_key"])
         string = input_message("input_text")
-        print(string)
         if not string:
             error = True
             continue

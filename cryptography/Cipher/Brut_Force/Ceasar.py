@@ -17,10 +17,10 @@ def Brut_force_Caesar():
             error = True
             continue
         for i in range(0, 26):
-            result = Caesar_cipher(string, i)
-            print(result[1])
+            result = Caesar_decipher(string, i)
+            print(result[0])
 
-def Caesar_cipher(string, key):
+def Caesar_decipher(string, key):
     while True:
         string_decoded = ""
         key = int(key)
