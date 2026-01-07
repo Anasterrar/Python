@@ -6,11 +6,11 @@
         },
         {
             "label": "Methode",
-            "enabled": false
+            "enabled": true
         },
         {
             "label": "Texte original",
-            "enabled": false
+            "enabled": true
         },
         {
             "label": "Clé",
@@ -22,7 +22,7 @@
         },
         {
             "label": "Date et heure",
-            "enabled": false
+            "enabled": true
         },
         {
             "label": "Valider",

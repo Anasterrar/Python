@@ -69,10 +69,11 @@ def file_options():
 
         if error == True:
             error_message(["error_invalid_selection"])
-
-        print(Fore.YELLOW + Style.BRIGHT + data["input_choice"])
-        print(data["input_previous_choice"] + "\n" + str(previous_list(previous_choice)))
-        print(Fore.MAGENTA + "───────────────────────────────")
+            
+        if previous_choice != None:
+            print(Fore.YELLOW + Style.BRIGHT + data["input_choice"])
+            print(data["input_previous_choice"] + "\n" + str(previous_list(previous_choice)))
+            print(Fore.MAGENTA + "───────────────────────────────")
 
         for i, option in enumerate(options):
             cursor = ">" if i == selected else ""
