@@ -67,14 +67,14 @@ def file_options():
     while True:
         header("app_title", None, None)
 
-        if error == True:
-            error_message(["error_invalid_selection"])
-            
         if previous_choice != None:
             print(Fore.YELLOW + Style.BRIGHT + data["input_choice"])
             print(data["input_previous_choice"] + "\n" + str(previous_list(previous_choice)))
             print(Fore.MAGENTA + "───────────────────────────────")
-
+        
+        if error == True:
+            error_message(["error_invalid_selection"])
+            
         for i, option in enumerate(options):
             cursor = ">" if i == selected else ""
             check = " ✅" if option["enabled"] else ""

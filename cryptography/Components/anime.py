@@ -112,13 +112,13 @@ r"""
 ]
 
 
-def intro_animation(anime, delay=0.7):
+def intro_animation(anime, delay=0.6):
     colors = [Fore.RED, Fore.YELLOW, Fore.GREEN, Fore.CYAN, Fore.MAGENTA]
     for i, frame in enumerate(anime):
-        
         color = colors[i % len(anime)]
-        os.system("cls")  # ou "clear" si Linux/Mac
         header("app_title", None, None)
         print(color + frame + Style.RESET_ALL)
         time.sleep(delay)
-
+while True:
+    intro_animation(frames_lock)
+    intro_animation(frames_unlock)

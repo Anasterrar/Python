@@ -6,15 +6,15 @@
         },
         {
             "label": "Methode",
-            "enabled": true
+            "enabled": false
         },
         {
             "label": "Texte original",
-            "enabled": true
+            "enabled": false
         },
         {
             "label": "Clé",
-            "enabled": true
+            "enabled": false
         },
         {
             "label": "Texte codé",
