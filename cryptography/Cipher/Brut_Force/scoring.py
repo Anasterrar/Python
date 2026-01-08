@@ -1,28 +1,33 @@
-import os
-
 paths = ["francais.txt", "english.txt"]
+from Ceasar import Brut_force_Caesar
 
 def formalize_word(word):
     if "'" in word and word[1] == "'":  
         word = word[2:]
     return(word)
 
-def probable_language(langue_words):
-    if langue_words[0]['words'] > langue_words[1]['words']:
-        probable_language = langue_words[0]['language']
-    if langue_words[0]['words'] == langue_words[1]['words']:
+def language(words, syllables):
+    result = probable_language(words[1], "words" )
+    if result == "indéterminé":
+        result = probable_language(syllables[1], "syllables")
+    return result
+
+def probable_language(langue, unity):
+    if langue[0][unity] > langue[1][unity]:
+        probable_language = langue[0]['language']
+    if langue[0][unity] == langue[1][unity]:
         probable_language = "indéterminé"
-    if langue_words[0]['words'] < langue_words[1]['words']:
-        probable_language = langue_words[1]['language']
+    if langue[0][unity] < langue[1][unity]:
+        probable_language = langue[1]['language']
     return probable_language
 
-def is_in_dictionary(text):
+def word_detection(text):
     words = text.lower().split()
     langue_words = [
         {'language': 'French', 'words' : 0},
         {'language': 'English', 'words' : 0},
     ]
-    number_of_word = 0
+    count_word = 0
 
     for langue, path in zip(langue_words, paths):
         with open (path, 'r') as file:
@@ -30,13 +35,19 @@ def is_in_dictionary(text):
             for word in words:
                 formalize_word(word)
                 if word in dictionary:
-                    number_of_word += 1
+                    count_word += 1
                     langue['words'] += 1
-    return number_of_word, langue_words
+    return count_word, langue_words
 
 
 def syllables_detection(text):
     words = text.lower().split()
+
+    langue_syllables = [
+        {'language': 'French', 'syllables' : 0},
+        {'language': 'English', 'syllables' : 0},
+    ]
+
     freq_syllables_fr = [
     "le", "de", "re", "en", "es", "on", "an", "au",
     "ai", "et", "in", "el", "al", "er", "ou", "oi",
@@ -52,24 +63,35 @@ def syllables_detection(text):
 
     syllables_by_langue = (freq_syllables_fr, freq_syllables_en)
 
-    langue_syllables = [
-        {'language': 'French', 'syllables' : 0},
-        {'language': 'English', 'syllables' : 0},
-    ]
-    number_of_syllables = 0
+    count_syllables = 0
     for langue, syllables in zip(langue_syllables, syllables_by_langue):
         for word in words:
-            formalize_word(word)
+            word = formalize_word(word)
             for syllable in syllables:
                 if syllable in word:
-                    print(word)
-                    print(langue["language"] + " " + syllable)
-                    number_of_syllables += 1
+                    count_syllables += 1
                     langue['syllables'] += 1
-    return number_of_syllables, langue_syllables
+    return count_syllables, langue_syllables
 
+def scoring(all_possibilities):
+    best = {
+        "score" : 0,
+        "key": None,
+        "text": None,
+        "langue": None
+    }
+    for possibility in all_possibilities:
+        word_score = word_detection(possibility["text"])
+        syllables_score = syllables_detection(possibility["text"])
+        total_score = word_score[0] * 2 + syllables_score[0]
+        if total_score > best["score"]:
+            best["score"] = total_score
+            best["text"] = possibility["text"]
+            best["key"] = possibility["key"]
+            best["langue"] = language(word_score, syllables_score)
+    return best
 
-
-result = syllables_detection("Bonjour")
-print(result)
-
+texts = Brut_force_Caesar()
+best = scoring(texts)
+print(best["text"])
+print(best["langue"])
