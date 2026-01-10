@@ -1,5 +1,6 @@
+from Cipher.Caesar_affine import Brut_force_Caesar
+
 paths = ["francais.txt", "english.txt"]
-from Ceasar import Brut_force_Caesar
 
 def formalize_word(word):
     if "'" in word and word[1] == "'":  
@@ -38,7 +39,6 @@ def word_detection(text):
                     count_word += 1
                     langue['words'] += 1
     return count_word, langue_words
-
 
 def syllables_detection(text):
     words = text.lower().split()
@@ -91,7 +91,5 @@ def scoring(all_possibilities):
             best["langue"] = language(word_score, syllables_score)
     return best
 
-texts = Brut_force_Caesar()
-best = scoring(texts)
-print(best["text"])
-print(best["langue"])
+result = Brut_force_Caesar()
+print(scoring(result))
