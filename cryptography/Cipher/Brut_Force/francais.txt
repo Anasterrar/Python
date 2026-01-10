@@ -4374,6 +4374,7 @@ Cocteau
 cocuage
 cocufier
 code
+coder
 codes
 coefficient
 coequipier
@@ -6092,6 +6093,7 @@ decliner
 declive
 declivite
 decocher
+decoder
 decollage
 decolle
 decoller
