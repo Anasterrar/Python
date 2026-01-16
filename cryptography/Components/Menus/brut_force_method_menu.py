@@ -1,7 +1,7 @@
 from Components.text_selection import text_selection
 from Components.arrow_menu import arrow_menu
 
-from Cipher.Brut_Force.Cipher.Ceasar import Brut_force_Caesar
+from Cipher.Brut_Force.Caesar.Ceasar import Brut_force_Caesar
 
 DISPATCH_BRUT_FORCE_METHOD = {
     1: Brut_force_Caesar,
