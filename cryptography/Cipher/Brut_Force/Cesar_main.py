@@ -1,4 +1,4 @@
-from Caesar.Ceasar import caesar_decrypt
+from Caesar.Ceasar import Caesar_decrypt
 from Scoring.score import scoring
 import os
 
@@ -19,7 +19,7 @@ while True:
     for key in range(26):
         possibilities.append({
             "key": key,
-            "text": caesar_decrypt(ciphertext, key)
+            "text": Caesar_decrypt(ciphertext, key)
         })
     result = scoring(possibilities)
     print_result(result)

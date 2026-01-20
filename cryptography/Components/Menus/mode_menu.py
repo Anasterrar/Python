@@ -3,15 +3,14 @@ from Components.arrow_menu import arrow_menu
 
 from Components.Menus.ciphers_menu import cipher_menu
 from Components.Menus.deciphers_menu import decipher_menu
-from Components.Menus.brut_force_method_menu import brut_force_method_menu
+
 
 from Components.settings import run_settings
 
 DISPATCH_MODE = {
     1: cipher_menu,
     2: decipher_menu,
-    3: brut_force_method_menu,
-    4: run_settings,
+    3: run_settings
 }
 
 def mode_menu():
