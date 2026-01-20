@@ -1,6 +1,8 @@
-from Affine.Caesar_affine import Caesar_affine
+from Affine.Caesar_affine import Affine_decrypt
 from Scoring.score import scoring
 import os
+
+keys_a = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
 
 def print_result(result):
     os.system('cls')
@@ -22,14 +24,14 @@ while True:
     print(ciphertext.isalpha())
     if not ciphertext:
         continue
-    keys_a = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
+    
     possibilities = []
     for a in keys_a:
         a = modular_inverse(a)
         for b in range(0,26):
             possibilities.append({
                 "key": f"{a}, {b}",
-                "text": Caesar_affine(ciphertext, a, b)
+                "text": Affine_decrypt(ciphertext, a, b)
             })
     result = scoring(possibilities)
     print_result(result)
