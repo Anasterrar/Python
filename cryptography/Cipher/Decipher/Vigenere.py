@@ -13,7 +13,7 @@ def vigenere_decipher():
     error = False
     while True:
         method = "menu_vigenere"
-        header(method, "vigenere", mode)
+        header(method, "vigenere_decipher", mode)
         string_coded = ""
         i = 0
         if error == True:

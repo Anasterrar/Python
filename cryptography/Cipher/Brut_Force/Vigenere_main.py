@@ -1,10 +1,9 @@
-from Crack.Crack_Vigenere import Crack_Vigenere
-from Vigenere.kasiski import kasiski
-from Vigenere.Vigenere_decrypt import Vigenere_decrypt
-from Scoring.score import scoring
+from Cipher.Brut_Force.Crack.Crack_Vigenere import Crack_Vigenere
+from Cipher.Brut_Force.Vigenere.kasiski import kasiski
+from Cipher.Brut_Force.Vigenere.Vigenere_decrypt import Vigenere_decrypt
+from Cipher.Brut_Force.Scoring.score import scoring
 import os
 import time
-
 
 PARAM_PROFILES = [
     {"top": 1,  "len_max": 80, "ngram": 3},
@@ -82,5 +81,3 @@ def Vigenere_main():
         end = time.perf_counter()
         print(f"\n⏱ Temps écoulé : {end - start:.3f} secondes")
         input("ok")
-
-Vigenere_main()

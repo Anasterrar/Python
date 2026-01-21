@@ -7,7 +7,7 @@ def Caesar_Decipher():
     method = "menu_caesar"
     error = False
     while True:
-        header(method, "caesar", mode)
+        header(method, "caesar_decipher", mode)
         if error == True:
             error_message(["error_empty_text", "error_empty_key"])
         string = input_message("input_text")

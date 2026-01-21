@@ -20,8 +20,12 @@ DISPATCH_DECIPHER = {
 def decipher_menu():
     mode = "menu_decryption", "decoded_text"
     data = text_selection("explication")
-    options = [f"{data["caesar"]["title"]}", f"{data["rot"]["title"]}", f"{data["poly"]["title"]}", f"{data["vigenere"]["title"]}", f"{data["affine"]["title"]}", f"{data["otp"]["title"]}"]
-    description = ["caesar", "rot", "poly", "vigenere", "affine", "otp"]
+    options = [f"{data["caesar_decipher"]["title"]}",
+               f"{data["rot_decipher"]["title"]}", f"{data["poly_decipher"]["title"]}",
+               f"{data["vigenere_decipher"]["title"]}",
+               f"{data["affine_decipher"]["title"]}",
+               f"{data["otp_decipher"]["title"]}"]
+    description = ["caesar_decipher", "rot_decipher", "poly_decipher", "vigenere_decipher", "affine_decipher", "otp_decipher"]
     result =  arrow_menu(options, "app_title", description, mode[0])
     if result == "escape":
         result = "quit"

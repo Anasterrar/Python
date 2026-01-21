@@ -1,78 +1,168 @@
 {
-"caesar": {
+"caesar_cipher": {
   "title": "César classique",
   "description": "Le chiffrement de César consiste à décaler chaque lettre du message d’un nombre fixe de positions dans l’alphabet. Les lettres dépassant la fin de l’alphabet recommencent au début.",
   "formula": "E(x) = (x + k) mod 26",
   "example": "Avec k = 3 : A → D, B → E, Z → C. Le mot \"BONJOUR\" devient \"ERQMRXU\"."
 },
 
-"rot": {
+"rot_cipher": {
   "title": "ROT",
   "description": "Les chiffrements ROT sont une famille de chiffrements par substitution dérivés du chiffrement de César. Le principe consiste à effectuer une rotation des caractères d’un message d’un nombre fixe de positions à l’intérieur d’un ensemble de caractères donné. Selon la variante ROT utilisée, la rotation peut s’appliquer uniquement aux lettres, aux chiffres, ou à un ensemble plus large incluant les caractères ASCII imprimables.",
   "formula": "E(x) = (x + k) mod N",
   "example": "Les chiffrements ROT appliquent une rotation fixe : ROT13 décale les lettres de 13 positions, ROT18 combine ROT13 pour les lettres et ROT5 pour les chiffres, et ROT47 effectue une rotation sur tous les caractères ASCII imprimables. Dans de nombreux cas, la même opération permet à la fois le chiffrement et le déchiffrement."
 },
 
-"rot13": {
+"rot13_cipher": {
   "title": "ROT13",
   "description": "Le chiffrement ROT13 est une variante du chiffre de César utilisant un décalage fixe de 13 positions sur l’alphabet. Il est particulier car il est symétrique : chiffrer et déchiffrer utilisent la même opération.",
   "formula": "E(x) = (x + 13) mod 26",
   "example": "ROT13 : A → N, B → O, N → A. Le mot \"PYTHON\" devient \"CLGUBA\"."
 },
 
-"rot18": {
+"rot18_cipher": {
   "title": "ROT18",
   "description": "Le chiffrement ROT18 combine deux chiffrements : ROT13 pour les lettres (A–Z) et ROT5 pour les chiffres (0–9). Les autres caractères ne sont pas modifiés.",
   "formula": "Lettres : E(x) = (x + 13) mod 26 | Chiffres : E(n) = (n + 5) mod 10",
   "example": "ROT18 : A → N, 1 → 6. Le texte \"HELLO123\" devient \"URYYB678\"."
 },
 
-"rot47": {
+"rot47_cipher": {
   "title": "ROT47",
   "description": "Le chiffrement ROT47 est une extension du chiffre de César qui s’applique aux caractères ASCII imprimables (de '!' à '~'). Il utilise un décalage de 47 positions et chiffre lettres, chiffres et symboles.",
   "formula": "E(x) = 33 + ((x − 33 + 47) mod 94)",
   "example": "ROT47 : A → p, ! → P. Le texte \"Hello!\" devient \"w6==@P\"."
 },
 
-"poly": {
+"poly_cipher": {
   "title": "César polyalphabétique",
   "description": "Le chiffrement polyalphabétique utilise plusieurs décalages successifs au lieu d’un seul. Chaque lettre est chiffrée avec un décalage différent, ce qui renforce la sécurité.",
   "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
   "example": "Avec la clé '1, 2, 3' : A → B, B → D, C → F. Le motif de clés se répète sur tout le message."
 },
 
-"vigenere": {
+"vigenere_cipher": {
   "title": "Vigenère",
   "description": "Le chiffrement de Vigenère est un chiffrement polyalphabétique basé sur un mot-clé. Chaque lettre du message est décalée selon la lettre correspondante du mot-clé.",
   "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
   "example": "Avec la clé \"CLE\" : A → C, B → M, C → G. Le mot \"BONJOUR\" devient \"DZYNSFV\"."
 },
 
-"affine_manual": {
+"affine_manual_cipher": {
   "title": "César affine (Clées manuelles)",
   "description": "Choississez manuellement les deux clées. La première clé(a) doit être première avec 26 afin de permettre le déchiffrement (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25).",
   "formula": "E(x) = (a × x + b) mod 26",
   "example": "Avec a = 5 et b = 8 : A → I, B → N. Le mot \"HELLO\" devient \"RCLLA\"."
 },
 
-"affine_auto": {
+"affine_auto_cipher": {
   "title": "César affine (Clées automatiques)",
   "description": "La première clé(a) est choisie aléatoirement parmi une liste de nombre premier avec 26 (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25) afin de permettre le déchiffrement (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25).",
   "formula": "E(x) = (a × x + b) mod 26",
   "example": "Avec a = 5 et b = 8 : A → I, B → N. Le mot \"HELLO\" devient \"RCLLA\"."
 },
 
-"affine": {
+"affine_cipher": {
   "title": "César affine",
   "description": "Le chiffrement affine améliore le César classique en utilisant une fonction mathématique affine avec deux clés. La première clé doit être première avec 26 afin de permettre le déchiffrement.",
   "formula": "E(x) = (a × x + b) mod 26",
   "example": "Avec a = 5 et b = 8 : A → I, B → N. Le mot \"HELLO\" devient \"RCLLA\"."
 },
 
-"otp": {
+"otp_cipher": {
   "title": "Masque Jetable (OTP)",
   "description": "Le Masque Jetable est une technique de chiffrement symétrique qui utilise une clé aussi longue que le message. Chaque caractère du texte clair est combiné avec le caractère correspondant de la clé grâce à une opération XOR binaire. La clé doit être véritablement aléatoire et utilisée une seule fois pour garantir une sécurité parfaite.",
   "formula": "Cᵢ = Pᵢ ⊕ Kᵢ",
   "example": "Message : 'BONJOUR', Clé : [30, 190, 165, 67, 46, 153, 251], Chiffre : ['Z', 'ì', '¦', ']', 't', ...]. Le déchiffrement utilise la même clé avec l'opération XOR."
+},
+
+"caesar_decipher": {
+  "title": "César Classique (Déchiffrement)",
+  "description": "Le déchiffrement de César décale chaque lettre du texte chiffré vers l’arrière d’un nombre fixe de positions dans l’alphabet. Les lettres avant A reviennent à Z.",
+  "formula": "D(x) = (x − k) mod 26",
+  "example": "Avec k = 3 : K → H, H → E, O → L, O → L, R → O. \"KHOOR\" devient \"HELLO\"."
+},
+
+"rot_decipher": {
+  "title": "Chiffre ROT (Déchiffrement)",
+  "description": "Les chiffres ROT sont symétriques. La même opération est utilisée pour chiffrer et déchiffrer.",
+  "formula": "D(x) = (x + k) mod N",
+  "example": "Appliquer ROT13 deux fois sur \"CLGUBA\" donne \"PYTHON\"."
+},
+
+"rot13_decipher": {
+  "title": "ROT13 (Déchiffrement)",
+  "description": "Le déchiffrement ROT13 est identique au chiffrement. Une seconde application restaure le texte original.",
+  "formula": "D(x) = (x + 13) mod 26",
+  "example": "\"CLGUBA\" devient \"PYTHON\"."
+},
+
+"rot18_decipher": {
+  "title": "ROT18 (Déchiffrement)",
+  "description": "ROT18 applique ROT13 sur les lettres et ROT5 sur les chiffres. L’opération est symétrique.",
+  "formula": "Lettres : D(x) = (x + 13) mod 26 | Chiffres : D(n) = (n + 5) mod 10",
+  "example": "\"URYYB678\" devient \"HELLO123\"."
+},
+
+"rot47_decipher": {
+  "title": "ROT47 (Déchiffrement)",
+  "description": "ROT47 est symétrique. Appliquer la transformation une seconde fois restaure le texte original.",
+  "formula": "D(x) = 33 + ((x − 33 + 47) mod 94)",
+  "example": "\"w6==@P\" devient \"Hello!\"."
+},
+
+"poly_decipher": {
+  "title": "Polyalphabétique (Déchiffrement)",
+  "description": "Le déchiffrement polyalphabétique soustrait les valeurs de la clé à chaque caractère. La clé se répète sur tout le message.",
+  "formula": "D(xᵢ) = (xᵢ − kᵢ) mod 26",
+  "example": "Avec la clé [1,2,3] : B → A, D → B, F → C."
+},
+
+"vigenere_decipher": {
+  "title": "Vigenère (Déchiffrement)",
+  "description": "Le déchiffrement de Vigenère soustrait les valeurs du mot-clé aux lettres du texte chiffré en utilisant le même mot-clé.",
+  "formula": "D(xᵢ) = (xᵢ − kᵢ) mod 26",
+  "example": "Avec la clé \"KEY\" : RIJVS devient HELLO."
+},
+
+"affine_decipher": {
+  "title": "Affine César (Déchiffrement)",
+  "description": "Le déchiffrement affine applique l’inverse modulaire de a puis soustrait b. La clé a doit être première avec 26.",
+  "formula": "D(x) = a⁻¹ × (x − b) mod 26",
+  "example": "Avec a = 5 et b = 8 : RCLLA devient HELLO."
+},
+
+"otp_decipher": {
+  "title": "Masque Jetable (OTP) (Déchiffrement)",
+  "description": "Le déchiffrement OTP utilise la même clé que le chiffrement et applique à nouveau l’opération XOR.",
+  "formula": "Pᵢ = Cᵢ ⊕ Kᵢ",
+  "example": "La même clé permet de retrouver le message original."
+},
+"crack_caesar": {
+  "title": "Crack César",
+  "description": "Le crack du chiffre de César consiste à tester exhaustivement les 26 décalages possibles. Chaque texte déchiffré est évalué à l’aide d’un score (fréquences des lettres, dictionnaire, etc.) afin de déterminer le décalage le plus probable.",
+  "formula": "Tester k ∈ [0..25] : D_k(x) = (x − k) mod 26",
+  "example": "Chiffre : \"KHOOR\" → test de tous les décalages → meilleur résultat : \"HELLO\" (k = 3)."
+},
+
+"crack_affine": {
+  "title": "Crack Affine",
+  "description": "Le crack du chiffre affine consiste à tester toutes les paires (a, b) possibles, où a est premier avec 26 (pour garantir l’existence de l’inverse modulaire). Chaque couple est utilisé pour déchiffrer le texte, puis le résultat est scoré pour identifier le plus plausible.",
+  "formula": "Tester a ∈ A_valide, b ∈ [0..25]. Déchiffrement : D(x) = a⁻¹ × (x − b) mod 26",
+  "example": "Chiffre : \"RCLLA\" → test de toutes les paires (a,b) valides → meilleur résultat : \"HELLO\" (a = 5, b = 8)."
+},
+
+"crack_poly": {
+  "title": "Crack Polyalphabétique (clé numérique répétée)",
+  "description": "Un chiffrement polyalphabétique avec une clé numérique répétée peut être cassé en estimant d’abord la longueur de la clé (Kasiski ou indice de coïncidence). Le texte est ensuite séparé en colonnes correspondant aux positions de la clé. Chaque colonne est traitée comme un chiffre de César et résolue par analyse fréquentielle. La clé est reconstruite à partir des meilleurs décalages.",
+  "formula": "1) Estimer la longueur L de la clé. 2) Découper le texte en L colonnes. 3) Pour chaque colonne j : trouver le meilleur décalage k_j. 4) Clé = [k_0, …, k_{L−1}]",
+  "example": "Si L = 3 et que les meilleurs décalages sont [1, 2, 3], la clé répétée est [1, 2, 3]."
+},
+
+"crack_vigenere": {
+  "title": "Crack Vigenère",
+  "description": "Le crack du chiffre de Vigenère commence par l’estimation de la longueur de la clé via des répétitions de motifs (méthode de Kasiski) et/ou l’indice de coïncidence. Une fois une longueur candidate trouvée, le texte est séparé en colonnes. Chaque colonne correspond à un chiffre de César : on teste les 26 décalages et on conserve les meilleurs selon un score fréquentiel. Les combinaisons des meilleurs décalages sont ensuite testées pour reconstruire des clés candidates, qui sont évaluées avec un scoring plus lourd (mots du dictionnaire, syllabes, etc.).",
+  "formula": "1) Trouver des longueurs de clé candidates L. 2) Pour chaque L : colonnes C_j. 3) Pour chaque C_j : classer les décalages s∈[0..25]. 4) Combiner les meilleurs décalages (produit cartésien). 5) Déchiffrer et scorer les textes candidats.",
+  "example": "Chiffre : \"RIJVS\" → longueur 3 → meilleurs décalages par colonne → clé \"KEY\" → texte clair \"HELLO\"."
 }
 }

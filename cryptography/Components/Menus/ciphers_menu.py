@@ -20,8 +20,14 @@ DISPATCH_CIPHER = {
 def cipher_menu():
     mode = "menu_encryption", "coded_text"
     data = text_selection("explication")
-    options = [f"{data["caesar"]["title"]}", f"{data["rot"]["title"]}", f"{data["poly"]["title"]}", f"{data["vigenere"]["title"]}", f"{data["affine"]["title"]}", f"{data["otp"]["title"]}"]
-    description = ["caesar", "rot", "poly", "vigenere", "affine", "otp"]
+    options = [f"{data["caesar_cipher"]["title"]}",
+               f"{data["rot_cipher"]["title"]}",
+               f"{data["poly_cipher"]["title"]}",
+               f"{data["vigenere_cipher"]["title"]}",
+               f"{data["affine_cipher"]["title"]}",
+               f"{data["otp_cipher"]["title"]}"]
+    
+    description = ["caesar_cipher", "rot_cipher", "poly_cipher", "vigenere_cipher", "affine_cipher", "otp_cipher"]
     result =  arrow_menu(options, "app_title", description, mode[0])
     if result == "escape":
         result = "quit"

@@ -12,7 +12,7 @@ def poly_cipher():
     error = False
     while True:
         method = "menu_Caesar_poly"
-        header(method, "poly", mode)
+        header(method, "poly_cipher", mode)
         if error == True:
             error_message(["error_empty_text", "error_empty_key"])
         string = input_message("input_text")

@@ -1,5 +1,5 @@
-from Scoring.word_detection import word_detection
-from Scoring.syllables_detection import syllables_detection
+from Cipher.Brut_Force.Scoring.word_detection import word_detection
+from Cipher.Brut_Force.Scoring.syllables_detection import syllables_detection
 
 def scoring(all_possibilities):
     best = {

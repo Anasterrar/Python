@@ -1,12 +1,10 @@
-from Vigenere.Vigenere_decrypt import Vigenere_decrypt
-from Vigenere.kasiski import kasiski
-from Vigenere.columns import set_columns, top_columns, extract_shift
-from Vigenere.kasiski import calcul_possibles_len
-from Scoring.letter_frequency import frequency_score
-from Scoring.score import scoring
+from Cipher.Brut_Force.Vigenere.Vigenere_decrypt import Vigenere_decrypt
+from Cipher.Brut_Force.Vigenere.columns import set_columns, top_columns, extract_shift
+from Cipher.Brut_Force.Vigenere.kasiski import calcul_possibles_len
+from Cipher.Brut_Force.Scoring.letter_frequency import frequency_score
+from Cipher.Brut_Force.Scoring.score import scoring
 from itertools import product
-import time
-import os
+
 
 def formalize(text):
     result = ""
@@ -18,7 +16,6 @@ def formalize(text):
 def Crack_Vigenere(params):
     while True:
         text = params["text"]
-        start = time.perf_counter()
         formalized_text = params["formalized_text"]
 
         #Detection des paternes
@@ -52,7 +49,7 @@ def Crack_Vigenere(params):
             score = min(freq["French"], freq["English"])
             candidate["score"] = score
         candidates.sort(key=lambda x: x["score"])
-        shortlist = candidates[:50]   # variable
+        shortlist = candidates[:50]
         best = scoring(shortlist)
         return best
 

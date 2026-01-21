@@ -1,5 +1,5 @@
-from Caesar.Ceasar import Caesar_decrypt
-from Scoring.score import scoring
+from Cipher.Brut_Force.Caesar.Ceasar import Caesar_decrypt
+from Cipher.Brut_Force.Scoring.score import scoring
 import os
 
 def print_result(result):

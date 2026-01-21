@@ -27,7 +27,7 @@ def Rot13_cipher(mode):
     error = False
     while True:
         method = "menu_rot13"
-        header(method, "rot13", mode)
+        header(method, "rot13_cipher", mode)
         if error == True:
             error_message(["error_empty_text"])
         string = input_message("input_text")
@@ -52,7 +52,7 @@ def Rot47_cipher(mode):
     error = False
     while True:
         method = "menu_rot47"
-        header(method, "rot47", mode)
+        header(method, "rot47_cipher", mode)
         if error == True:
             error_message(["error_empty_text"])
         string = input_message("input_text")
@@ -75,7 +75,7 @@ def Rot18_cipher(mode):
     error = False
     while True:
         method = "menu_rot18"
-        header("menu_rot18", "rot18", mode)
+        header("menu_rot18", "rot18_cipher", mode)
         if error == True:
             error_message(["error_empty_text"])
         string = input_message("input_text")

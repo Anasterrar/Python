@@ -1,4 +1,4 @@
-from Scoring.Dictionary.dictionary import DICTIONARIES
+from Cipher.Brut_Force.Scoring.Dictionary.dictionary import DICTIONARIES
 
 def formalize_word(word):
     if "'" in word and len(word) > 1 and word[1] == "'":

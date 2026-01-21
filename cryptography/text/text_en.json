@@ -3,6 +3,7 @@
 
   "menu_encryption": "Encryption",
   "menu_decryption": "Decryption",
+  "menu_crack": "Crack decryption (Caesar, Poly, Vigenere, Affine)",
   "menu_setting": "Settings",
 
   "menu_caesar": "Classic Caesar",

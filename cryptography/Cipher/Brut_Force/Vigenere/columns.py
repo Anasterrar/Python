@@ -1,15 +1,7 @@
-from Caesar.Ceasar import Caesar_decrypt
-from Scoring.letter_frequency import frequency_score
-
-def formalize(text):
-    result = ""
-    for c in text:
-        if c.isalpha():
-            result += c
-    return result.lower()
+from Cipher.Brut_Force.Caesar.Ceasar import Caesar_decrypt
+from Cipher.Brut_Force.Scoring.letter_frequency import frequency_score
 
 def set_columns(text, len_key):
-    text = formalize(text)
     cols = []
     for i in range(0, len_key):
         cols.append("")
