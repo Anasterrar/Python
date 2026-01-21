@@ -15,15 +15,14 @@ def formalize(text):
             result += c
     return result.lower()
 
-def Crack_Vigenere():
+def Crack_Vigenere(params):
     while True:
-        os.system("cls")
-        text = input("text: ")
+        text = params["text"]
         start = time.perf_counter()
-        formalized_text = formalize(text)
+        formalized_text = params["formalized_text"]
 
         #Detection des paternes
-        paternes = kasiski(text)
+        paternes = params["Paternes"]
         
         #Detection des tailles de clés possibles
         possibles_len = calcul_possibles_len(paternes)
@@ -34,7 +33,7 @@ def Crack_Vigenere():
             all_colunms[lenght] = set_columns(formalized_text, lenght)
 
         #Scoring des colonnes (meilleur clé césar, shift)
-        all_cols_results = top_columns(all_colunms)
+        all_cols_results = top_columns(all_colunms, params["top"])
 
         #extraction des shift par colonne
         all_shift_by_cols = extract_shift(all_cols_results, possibles_len)
@@ -69,3 +68,5 @@ def Crack_Vigenere():
         end = time.perf_counter()
         print(f"\n⏱ Temps écoulé : {end - start:.3f} secondes")
         input("ok")
+        break
+
