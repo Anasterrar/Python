@@ -54,19 +54,5 @@ def Crack_Vigenere(params):
         candidates.sort(key=lambda x: x["score"])
         shortlist = candidates[:50]   # variable
         best = scoring(shortlist)
-        text_decoded = Vigenere_decrypt(text, best["key"])
-
-        #Clé
-        key_alp = ""
-        for key_num in best["key"]: 
-            key_alp += chr(65 + key_num)
-
-        #Print du résulat
-        print(f"\n---------------Clé: {key_alp}---------------\n")
-        print(f"\n---------------longueur de la clé: {len(key_alp)}---------------\n")
-        print(f"Texte décodé:  \n {text_decoded}")
-        end = time.perf_counter()
-        print(f"\n⏱ Temps écoulé : {end - start:.3f} secondes")
-        input("ok")
-        break
+        return best
 
