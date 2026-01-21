@@ -1,71 +1,86 @@
 from Crack.Crack_Vigenere import Crack_Vigenere
 from Vigenere.kasiski import kasiski
+from Vigenere.Vigenere_decrypt import Vigenere_decrypt
+from Scoring.score import scoring
 import os
+import time
+
 
 PARAM_PROFILES = [
-    {"top": 1,  "len_max": 60},
-    {"top": 2,  "len_max": 15},
-    {"top": 3,  "len_max": 10},
-    {"top": 4,  "len_max": 8},
-    {"top": 5,  "len_max": 7},
-    {"top": 6,  "len_max": 7},
-    {"top": 8,  "len_max": 6},
-    {"top": 10, "len_max": 5},
-    {"top": 13, "len_max": 5},
+    {"top": 1,  "len_max": 80, "ngram": 3},
+    {"top": 2,  "len_max": 14, "ngram": 3},
+    {"top": 3,  "len_max": 9,  "ngram": 3},
+    {"top": 4,  "len_max": 7,  "ngram": 3},
+    {"top": 5,  "len_max": 6,  "ngram": 3},
+    {"top": 6,  "len_max": 5,  "ngram": 3},
+    {"top": 7,  "len_max": 5,  "ngram": 3},
+    {"top": 8,  "len_max": 5,  "ngram": 3},
+    {"top": 9,  "len_max": 4,  "ngram": 2},
+    {"top": 10, "len_max": 4,  "ngram": 2},
+    {"top": 11, "len_max": 4,  "ngram": 2},
+    {"top": 12, "len_max": 4,  "ngram": 2},
+    {"top": 13, "len_max": 4,  "ngram": 2},
 ]
 
-def formalize(text):
-    result = ""
-    for c in text:
-        if c.isalpha():
-            result += c
-    return result.lower()
+def formalize(text: str) -> str:
+    return "".join(c for c in text if c.isalpha()).lower()
 
-def set_top_len_ngram(text_len):
-    # Texte très long → très facile
-    if text_len > 400:
-        return {"top": 1, "len_max": 100, "ngram" : 3}
-
-    # Texte long
-    if text_len > 250:
-        return {"top": 2, "len_max": 16, "ngram" : 3}
-
-    # Texte moyen
-    if text_len > 150:
-        return {"top": 5, "len_max": 7, "ngram" : 3}
-
-    # Texte court
-    if text_len > 80:
-        return {"top": 10, "len_max": 5, "ngram" : 3}
-
-    # Texte très court
-    return {"top": 15, "len_max": 4, "ngram" : 2}
-
-def get_params(string):
-    params = {}
-    params["text"] = string
-    params["len"] = len(string)
-    params["formalized_text"] = formalize(string)
-    top_len_ngram = set_top_len_ngram(params["len"])
-    params["top"] = top_len_ngram["top"]
-    params["len_max"] = top_len_ngram["len_max"]
-    params["Ngram"] = top_len_ngram["ngram"]
-    params["Paternes"] = kasiski(params["formalized_text"], params["len_max"], params["Ngram"])
-    if params["Paternes"] is not None:
-        params["len_kasiski"] = len(params["Paternes"])
-    return(params)
+def print_result(text, best):
+    text_decoded = Vigenere_decrypt(text, best["key"])
+    key_alp = "".join(chr(65 + k) for k in best["key"])
+    print(f"\n---------------Clé: {key_alp}---------------\n")
+    print(f"\n---------------longueur de la clé: {len(key_alp)}---------------\n")
+    print(f"Texte décodé:  \n{text_decoded}")
 
 def Vigenere_main():
     while True:
         os.system('cls')
         text = input("text : ")
-        params = get_params(text)
-        if params["Paternes"] == None:
-            print("Aucun paterne trouvé dans ce texte, le crack est impossible")
+        start = time.perf_counter()
+
+        formalized_text = formalize(text)
+        if len(formalized_text) < 20:
+            print("Texte trop court pour Kasiski (pas assez de répétitions).")
             input("ok")
             continue
-        Crack_Vigenere(params)
+
+        kasiski_cache = {}
+
+        bests = []
+        for profile in PARAM_PROFILES:
+
+            key_cache = (profile["ngram"], profile["len_max"])
+            if key_cache not in kasiski_cache:
+                kasiski_cache[key_cache] = kasiski(formalized_text, profile["len_max"], profile["ngram"])
+
+            paternes = kasiski_cache[key_cache]
+            if paternes is None:
+                continue
+
+            params = {
+                "text": text,
+                "len": len(text),
+                "formalized_text": formalized_text,
+                "top": profile["top"],
+                "len_max": profile["len_max"],
+                "Ngram": profile["ngram"],
+                "Paternes": paternes,
+                "len_kasiski": len(paternes),
+            }
+
+            result = Crack_Vigenere(params)
+            bests.append(result)
+
+        if not bests:
+            print("Erreur: pas de solution (aucun pattern détecté / texte trop court).")
+            input("ok")
+            continue
+
+        best = scoring(bests)
+        print_result(text, best)
+
+        end = time.perf_counter()
+        print(f"\n⏱ Temps écoulé : {end - start:.3f} secondes")
         input("ok")
+
 Vigenere_main()
-
-

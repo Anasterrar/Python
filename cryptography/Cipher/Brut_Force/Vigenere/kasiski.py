@@ -10,7 +10,6 @@ def kasiski(formalized_text, len_max, ngram, fallback=True):
     text = formalized_text  # déjà clean
 
     for attempt in range(2 if fallback else 1):
-        print(ngram)
         paternes = []
         grams = {}
 
