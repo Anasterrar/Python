@@ -2,8 +2,11 @@ from Cipher.Brut_Force.Crack.Crack_Vigenere import Crack_Vigenere
 from Cipher.Brut_Force.Vigenere.kasiski import kasiski
 from Cipher.Brut_Force.Vigenere.Vigenere_decrypt import Vigenere_decrypt
 from Cipher.Brut_Force.Scoring.score import scoring
-import os
-import time
+from Components.error_message import error_message
+from Components.input_message import input_message
+from Components.text_selection import text_selection
+from colorama import Fore, Style
+from Components.header import header
 
 PARAM_PROFILES = [
     {"top": 1,  "len_max": 80, "ngram": 3},
@@ -24,27 +27,29 @@ PARAM_PROFILES = [
 def formalize(text: str) -> str:
     return "".join(c for c in text if c.isalpha()).lower()
 
-def print_result(text, best):
-    text_decoded = Vigenere_decrypt(text, best["key"])
-    key_alp = "".join(chr(65 + k) for k in best["key"])
-    print(f"\n---------------Clé: {key_alp}---------------\n")
-    print(f"\n---------------longueur de la clé: {len(key_alp)}---------------\n")
-    print(f"Texte décodé:  \n{text_decoded}")
-
 def Vigenere_main():
+    data = text_selection("text")
+    method = "menu_crack_vigenere"
+    mode = "menu_decryption"
+    error = False
     while True:
-        os.system('cls')
-        text = input("text : ")
-        start = time.perf_counter()
+        header(method, "poly_cipher", mode)
+        if error == True:
+            error_message(["error_empty_text"])
+        text = input_message("input_text")
+
+        if not text:
+            error = True
+            continue
 
         formalized_text = formalize(text)
         if len(formalized_text) < 20:
-            print("Texte trop court pour Kasiski (pas assez de répétitions).")
-            input("ok")
+            print(data["error_text_too_shoort"])
+            input(data["press_enter"])
             continue
 
         kasiski_cache = {}
-
+        print(Fore.YELLOW + Style.BRIGHT + data["waiting"])
         bests = []
         for profile in PARAM_PROFILES:
 
@@ -71,13 +76,12 @@ def Vigenere_main():
             bests.append(result)
 
         if not bests:
-            print("Erreur: pas de solution (aucun pattern détecté / texte trop court).")
-            input("ok")
+            print(data["error_text_too_shoort"])
+            input(data["press_enter"])
             continue
 
         best = scoring(bests)
-        print_result(text, best)
-
-        end = time.perf_counter()
-        print(f"\n⏱ Temps écoulé : {end - start:.3f} secondes")
-        input("ok")
+        text_decoded = Vigenere_decrypt(text, best["key"])
+        keys = "".join(chr(65 + k) for k in best["key"])
+        
+        return text, keys, text_decoded, method

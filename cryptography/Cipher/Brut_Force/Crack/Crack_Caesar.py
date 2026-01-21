@@ -1,26 +1,28 @@
 from Cipher.Brut_Force.Caesar.Ceasar import Caesar_decrypt
 from Cipher.Brut_Force.Scoring.score import scoring
-import os
-
-def print_result(result):
-    os.system('cls')
-    print(f"\nClé trouvée : {result['key']}")
-    print(f"Langue     : {result['langue']}")
-    print(f"\nTexte clair:\n{result['text']}")
-    input("ok")
+from Components.header import header
+from Components.error_message import error_message
+from Components.input_message import input_message
 
 def Crack_Ceasar():
+    method = "menu_crack_caesar"
+    mode = "menu_decryption"
+    error = False
     while True:
-        os.system('cls')
-        ciphertext = input("Texte chiffré: ")
-        print(ciphertext.isalpha())
-        if not ciphertext:
+        header(method, "crack_caesar", mode)
+        if error == True:
+            error_message(["error_empty_text"])
+        text = input_message("input_text")
+
+        if not text:
+            error = True
             continue
+        
         possibilities = []
         for key in range(26):
             possibilities.append({
                 "key": key,
-                "text": Caesar_decrypt(ciphertext, key)
+                "text": Caesar_decrypt(text, key)
             })
         result = scoring(possibilities)
-        print_result(result)
+        return text, result["key"], result["text"], method
