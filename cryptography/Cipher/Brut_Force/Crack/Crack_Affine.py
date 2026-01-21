@@ -1,5 +1,5 @@
-from Affine.Caesar_affine import Affine_decrypt
-from Scoring.score import scoring
+from Cipher.Brut_Force.Affine.Caesar_affine import Affine_decrypt
+from Cipher.Brut_Force.Scoring.score import scoring
 import os
 
 keys_a = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]

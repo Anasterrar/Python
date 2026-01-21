@@ -12,7 +12,7 @@ def One_time_pad(mode):
     method = "menu_otp"
     error = False
     while True:
-        header(method, "otp", mode)
+        header(method, "otp_cipher", mode)
         if error == True:
             error_message(["error_empty_text", "error_empty_key"])
         string = input_message("input_text")

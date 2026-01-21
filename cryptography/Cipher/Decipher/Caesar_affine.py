@@ -22,7 +22,7 @@ def Caesar_affine():
     error = False
     while True:
         method = "menu_Caesar_affine"
-        header(method, "affine", mode)
+        header(method, "affine_decipher", mode)
         if error == True:
             error_message(["error_empty_text", "error_empty_key", "error_invalid_key_affine"])
         string = input_message("input_text")

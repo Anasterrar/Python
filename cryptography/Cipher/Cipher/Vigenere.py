@@ -12,7 +12,7 @@ def vigenere_cipher():
     error = False
     while True:
         method = "menu_vigenere"
-        header(method, "vigenere")
+        header(method, "vigenere_cipher")
         string_coded = ""
         i = 0
         if error == True:

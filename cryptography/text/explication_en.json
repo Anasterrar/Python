@@ -1,78 +1,169 @@
 {
-"caesar": {
+"caesar_cipher": {
   "title": "Classic Caesar",
   "description": "The Caesar cipher shifts each letter of the message by a fixed number of positions in the alphabet. Letters that go past Z wrap around to the beginning.",
   "formula": "E(x) = (x + k) mod 26",
   "example": "With k = 3: A → D, B → E, Z → C. The word \"HELLO\" becomes \"KHOOR\"."
 },
 
-"rot": {
+"rot_cipher": {
   "title": "ROT Cipher",
   "description": "ROT ciphers are a family of substitution ciphers derived from the Caesar cipher. The principle consists of rotating characters by a fixed number of positions within a defined character set. Depending on the chosen ROT variant, the rotation can apply to letters only, digits only, or a wider range of characters such as printable ASCII symbols.",
   "formula": "E(x) = (x + k) mod N",
   "example": "ROT ciphers apply a fixed rotation: ROT13 shifts letters by 13 positions, ROT18 combines ROT13 for letters and ROT5 for digits, and ROT47 rotates all printable ASCII characters. The same operation is often used for both encryption and decryption."
 },
 
-"rot13": {
+"rot13_cipher": {
   "title": "ROT13",
   "description": "ROT13 is a simple substitution cipher and a variant of the Caesar cipher using a fixed shift of 13 positions in the alphabet. It is symmetrical, meaning the same operation is used for both encryption and decryption.",
   "formula": "E(x) = (x + 13) mod 26",
   "example": "ROT13: A → N, B → O, N → A. The word \"PYTHON\" becomes \"CLGUBA\"."
 },
 
-"rot18": {
+"rot18_cipher": {
   "title": "ROT18",
   "description": "ROT18 is a combination of two ciphers: ROT13 applied to letters (A–Z) and ROT5 applied to digits (0–9). All other characters remain unchanged.",
   "formula": "Letters: E(x) = (x + 13) mod 26 | Digits: E(n) = (n + 5) mod 10",
   "example": "ROT18: A → N, 1 → 6. The text \"HELLO123\" becomes \"URYYB678\"."
 },
 
-"rot47": {
+"rot47_cipher": {
   "title": "ROT47",
   "description": "ROT47 is an extension of the Caesar cipher that operates on all printable ASCII characters (from '!' to '~'). It uses a fixed shift of 47 positions and encrypts letters, digits, and symbols.",
   "formula": "E(x) = 33 + ((x − 33 + 47) mod 94)",
   "example": "ROT47: A → p, ! → P. The text \"Hello!\" becomes \"w6==@P\"."
 },
 
-"poly": {
+"poly_cipher": {
   "title": "Polyalphabetic",
   "description": "The polyalphabetic cipher uses multiple successive shifts instead of a single one. Each letter is encrypted with a different shift.",
   "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
   "example": "With key '1, 2, 3': A → B, B → D, C → F. The key pattern repeats across the message."
 },
 
-"vigenere": {
+"vigenere_cipher": {
   "title": "Vigenere",
   "description": "The Vigenere cipher is a polyalphabetic encryption method based on a keyword. Each letter of the message is shifted according to the corresponding letter of the keyword.",
   "formula": "E(xᵢ) = (xᵢ + kᵢ) mod 26",
   "example": "With key \"KEY\": A → K, B → F, C → A. The word \"HELLO\" becomes \"RIJVS\"."
 },
 
-"affine_manual": {
+"affine_manual_cipher": {
   "title": "Affine Caesar (Manual keys)",
   "description": "Manually choose the two keys. The first key(a) must be prime to 26 in order to allow decryption (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25)..",
   "formula": "E(x) = (a × x + b) mod 26",
   "example": "With a = 5 and b = 8: A → I, B → N. The word \"HELLO\" becomes \"RCLLA\"."
 },
 
-"affine_auto": {
+"affine_auto_cipher": {
   "title": "Affine Caesar (Automatic keys)",
   "description": "The first key(a) is chosen randomly from a list of numbers prime to 26 (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25) in order to allow decryption.",
   "formula": "E(x) = (a × x + b) mod 26",
   "example": "With a = 5 and b = 8: A → I, B → N. The word \"HELLO\" becomes \"RCLLA\"."
 },
 
-"affine": {
+"affine_cipher": {
   "title": "Affine Caesar",
   "description": "The affine cipher improves the classic Caesar cipher by using an affine mathematical function with two keys. The first key must be coprime with 26 to allow decryption.",
   "formula": "E(x) = (a × x + b) mod 26",
   "example": "With a = 5 and b = 8: A → I, B → N. The word \"HELLO\" becomes \"RCLLA\"."
 },
 
-"otp": {
+"otp_cipher": {
   "title": "One-Time Pad (OTP)",
   "description": "The One-Time Pad is a symmetric encryption technique that uses a key as long as the message. Each character of the plaintext is combined with the corresponding key character using a bitwise XOR operation. The key must be truly random and used only once to guarantee perfect secrecy.",
   "formula": "Cᵢ = Pᵢ ⊕ Kᵢ",
   "example": "Message: 'HELLO', Key: [30, 190, 165, 67, 46], Cipher: ['Z', 'ì', '¦', ']', 't']. Decryption uses the same key with XOR again."
+},
+
+"caesar_decipher": {
+  "title": "Classic Caesar (Decipher)",
+  "description": "Caesar decryption shifts each letter of the ciphertext backward by a fixed number of positions in the alphabet. Letters that go before A wrap around to Z.",
+  "formula": "D(x) = (x − k) mod 26",
+  "example": "With k = 3: K → H, H → E, O → L, O → L, R → O. \"KHOOR\" becomes \"HELLO\"."
+},
+
+"rot_decipher": {
+  "title": "ROT Cipher (Decipher)",
+  "description": "ROT ciphers are symmetrical. The same rotation operation is used for both encryption and decryption.",
+  "formula": "D(x) = (x + k) mod N",
+  "example": "Applying ROT13 twice on \"CLGUBA\" returns \"PYTHON\"."
+},
+
+"rot13_decipher": {
+  "title": "ROT13 (Decipher)",
+  "description": "ROT13 decryption is identical to encryption. Applying ROT13 again restores the original text.",
+  "formula": "D(x) = (x + 13) mod 26",
+  "example": "\"CLGUBA\" becomes \"PYTHON\"."
+},
+
+"rot18_decipher": {
+  "title": "ROT18 (Decipher)",
+  "description": "ROT18 decryption applies ROT13 to letters and ROT5 to digits again. The operation is symmetrical.",
+  "formula": "Letters: D(x) = (x + 13) mod 26 | Digits: D(n) = (n + 5) mod 10",
+  "example": "\"URYYB678\" becomes \"HELLO123\"."
+},
+
+"rot47_decipher": {
+  "title": "ROT47 (Decipher)",
+  "description": "ROT47 is symmetrical. Applying the ROT47 transformation again restores the original ASCII characters.",
+  "formula": "D(x) = 33 + ((x − 33 + 47) mod 94)",
+  "example": "\"w6==@P\" becomes \"Hello!\"."
+},
+
+"poly_decipher": {
+  "title": "Polyalphabetic (Decipher)",
+  "description": "Polyalphabetic decryption subtracts the key values from each character. The key sequence repeats across the message.",
+  "formula": "D(xᵢ) = (xᵢ − kᵢ) mod 26",
+  "example": "With key [1,2,3]: B → A, D → B, F → C."
+},
+
+"vigenere_decipher": {
+  "title": "Vigenere (Decipher)",
+  "description": "Vigenere decryption subtracts the keyword letter values from the ciphertext letters using the same keyword as encryption.",
+  "formula": "D(xᵢ) = (xᵢ − kᵢ) mod 26",
+  "example": "With key \"KEY\": RIJVS becomes HELLO."
+},
+
+"affine_decipher": {
+  "title": "Affine Caesar (Decipher)",
+  "description": "Affine decryption multiplies by the modular inverse of key a, then subtracts key b. The key a must be coprime with 26.",
+  "formula": "D(x) = a⁻¹ × (x − b) mod 26",
+  "example": "With a = 5 and b = 8: RCLLA becomes HELLO."
+},
+
+"otp_decipher": {
+  "title": "One-Time Pad (Decipher)",
+  "description": "OTP decryption uses the same key as encryption and applies XOR again. XOR is reversible.",
+  "formula": "Pᵢ = Cᵢ ⊕ Kᵢ",
+  "example": "Using the same key restores the original message."
+},
+
+"crack_caesar": {
+  "title": "Crack Caesar",
+  "description": "Cracking a Caesar cipher consists of trying all 26 possible shifts (brute force). Each candidate plaintext is scored (e.g., by letter frequency matching or dictionary word detection) to select the most likely result.",
+  "formula": "Try k ∈ [0..25]: D_k(x) = (x − k) mod 26",
+  "example": "Cipher: \"KHOOR\" → try all shifts → best candidate: \"HELLO\" (k = 3)."
+},
+
+"crack_affine": {
+  "title": "Crack Affine",
+  "description": "Cracking an Affine cipher consists of trying all valid pairs (a, b) where a is coprime with 26 (so it has a modular inverse). For each (a, b), decrypt and score the plaintext to find the best candidate.",
+  "formula": "Try a ∈ A_valid, b ∈ [0..25]. Decrypt: D(x) = a⁻¹ × (x − b) mod 26",
+  "example": "Cipher: \"RCLLA\" → test all (a,b) with gcd(a,26)=1 → best candidate: \"HELLO\" (a = 5, b = 8)."
+},
+
+"crack_poly": {
+  "title": "Crack Polyalphabetic (Numeric Key Pattern)",
+  "description": "A polyalphabetic cipher with a repeating numeric key (e.g., [1,2,3]) can be cracked by estimating the key length first (Kasiski test / Index of Coincidence). Then the text is split into columns by key position and each column is solved like a Caesar cipher using frequency analysis. Finally, the key is reconstructed and the full text decrypted.",
+  "formula": "1) Guess key length L. 2) Split into L columns. 3) For each column j: find best shift k_j by scoring D(x) = (x − k_j) mod 26. 4) Key = [k_0..k_{L−1}]",
+  "example": "If L = 3 and best column shifts are [1,2,3], then decrypt with repeating key [1,2,3]."
+},
+
+"crack_vigenere": {
+  "title": "Crack Vigenere (Alphabetic Key Pattern)",
+  "description": "Cracking Vigenere usually starts by estimating the key length using repeated patterns (Kasiski) and/or Index of Coincidence. Once a key length is chosen, the ciphertext is split into columns. Each column corresponds to a Caesar cipher, so you test all shifts (0..25) and keep the best ones by frequency score. Then you try combinations of the best shifts across columns to reconstruct candidate keys, decrypt candidates, and pick the best plaintext using a heavier scoring (dictionary words, syllables, etc.).",
+  "formula": "1) Find candidate key lengths L. 2) For each L: columns C_j. 3) For each C_j: rank shifts s∈[0..25] with score. 4) Combine top shifts across columns (cartesian product) to build keys. 5) Decrypt and score full candidates.",
+  "example": "Cipher: \"RIJVS\" → key length 3 → best shifts per column → key \"KEY\" → plaintext \"HELLO\"."
 }
 }

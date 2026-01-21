@@ -1,3 +1,5 @@
+from Cipher.Brut_Force.Scoring.word_detection import formalize_word
+
 SYLLABLES = {
     "French": [
         "le","de","re","en","es","on","an","au","ai","et","in","el",
@@ -10,8 +12,6 @@ SYLLABLES = {
         "ment","ent","ive","est","ant","ate"
     ]
 }
-
-from Scoring.word_detection import formalize_word
 
 def syllables_detection(text):
     words = text.lower().split()
