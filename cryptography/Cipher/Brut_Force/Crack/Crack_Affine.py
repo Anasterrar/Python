@@ -1,15 +1,10 @@
 from Cipher.Brut_Force.Affine.Caesar_affine import Affine_decrypt
 from Cipher.Brut_Force.Scoring.score import scoring
-import os
+from Components.header import header
+from Components.error_message import error_message
+from Components.input_message import input_message
 
 keys_a = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
-
-def print_result(result):
-    os.system('cls')
-    print(f"\nClé trouvée : {result['key']}")
-    print(f"Langue     : {result['langue']}")
-    print(f"\nTexte clair:\n{result['text']}")
-    input("ok")
 
 def modular_inverse(a):
     a = a % 26
@@ -19,11 +14,17 @@ def modular_inverse(a):
     return None
 
 def Crack_Affine():
+    method = "menu_crack_affine"
+    mode = "menu_decryption"
+    error = False
     while True:
-        os.system('cls')
-        ciphertext = input("Texte chiffré: ")
-        print(ciphertext.isalpha())
-        if not ciphertext:
+        header(method, "affine_cipher", mode)
+        if error == True:
+            error_message(["error_empty_text"])
+        text = input_message("input_text")
+
+        if not text:
+            error = True
             continue
         
         possibilities = []
@@ -32,7 +33,7 @@ def Crack_Affine():
             for b in range(0,26):
                 possibilities.append({
                     "key": f"{a}, {b}",
-                    "text": Affine_decrypt(ciphertext, a, b)
+                    "text": Affine_decrypt(text, a, b)
                 })
         result = scoring(possibilities)
-        print_result(result)
+        return text, result["key"], result["text"], method

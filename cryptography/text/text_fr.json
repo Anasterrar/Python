@@ -15,6 +15,10 @@
   "menu_vigenere": "Chiffre de Vigenère",
   "menu_Caesar_affine": "César affine",
   "menu_otp": "Masque jetable (OTP)",
+  "menu_crack_caesar": "Crack Caesar",
+  "menu_crack_poly": "Crack Poly",
+  "menu_crack_vigenere": "Crack Vigenere",
+  "menu_crack_affine": "Crack Affine",
 
   "header_message1": "🔒 Cryptage et 🔓 Décryptage",
   "header_message2": "💡 Esc pour quitter",
@@ -25,12 +29,13 @@
   "formula": "Formule",
   "example": "Exemple",
 
-  "input_text": "Veuillez entrer le texte à chiffrer : ",
+  "input_text": "Veuillez entrer le texte: ",
   "input_unique_key": "Veuillez entrer la clé : ",
   "input_multiple_key": "Veuillez entrer les clés séparées par des espaces ou des virgules : ",
   "input_first_key": "Veuillez entrer la premiere clé : ",
   "input_second_key": "Veuillez entrer la deuxieme clé : ",
   "input_word_key": "Veuillez entrer la clé de chiffrement (mot): ",
+  "waiting": "Veuillez patienter, le décryptage prendra au maximum 15 secondes.",
 
   "error_empty_text": "❌ Le texte ne peut pas être vide",
   "error_empty_key": "❌ La clé ne peut pas être vide",
@@ -38,6 +43,7 @@
   "error_invalid_key_affine": "La premiere clé doit etre premiere avec 26 (1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25)",
   "error_invalid_YesOrNo": "⚠️ Repondez par 'y'(yes) ou 'n'(no)",
   "error_invalid_selection": "⚠️ Veuillez sélectionner au moins une option",
+  "error_text_too_shoort": "⚠️ Texte trop court pour être décrypté (pas assez de répétitions)",
 
   "save_question": "Voulez-vous enregistrer ce résultat dans un fichier ?",
   "yes": "Oui",
