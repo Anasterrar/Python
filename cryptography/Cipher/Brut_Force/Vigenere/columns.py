@@ -17,13 +17,13 @@ def set_columns(text, len_key):
         cols[i % len_key] += c
     return cols
 
-def top_columns(all_colunms):
+def top_columns(all_colunms, Top):
     all_cols_results = {} 
     for len_key, columns in all_colunms.items():
         all_cols_results[len_key] = []
 
         for  col in columns:
-            top5 = []
+            topN = []
 
             for caesar in range(26):
                 candidate = Caesar_decrypt(col, caesar)
@@ -31,13 +31,13 @@ def top_columns(all_colunms):
                 best_score = min(score["French"], score["English"])
 
 
-                top5.append({
+                topN.append({
                     "score": best_score,
                     "shift": caesar,
                 })
 
-            top5.sort(key=lambda x: x["score"])
-            all_cols_results[len_key].append(top5[:1]) #variable
+            topN.sort(key=lambda x: x["score"])
+            all_cols_results[len_key].append(topN[:Top]) #variable
     return all_cols_results
 
 def extract_shift(all_cols_results, possibles_len):
