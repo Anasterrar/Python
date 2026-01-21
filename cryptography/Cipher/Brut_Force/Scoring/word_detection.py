@@ -1,4 +1,4 @@
-from Scoring.dictionary import DICTIONARIES
+from Scoring.Dictionary.dictionary import DICTIONARIES
 
 def formalize_word(word):
     if "'" in word and len(word) > 1 and word[1] == "'":

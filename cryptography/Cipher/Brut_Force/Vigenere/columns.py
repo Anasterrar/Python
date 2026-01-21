@@ -39,3 +39,15 @@ def top_columns(all_colunms):
             top5.sort(key=lambda x: x["score"])
             all_cols_results[len_key].append(top5[:1]) #variable
     return all_cols_results
+
+def extract_shift(all_cols_results, possibles_len):
+    all_shift_by_cols = []
+    for lenght in possibles_len:
+        shift_by_cols = []
+        for col_result in all_cols_results[lenght]:
+            shift_by_col = []
+            for shift in col_result:
+                shift_by_col.append(shift["shift"])
+            shift_by_cols.append(shift_by_col)
+        all_shift_by_cols.append( shift_by_cols)
+    return all_shift_by_cols  
