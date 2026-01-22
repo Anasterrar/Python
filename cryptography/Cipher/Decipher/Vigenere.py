@@ -21,28 +21,34 @@ def valid_key_vigenere(keys):
         return True
 
 def Vigenere_decipher(keys, string):
-    string_coded = ""
+    string_decoded = ""
     i = 0
+
     for c in string:
-        if i > len(keys)- 1:
+        if i >= len(keys):
             i = 0
-        #Minuscule
-        if ord(c) >= 97 and ord(c) <= 122:
-            if ord(keys[i]) >= 97 and ord(keys[i]) <= 122:
-                string_coded += chr((ord(c) - 97 - ord(keys[i]) - 97) % 26 + 97)
-            elif ord(keys[i]) >= 65 and ord(keys[i]) <= 90:
-                string_coded += chr((ord(c) - 97 + ord(keys[i]) - 65) % 26 + 97)
+
+        if 'a' <= c <= 'z':
+            base_c = ord('a')
+            base_k = ord('a') if 'a' <= keys[i] <= 'z' else ord('A')
+            string_decoded += chr(
+                (ord(c) - base_c - (ord(keys[i]) - base_k)) % 26 + base_c
+            )
             i += 1
-        #Majuscule
-        elif ord(c) >= 65 and ord(c) <= 90:
-            if ord(keys[i]) >= 97 and ord(keys[i]) <= 122:
-                string_coded += chr((ord(c) - 65 - ord(keys[i]) - 97) % 26 + 65)
-            elif ord(keys[i]) >= 65 and ord(keys[i]) <= 90:
-                string_coded += chr((ord(c) - 65 - ord(keys[i]) - 65) % 26 + 65)
+
+        elif 'A' <= c <= 'Z':
+            base_c = ord('A')
+            base_k = ord('a') if 'a' <= keys[i] <= 'z' else ord('A')
+            string_decoded += chr(
+                (ord(c) - base_c - (ord(keys[i]) - base_k)) % 26 + base_c
+            )
             i += 1
+
         else:
-            string_coded += c
-    return string_coded
+            string_decoded += c
+
+    return string_decoded
+
 
 def Vigenere():
     mode = "menu_encryption"
