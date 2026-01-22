@@ -7,6 +7,11 @@ This project focuses on **learning by doing**, experimentation, and performance 
 
 ---
 
+
+<p align="center">
+  <img src="img/demo.gif" width="700">
+</p>
+
 ## ✨ Implemented Features
 
 ### 🔒 Encryption
