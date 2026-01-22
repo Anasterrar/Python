@@ -13,13 +13,39 @@ A terminal-based calculator featuring:
 - Previous calculation **history tracking**  
 - Supports basic operations: `+`, `-`, `*`, `/`, `**`
 
-### 🔐 Cryptography
-A collection of **classic ciphers** implemented in Python:  
-- **Caesar Cipher**  
-- **ROT Cipher**  
-- **Polyalphabetic Caesar Cipher**  
-- **Vigenère Cipher**  
-- Stores encoded messages and keys in files for later retrieval
+
+### 🔐 Cryptography CLI Tool
+A large **educational cryptography project** focused on classical ciphers, cryptanalysis, and CLI design.
+
+This project goes far beyond basic encryption and includes:
+- Interactive menus (arrow navigation)
+- Full English 🇬🇧 / French 🇫🇷 support
+- Encryption, decryption, and **brute-force cracking**
+- File export system with user-selected content
+- Error handling and input validation
+- Modular architecture
+
+**Implemented ciphers:**
+- Caesar
+- ROT (13, 18, 47)
+- Polyalphabetic Caesar
+- Vigenère
+- Affine Caesar
+- One-Time Pad (OTP)
+
+**Cryptanalysis implemented:**
+- Caesar brute force
+- Polyalphabetic brute force
+- Affine brute force
+- Advanced Vigenère crack:
+  - Kasiski examination
+  - N-gram analysis (bi-gram / tri-gram)
+  - Frequency analysis
+  - Dictionary & syllable scoring
+  - Adaptive parameters based on text length
+  - Performance-bounded cracking (< 20s)
+
+📁 This project has its **own detailed README** inside its folder.
 
 ---
 
