@@ -1,20 +1,20 @@
 from Components.text_selection import text_selection
 from Components.arrow_menu import arrow_menu
 
-from Cipher.Cipher.Caesar import Caesar_cipher
-from Cipher.Cipher.Rot import rot_cipher
-from Cipher.Cipher.Poly import poly_cipher
-from Cipher.Cipher.Vigenere import vigenere_cipher
-from Cipher.Cipher.Caesar_affine import affine
-from Cipher.Cipher.One_time_pad import OTP_Cipher
+from Cipher.Cipher.Caesar import Caesar
+from Cipher.Cipher.Rot import Rot
+from Cipher.Cipher.Poly import Poly
+from Cipher.Cipher.Vigenere import Vigenere
+from Cipher.Cipher.Caesar_affine import Affine
+from Cipher.Cipher.One_time_pad import OTP
 
 DISPATCH_CIPHER = {
-    1: Caesar_cipher,
-    2: rot_cipher,
-    3: poly_cipher,
-    4: vigenere_cipher,
-    5: affine,
-    6: OTP_Cipher,
+    1: Caesar,
+    2: Rot,
+    3: Poly,
+    4: Vigenere,
+    5: Affine,
+    6: OTP,
 }
 
 def cipher_menu():

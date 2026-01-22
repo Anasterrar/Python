@@ -7,11 +7,41 @@ def formalize(data):
     data = data.split()
     return data
 
-def poly_cipher():
+def valid_key_poly(keys):
+    valid_space = [" ", ","]
+    digit = 0
+    for key in keys:
+        if key.isdigit():
+            digit += 1
+        if not key.isdigit():
+            if key not in valid_space:
+                return False
+    if digit > 0:
+        return True
+
+def Poly_cipher(keys, string):
+    string_coded = ""
+    i = 0
+    for c in string:
+        if i > len(keys)- 1:
+            i = 0
+        #Minuscule
+        if ord(c) >= 97 and ord(c) <= 122:
+            string_coded += chr((ord(c) - 97 + int(keys[i])) % 26 + 97)
+            i += 1
+        #Majuscule
+        elif ord(c) >= 65 and ord(c) <= 90:
+            string_coded += chr((ord(c) - 65 + int(keys[i])) % 26 + 65)
+            i += 1
+        else:
+            string_coded += c
+    return string_coded
+
+def Poly():
     mode = "menu_encryption"
+    method = "menu_Caesar_poly"
     error = False
     while True:
-        method = "menu_Caesar_poly"
         header(method, "poly_cipher", mode)
         if error == True:
             error_message(["error_empty_text", "error_empty_key"])
@@ -20,25 +50,10 @@ def poly_cipher():
             error = True
             continue
         keys = input_message("input_multiple_key")
-        keys = formalize(keys)
-        if not keys:
+        if not keys or valid_key_poly(keys) == False:
             error = True
             continue 
-        string_coded = ""
-        i = 0
-        for c in string:
-            if i > len(keys)- 1:
-                i = 0
-        #Minuscule
-            if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((ord(c) - 97 + int(keys[i])) % 26 + 97)
-                i += 1
-        #Majuscule
-            elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((ord(c) - 65 + int(keys[i])) % 26 + 65)
-                i += 1
-            else:
-                string_coded += c
+        keys = formalize(keys)
+        string_coded = Poly_cipher(keys, string)
         keys = " ".join(keys)
-        error = False
         return string, keys, string_coded, method

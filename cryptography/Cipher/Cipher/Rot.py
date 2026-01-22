@@ -5,7 +5,9 @@ from Components.input_message import input_message
 from Components.Menus.rot_menu import Rot_menu
 mode = "menu_encryption"
 
-def rot_cipher():
+#------------Menu------------#
+
+def Rot():
     mode = "menu_encryption"
     m = Rot_menu(mode)
     if m == "back":
@@ -14,16 +16,32 @@ def rot_cipher():
 
 def select_rot(num, mode):
     if num == 1:
-        code = Rot13_cipher(mode)
+        code = Rot13(mode)
         return code
     elif num == 2:
-        code = Rot47_cipher(mode)
+        code = Rot47(mode)
         return code
     elif num == 3:
-        code = Rot18_cipher(mode)
+        code = Rot18(mode)
         return code
 
-def Rot13_cipher(mode):
+#--------------------Cipher---------------------#
+
+#------------Rot 13-----------#
+def Rot13_cipher(string):
+    string_coded = ""
+    for c in string:
+        #Minuscule
+        if ord(c) >= 97 and ord(c) <= 122:
+            string_coded += chr((ord(c) - 97 + 13) % 26 + 97)
+        #Majuscule
+        elif ord(c) >= 65 and ord(c) <= 90:
+            string_coded += chr((ord(c) - 65 + 13) % 26 + 65)
+        else:
+            string_coded += c
+    return string_coded
+
+def Rot13(mode):
     error = False
     while True:
         method = "menu_rot13"
@@ -34,21 +52,21 @@ def Rot13_cipher(mode):
         if not string:
             error = True
             continue
-        key = 13
-        string_coded = ""
-        for c in string:
-            #Minuscule
-            if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((ord(c) - 97 + key) % 26 + 97)
-            #Majuscule
-            elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((ord(c) - 65 + key) % 26 + 65)
-            else:
-                string_coded += c
-        error = False
-        return string, key, string_coded, method
+        string_coded = Rot13_cipher(string)
+        return string, 13, string_coded, method
+    
+#------------Rot 47-----------#
+def Rot47_cipher(string):
+    string_coded = ""
+    for c in string:
+        #Minuscule
+        if ord(c) >= 33 and ord(c) <= 126:
+            string_coded += chr((ord(c) - 33 + 47) % 94 + 33)
+        else:
+            string_coded += c
+    return string_coded
 
-def Rot47_cipher(mode):
+def Rot47(mode):
     error = False
     while True:
         method = "menu_rot47"
@@ -59,18 +77,27 @@ def Rot47_cipher(mode):
         if not string:
             error = True
             continue
-        key = 47
-        string_coded = ""
-        for c in string:
-            #Minuscule
-            if ord(c) >= 33 and ord(c) <= 126:
-                string_coded += chr((ord(c) - 33 + key) % 94 + 33)
-            else:
-                string_coded += c
-        error = False
-        return string, key, string_coded, method
+        string_coded = Rot47_cipher
+        return string, 47, string_coded, method
 
-def Rot18_cipher(mode):
+#------------Rot 18-----------#
+def Rot18_cipher(string):
+    string_coded = ""
+    for c in string:
+        #Minuscule
+        if ord(c) >= 97 and ord(c) <= 122:
+            string_coded += chr((ord(c) - 97 + 13) % 26 + 97)
+        #Majuscule
+        elif ord(c) >= 65 and ord(c) <= 90:
+            string_coded += chr((ord(c) - 65 + 13) % 26 + 65)
+        #Chiffre
+        elif ord(c) >= 48 and ord(c) <= 57:
+            string_coded += chr((ord(c) - 48 + 5) % 10 + 48)
+        else:
+            string_coded += c
+    return string_coded
+
+def Rot18(mode):
     data = text_selection("text")
     error = False
     while True:
@@ -82,21 +109,6 @@ def Rot18_cipher(mode):
         if not string:
             error = True
             continue
-        key1 = 13
-        key2 = 5
-        keys = f"{key1} {data["rot_for_key1"]} {key2} {data["rot_for_key2"]}"
-        string_coded = ""
-        for c in string:
-            #Minuscule
-            if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((ord(c) - 97 + key1) % 26 + 97)
-            #Majuscule
-            elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((ord(c) - 65 + key1) % 26 + 65)
-            #Chiffre
-            elif ord(c) >= 48 and ord(c) <= 57:
-                string_coded += chr((ord(c) - 48 + key2) % 10 + 48)
-            else:
-                string_coded += c
-        error = False
+        keys = f"13 {data["rot_for_key1"]} 5 {data["rot_for_key2"]}"
+        string_coded = Rot18_cipher(string)
         return string, keys, string_coded, method

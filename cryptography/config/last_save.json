@@ -2,7 +2,7 @@
     "options": [
         {
             "label": "Header",
-            "enabled": true
+            "enabled": false
         },
         {
             "label": "Methode",
@@ -10,11 +10,11 @@
         },
         {
             "label": "Texte original",
-            "enabled": false
+            "enabled": true
         },
         {
             "label": "Clé",
-            "enabled": false
+            "enabled": true
         },
         {
             "label": "Texte codé",
@@ -22,7 +22,7 @@
         },
         {
             "label": "Date et heure",
-            "enabled": true
+            "enabled": false
         },
         {
             "label": "Valider",
