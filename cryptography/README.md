@@ -1,20 +1,26 @@
 # 🔐 Cryptography CLI Tool
 
-A Python **command-line cryptography application** that I built as an **educational project** to better understand **classical encryption, decryption, and basic cryptanalysis**, while also learning how to design a clean and structured CLI application.
+A Python **command-line cryptography application** developed as an **educational and exploratory project**.  
+The goal of this project is to **understand classical cryptography**, basic **cryptanalysis techniques**, and how to design a **clean, modular, and user-friendly CLI application**.
 
-## ✨ Features
+This project focuses on **learning by doing**, experimentation, and performance trade-offs rather than academic perfection.
+
+---
+
+## ✨ Implemented Features
 
 ### 🔒 Encryption
-I implemented several classical ciphers:
+The following classical encryption methods are fully implemented:
+
 - **Caesar Cipher**
 - **ROT family**
   - ROT13
   - ROT18 (letters + digits)
   - ROT47 (printable ASCII)
 - **Affine Caesar Cipher**
-  - Manual keys
-  - Automatic key generation
-- **Polyalphabetic Caesar Cipher**
+  - Manual key selection
+  - Automatic valid key generation
+- **Polyalphabetic Caesar Cipher** (numeric repeating key)
 - **Vigenère Cipher**
 - **One-Time Pad (OTP)**
   - XOR-based encryption
@@ -24,55 +30,89 @@ I implemented several classical ciphers:
 ---
 
 ### 🔓 Decryption
-Decryption is implemented progressively, from the simplest case to the hardest:
+Decryption is supported at multiple levels of difficulty:
 
-1. **Method + key known**
-2. **Method known, key unknown** *(in progress)*
-3. **Key known, method unknown** *(in progress)*
-4. **No information at all (full brute-force & cryptanalysis)** *(in progress)*
+- **Known method + known key**
+- **Known method + unknown key**
+- **Full brute-force & cryptanalysis** for:
+  - Caesar
+  - Polyalphabetic cipher
+  - Affine cipher
+  - Vigenère cipher
+
+The **Vigenère/Poly crack** is the most advanced part of the project and includes:
+- Kasiski examination
+- Adaptive n-gram detection (bi-grams / tri-grams)
+- Frequency analysis on columns
+- Dynamic parameter tuning (TOP-N, key length limits)
+- Multi-profile cracking strategies
+- Dictionary, syllable, and frequency-based scoring
+- Hard execution time limit (≤ ~20 seconds)
+
+---
+
+### 🧠 Cryptanalysis Strategy (Vigenère)
+The Vigenère crack follows this pipeline:
+
+1. Detect repeated patterns using **Kasiski examination**
+2. Infer candidate key lengths
+3. Split the ciphertext into columns
+4. Treat each column as a Caesar cipher
+5. Rank shifts using frequency analysis
+6. Combine best shifts using a controlled cartesian product
+7. Decrypt partial text (performance optimization)
+8. Score candidates using linguistic heuristics
+9. Select the best overall result
+
+All parameters are **adaptive** depending on:
+- Text length
+- Pattern density
+- Performance constraints
 
 ---
 
 ### 📁 File Export System
-I implemented a dynamic file creation system:
+A dynamic and customizable export system:
 - Timestamp-based filenames
-- Interactive menu to choose what gets written:
+- Interactive selection of exported content:
   - ASCII header
   - Cipher method
   - Original text
   - Key
   - Encrypted / decrypted text
   - Date & time
-- Only selected information is saved (no useless data)
+- Only selected elements are written (no unnecessary data)
+- Preview before saving
 
 ---
 
 ### 🧭 User Interface
-- Arrow-based menus (↑ ↓)
-- Keyboard navigation (Enter / Escape)
-- Dynamic menus with live state updates
+- Arrow-based navigation (↑ ↓)
+- Keyboard controls (Enter / Escape)
+- Interactive menus with live updates
 - Colored output using **Colorama**
-- ASCII titles using **pyfiglet**
-- Intro animation (ASCII art)
-- English / French language support
-- Result preview before saving to file
+- ASCII titles with **pyfiglet**
+- Intro animation
+- Full **French / English** support
+- Consistent UI across encryption, decryption, and cracking modes
 
 ---
 
-### 🧠 Architecture Highlights
-- Dispatch-based menus (dynamic function routing)
-- Clear separation between:
-  - menus
-  - ciphers
+### 🏗️ Architecture Highlights
+- Clear separation of concerns:
+  - Cipher / Decipher / Crack logic
   - UI components
-  - file handling
-- Modular folder structure
+  - Menus
+  - Scoring and analysis
+- Dispatch-based routing (no massive `if/else`)
+- Modular and extensible folder structure
+- Procedural & functional design (intentionally no OOP)
 
 ---
 
 ## ▶️ How to Run
 
-```bash 
+```bash
 python main.py
 ```
 ---
@@ -104,8 +144,10 @@ Every line of code is written by me, understood, and adapted.
 3. https://youtu.be/-gJuGFFTsgo?si=7nvwjWRtHGbvSnib
 4. https://youtu.be/f7VBEserHxs?si=TBPUmiPwxEvGXBpR
 5. https://youtu.be/mHkTzO6U_Ag?si=8gCDuJsg5jAkgjZ1
+6. https://fr.wikipedia.org/wiki/Cryptanalyse_du_chiffre_de_Vigenère
    
   (English)
 
 1. https://youtu.be/QYng_rXg5OQ?si=3wnI6d3UlI4p2KPr
 2. https://youtu.be/a64NnBSq8oA?si=awDKOspuVZBUnqve
+3. https://www.nsa.gov/Portals/75/documents/news-features/declassified-documents/friedman-documents/publications/FOLDER_258/41761619080075.pdf

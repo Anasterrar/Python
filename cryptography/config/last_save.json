@@ -1,31 +1,38 @@
 {
     "options": [
         {
+            "key": "header",
             "label": "Header",
-            "enabled": false
-        },
-        {
-            "label": "Methode",
-            "enabled": false
-        },
-        {
-            "label": "Texte original",
             "enabled": true
         },
         {
-            "label": "Clé",
+            "key": "method",
+            "label": "Method",
             "enabled": true
         },
         {
-            "label": "Texte codé",
+            "key": "original_text",
+            "label": "Original text",
             "enabled": true
         },
         {
-            "label": "Date et heure",
+            "key": "key",
+            "label": "Key",
+            "enabled": true
+        },
+        {
+            "key": "coded_text",
+            "label": "Coded text",
+            "enabled": true
+        },
+        {
+            "key": "date_and_hour",
+            "label": "date and hour",
             "enabled": false
         },
         {
-            "label": "Valider",
+            "key": "validate",
+            "label": "Validate",
             "enabled": false
         }
     ]
