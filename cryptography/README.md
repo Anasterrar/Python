@@ -46,6 +46,8 @@ Decryption is supported at multiple levels of difficulty:
   - Vigenère cipher
 
 The **Vigenère/Poly crack** is the most advanced part of the project and includes:
+👉 **This module has its own dedicated documentation:**  
+📄 [`Vigenère Cryptanalysis README`](./Cipher/Brut_Force/VIGENERE_CRACK.md)
 - Kasiski examination
 - Adaptive n-gram detection (bi-grams / tri-grams)
 - Frequency analysis on columns
@@ -53,26 +55,6 @@ The **Vigenère/Poly crack** is the most advanced part of the project and includ
 - Multi-profile cracking strategies
 - Dictionary, syllable, and frequency-based scoring
 - Hard execution time limit (≤ ~20 seconds)
-
----
-
-### 🧠 Cryptanalysis Strategy (Vigenère)
-The Vigenère crack follows this pipeline:
-
-1. Detect repeated patterns using **Kasiski examination**
-2. Infer candidate key lengths
-3. Split the ciphertext into columns
-4. Treat each column as a Caesar cipher
-5. Rank shifts using frequency analysis
-6. Combine best shifts using a controlled cartesian product
-7. Decrypt partial text (performance optimization)
-8. Score candidates using linguistic heuristics
-9. Select the best overall result
-
-All parameters are **adaptive** depending on:
-- Text length
-- Pattern density
-- Performance constraints
 
 ---
 
