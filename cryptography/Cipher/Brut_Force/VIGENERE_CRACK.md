@@ -83,6 +83,6 @@ This crack relies on **statistical weaknesses** of the Vigenère cipher and work
 - The key is significantly shorter than the message  
   *(practically limited to about 1/4 of the text length)*
 
-This implementation is **purely educational** and should not be used against modern cryptographic systems.
+This implementation is **purely educational**
 
 ---
