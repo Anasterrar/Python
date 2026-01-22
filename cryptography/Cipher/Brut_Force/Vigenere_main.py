@@ -27,7 +27,7 @@ PARAM_PROFILES = [
 def formalize(text: str) -> str:
     return "".join(c for c in text if c.isalpha()).lower()
 
-def Vigenere_main():
+def Vigenere():
     data = text_selection("text")
     method = "menu_crack_vigenere"
     mode = "menu_decryption"
@@ -85,3 +85,7 @@ def Vigenere_main():
         keys = "".join(chr(65 + k) for k in best["key"])
         
         return text, keys, text_decoded, method
+    
+def Vigenere_main():
+    result = Vigenere()
+    return result

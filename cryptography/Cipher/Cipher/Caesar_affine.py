@@ -5,7 +5,15 @@ from Components.error_message import error_message
 from Components.input_message import input_message
 from Components.Menus.affine_menu import affine_menu
 
-def affine():
+valid_a = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
+
+def isValidA(a):
+    if a in valid_a:
+        return True
+    else:
+        return False
+
+def Affine():
     mode = "menu_decryption"
     m = affine_menu(mode)
     if m == "back":
@@ -21,18 +29,25 @@ def select_affine(num):
         code = Caesar_affine(auto)
     return code
 
-def isValidA(a):
-    if a in [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]:
-        return True
-    else:
-        return False
+def Caesar_affine_cipher(a, b, string):
+    string_coded = ""
+    for c in string:
+        #Minuscule
+        if ord(c) >= 97 and ord(c) <= 122:
+            string_coded += chr((int(a) * (ord(c) - 97) + int(b)) % 26 + 97)
+        #Majuscule
+        elif ord(c) >= 65 and ord(c) <= 90:
+            string_coded += chr((int(a) * (ord(c) - 65) + int(b)) % 26 + 65)
+        else:
+            string_coded += c
+    return string_coded
 
 def Caesar_affine(auto):
-    mode = "menu_decryption"
     data = text_selection("text")
+    mode = "menu_decryption"
+    method = "menu_Caesar_affine"
     error = False
     while True:
-        method = "menu_Caesar_affine"
         header(method, "affine_cipher", mode)
         if error == True:
             error_message(["error_empty_text", "error_empty_key", "error_invalid_key_affine"])
@@ -41,8 +56,7 @@ def Caesar_affine(auto):
             error = True
             continue
         if auto == True:
-            a_key = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
-            a = str(random.choice(a_key))
+            a = str(random.choice(valid_a))
         if auto == False:
             a = input_message("input_first_key")
         if not a or a.isdigit() == False or isValidA(int(a)) == False:
@@ -52,16 +66,6 @@ def Caesar_affine(auto):
         if not b or b.isdigit() == False:
             error = True
             continue
-        string_coded = ""
+        string_coded = Caesar_affine_cipher(a, b, string)
         keys = f"a = {a} {data["and"]} b = {b}"
-        for c in string:
-            #Minuscule
-            if ord(c) >= 97 and ord(c) <= 122:
-                string_coded += chr((int(a) * (ord(c) - 97) + int(b)) % 26 + 97)
-            #Majuscule
-            elif ord(c) >= 65 and ord(c) <= 90:
-                string_coded += chr((int(a) * (ord(c) - 65) + int(b)) % 26 + 65)
-            else:
-                string_coded += c
-        error = False
         return string, keys, string_coded, method

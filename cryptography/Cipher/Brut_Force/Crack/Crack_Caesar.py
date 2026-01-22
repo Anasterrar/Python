@@ -1,4 +1,4 @@
-from Cipher.Brut_Force.Caesar.Ceasar import Caesar_decrypt
+from Cipher.Decipher.Caesar import Caesar_Decipher
 from Cipher.Brut_Force.Scoring.score import scoring
 from Components.header import header
 from Components.error_message import error_message
@@ -22,7 +22,7 @@ def Crack_Ceasar():
         for key in range(26):
             possibilities.append({
                 "key": key,
-                "text": Caesar_decrypt(text, key)
+                "text": Caesar_Decipher(key, text)
             })
         result = scoring(possibilities)
         return text, result["key"], result["text"], method

@@ -20,7 +20,6 @@ while True:
       if result is None or result == "quit":
             continue
 
-      # si action() renvoie (payload, mode)
       if not isinstance(result, (tuple, list)) or len(result) < 2:
             continue
 

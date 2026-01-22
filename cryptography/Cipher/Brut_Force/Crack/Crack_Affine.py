@@ -1,4 +1,4 @@
-from Cipher.Brut_Force.Affine.Caesar_affine import Affine_decrypt
+from Cipher.Decipher.Caesar_affine import Affine_decipher
 from Cipher.Brut_Force.Scoring.score import scoring
 from Components.header import header
 from Components.error_message import error_message
@@ -33,7 +33,7 @@ def Crack_Affine():
             for b in range(0,26):
                 possibilities.append({
                     "key": f"{a}, {b}",
-                    "text": Affine_decrypt(text, a, b)
+                    "text": Affine_decipher(a, b, text)
                 })
         result = scoring(possibilities)
         return text, result["key"], result["text"], method

@@ -1,4 +1,4 @@
-from Cipher.Brut_Force.Caesar.Ceasar import Caesar_decrypt
+from Cipher.Decipher.Caesar import Caesar_Decipher
 from Cipher.Brut_Force.Scoring.letter_frequency import frequency_score
 
 def set_columns(text, len_key):
@@ -18,7 +18,7 @@ def top_columns(all_colunms, Top):
             topN = []
 
             for caesar in range(26):
-                candidate = Caesar_decrypt(col, caesar)
+                candidate = Caesar_Decipher(caesar, col)
                 score = frequency_score(candidate)
                 best_score = min(score["French"], score["English"])
 
