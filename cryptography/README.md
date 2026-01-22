@@ -37,7 +37,6 @@ The following classical encryption methods are fully implemented:
 Decryption is supported at multiple levels of difficulty:
 
 - **Known method + known key**
-- **Known method + unknown key**
 - **Full brute-force & cryptanalysis** for:
   - Caesar
   - Polyalphabetic cipher
