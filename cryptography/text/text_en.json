@@ -53,19 +53,23 @@
   
   "rot_for_key1": "for letters and",
   "rot_for_key2": "for numbers",
+  "header": "Header",
   "text": "Text",
   "key": "Key",
+  "original_text": "Original text",
   "coded_text": "Coded text",
   "decoded_text": "Decoded text",
   "method" : "Method",
   "and": "and",
+  "date_and_hour": "date and hour",
   "date": "Date",
   "file_saved": "Your file",
   "in" : "has been created in the key folder",
   "press_enter": "Press enter to continue",
+  "Validate": "Validate",
 
   "manual_key" : "Manual key (advanced)",
   "auto_key" : "Automatic key (recommended)",
-  
+
   "language": "English"
 }
