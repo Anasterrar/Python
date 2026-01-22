@@ -3,7 +3,6 @@
 A Python **command-line cryptography application** developed as an **educational and exploratory project**.  
 The goal of this project is to **understand classical cryptography**, basic **cryptanalysis techniques**, and how to design a **clean, modular, and user-friendly CLI application**.
 
-This project focuses on **learning by doing**, experimentation, and performance trade-offs rather than academic perfection.
 
 ---
 
@@ -38,7 +37,6 @@ The following classical encryption methods are fully implemented:
 Decryption is supported at multiple levels of difficulty:
 
 - **Known method + known key**
-- **Known method + unknown key**
 - **Full brute-force & cryptanalysis** for:
   - Caesar
   - Polyalphabetic cipher
