@@ -48,5 +48,5 @@ This project goes far beyond basic encryption and includes:
 📁 This project has its **own detailed README** inside its folder.
 
 ---
-
+ 
 Made by Anas.T
