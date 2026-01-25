@@ -1,4 +1,3 @@
-
 # Python project
 
 A calculator in the terminal:
