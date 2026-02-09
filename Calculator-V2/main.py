@@ -6,9 +6,12 @@ app.title("Calculator")
 app.geometry("345x580")
 
 max_chiffres = 9
+max_result = 999999999
+
 pile_ecran = []
 current_nbr = False
 current_operation = False
+error = False
 
 #Fonction
 
@@ -29,7 +32,16 @@ def press_btn(btn):
         num_btn(btn)
     elif btn in ["+", "-", "*", "÷", "^"]:
         operation_btn(btn)
+        return 
+    elif btn == "=":
+        execute_operation(current_operation)
+        return  
+    elif btn == "=":
+        equal()
+    elif btn == "CE":
+        reset()
     update_screen(get_number_from_pile())
+
 
 def num_btn(btn):
     if len(pile_ecran) >= max_chiffres:
@@ -40,11 +52,59 @@ def num_btn(btn):
 def operation_btn(btn):
     global current_nbr, current_operation
     if current_nbr and current_operation:
-        #execute
+        print(current_nbr)
+        print(current_operation)
+        execute_operation(current_operation)
     if not current_nbr:
-        current_nbr = float(get_number_from_pile()) if "." in get_number_from_pile() else int(get_number_from_pile())
+        n = get_number_from_pile()
+        current_nbr = float(n) if "." in n else int(n)
+    current_operation = btn
+    pile_ecran.clear()
+
+def execute_operation(operation):
+    global current_nbr, current_operation , error
+    if operation:
+        nombre2 = float(get_number_from_pile()) if "." in get_number_from_pile() else int(get_number_from_pile())
+        result = 0
+        if operation == "+":
+            result = current_nbr + nombre2
+        elif operation == "-":
+            result = current_nbr - nombre2
+        elif operation == "*":
+            result = current_nbr * nombre2
+        elif operation == "÷":
+            if nombre2 == 0:
+                error = True
+            else:
+                result = current_nbr / nombre2
+        elif operation == "^":
+            result = current_nbr ** nombre2
+        if result > max_result or result < -max_result:
+            error = True
+        if not error:
+            current_nbr = result
+
+        current_operation =False
+        pile_ecran.clear()
+        if error:
+            update_screen("Erreur")
+        else:
+            update_screen(str(current_nbr))
 
 
+def equal():
+    execute_operation()
+
+def reset():
+    global current_nbr, current_operation, error
+    current_nbr = False
+    current_operation = False
+    error = False
+    pile_ecran.clear()
+    update_screen
+
+    
+ 
 
 #----------Ecran-------------#
 screen_font = ('Courier', 55, 'bold')
@@ -83,7 +143,7 @@ btn_9.grid(row=2, column=3, padx=(5, 5), pady=(5, 5))
 #Operations
 btn_plus = customtkinter.CTkButton(pad, text="+", width=75, height=75, font=buttons_font, command=lambda : press_btn("+"))
 btn_minus = customtkinter.CTkButton(pad, text="-", width=75, height=75, font=buttons_font, command=lambda : press_btn("-"))
-btn_factor = customtkinter.CTkButton(pad, text="x", width=75, height=75, font=buttons_font, command=lambda : press_btn("x"))
+btn_factor = customtkinter.CTkButton(pad, text="x", width=75, height=75, font=buttons_font, command=lambda : press_btn("*"))
 btn_division = customtkinter.CTkButton(pad, text="÷", width=75, height=75, font=buttons_font, command=lambda : press_btn("÷"))
 btn_power = customtkinter.CTkButton(pad, text="^", width=75, height=75, font=buttons_font, command=lambda : press_btn("^"))
 
