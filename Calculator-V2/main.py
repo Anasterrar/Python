@@ -1,0 +1,165 @@
+import customtkinter
+
+customtkinter.set_appearance_mode("dark")
+app = customtkinter.CTk()
+app.title("Calculator")
+app.geometry("350x580")
+
+max_chiffres = 9
+max_result = 999999999
+
+pile_ecran = []
+current_nbr = False
+current_operation = False
+error = False
+
+#Fonction
+
+def update_screen(value=False):
+    if value:
+        screen.configure(text=value)
+    else:
+        screen.configure(text="0")
+
+def get_number_from_pile():
+    number = ""
+    for digit in pile_ecran:
+        number += str(digit)
+    return number
+
+def press_btn(btn):
+    if btn.isdigit() or (btn == "." and "." not in pile_ecran):
+        num_btn(btn)
+    elif btn in ["+", "-", "*", "÷", "^"]:
+        operation_btn(btn)
+        return 
+    elif btn == "=":
+        execute_operation(current_operation)
+        return  
+    elif btn == "CE":
+        reset()
+        return
+    update_screen(get_number_from_pile())
+
+
+def num_btn(btn):
+    if len(pile_ecran) >= max_chiffres:
+        return pile_ecran
+    pile_ecran.append(btn)
+    return pile_ecran
+
+def operation_btn(btn):
+    global current_nbr, current_operation
+    if current_nbr and current_operation:
+        print(current_nbr)
+        print(current_operation)
+        execute_operation(current_operation)
+    if not current_nbr:
+        n = get_number_from_pile()
+        current_nbr = float(n) if "." in n else int(n)
+    current_operation = btn
+    pile_ecran.clear()
+
+def execute_operation(operation):
+    global current_nbr, current_operation , error
+    if operation:
+        nombre2 = float(get_number_from_pile()) if "." in get_number_from_pile() else int(get_number_from_pile())
+        result = 0
+        if operation == "+":
+            result = current_nbr + nombre2
+        elif operation == "-":
+            result = current_nbr - nombre2
+        elif operation == "*":
+            result = current_nbr * nombre2
+        elif operation == "÷":
+            if nombre2 == 0:
+                error = True
+            else:
+                result = current_nbr / nombre2
+        elif operation == "^":
+            result = current_nbr ** nombre2
+        if result > max_result or result < -max_result:
+            error = True
+        if not error:
+            current_nbr = result
+        
+        current_operation = False
+        pile_ecran.clear()
+        if error:
+            update_screen("Erreur")
+        else:
+            if "." in str(result):
+                update_screen(f"{current_nbr:.8g}")
+            else:
+                update_screen(str(current_nbr))
+
+def equal():
+    execute_operation(current_operation)
+
+def reset():
+    global current_nbr, current_operation, error
+    current_nbr = False
+    current_operation = False
+    error = False
+    pile_ecran.clear()
+    update_screen()
+ 
+#----------Ecran-------------#
+screen_font = ('Courier', 50, 'bold')
+screen = customtkinter.CTkLabel(app, text="0", font=screen_font)
+screen.grid(row=1, column=4, padx=(0, 0), pady=(0, 0))
+
+#----------Buttons-------------#
+buttons_font = ('Arial', 30, 'bold')
+
+pad = customtkinter.CTkLabel(app, text="")
+pad.grid(row=2, column=0, sticky="WE", padx=(0, 0), pady=(0, 0), columnspan=5)
+
+#Digits
+btn_0 = customtkinter.CTkButton(pad, text="0", width=75, height=75, font=buttons_font, command=lambda : press_btn("0"))
+btn_1 = customtkinter.CTkButton(pad, text="1", width=75, height=75, font=buttons_font, command=lambda : press_btn("1"))
+btn_2 = customtkinter.CTkButton(pad, text="2", width=75, height=75, font=buttons_font, command=lambda : press_btn("2"))
+btn_3 = customtkinter.CTkButton(pad, text="3", width=75, height=75, font=buttons_font, command=lambda : press_btn("3"))
+btn_4 = customtkinter.CTkButton(pad, text="4", width=75, height=75, font=buttons_font, command=lambda : press_btn("4"))
+btn_5 = customtkinter.CTkButton(pad, text="5", width=75, height=75, font=buttons_font, command=lambda : press_btn("5"))
+btn_6 = customtkinter.CTkButton(pad, text="6", width=75, height=75, font=buttons_font, command=lambda : press_btn("6"))
+btn_7 = customtkinter.CTkButton(pad, text="7", width=75, height=75, font=buttons_font, command=lambda : press_btn("7"))
+btn_8 = customtkinter.CTkButton(pad, text="8", width=75, height=75, font=buttons_font, command=lambda : press_btn("8"))
+btn_9 = customtkinter.CTkButton(pad, text="9", width=75, height=75, font=buttons_font, command=lambda : press_btn("9"))
+
+btn_0.grid(row=5, column=2, padx=(5, 5), pady=(5, 0))
+btn_1.grid(row=4, column=1, padx=(5, 5), pady=(5, 5))
+btn_2.grid(row=4, column=2, padx=(5, 5), pady=(5, 5))
+btn_3.grid(row=4, column=3, padx=(5, 5), pady=(5, 5))
+btn_4.grid(row=3, column=1, padx=(5, 5), pady=(5, 5))
+btn_5.grid(row=3, column=2, padx=(5, 5), pady=(5, 5))
+btn_6.grid(row=3, column=3, padx=(5, 5), pady=(5, 5))
+btn_7.grid(row=2, column=1, padx=(5, 5), pady=(5, 5))
+btn_8.grid(row=2, column=2, padx=(5, 5), pady=(5, 5))
+btn_9.grid(row=2, column=3, padx=(5, 5), pady=(5, 5))
+
+#Operations
+btn_plus = customtkinter.CTkButton(pad, text="+", width=75, height=75, font=buttons_font, command=lambda : press_btn("+"))
+btn_minus = customtkinter.CTkButton(pad, text="-", width=75, height=75, font=buttons_font, command=lambda : press_btn("-"))
+btn_factor = customtkinter.CTkButton(pad, text="x", width=75, height=75, font=buttons_font, command=lambda : press_btn("*"))
+btn_division = customtkinter.CTkButton(pad, text="÷", width=75, height=75, font=buttons_font, command=lambda : press_btn("÷"))
+btn_power = customtkinter.CTkButton(pad, text="^", width=75, height=75, font=buttons_font, command=lambda : press_btn("^"))
+
+btn_plus.grid(row=4, column=4, padx=(5, 0), pady=(5, 0))
+btn_minus.grid(row=3, column=4, padx=(5, 0), pady=(5, 0))
+btn_factor.grid(row=2, column=4, padx=(5, 0), pady=(5, 0))
+btn_division.grid(row=1, column=4, padx=(5, 0), pady=(5, 0))
+btn_power.grid(row=5, column=1, padx=(5, 0), pady=(5, 0))
+
+#Other
+btn_dot = customtkinter.CTkButton(pad, text=".", width=75, height=75, font=buttons_font, command=lambda : press_btn("."))
+btn_reset = customtkinter.CTkButton(pad, text="CE", width=75, height=75, font=buttons_font, command=lambda : press_btn("CE"))
+btn_equal = customtkinter.CTkButton(pad, text="=", height=75, width=75, font=buttons_font, command=lambda : press_btn("="))
+btn_history = customtkinter.CTkButton(app, text="📃", height=10, width=10, font=buttons_font)
+
+btn_history.grid(row=0, column=0, padx=(0, 0), pady=(0, 0), sticky="w")
+btn_dot.grid(row=5, column=3, padx=(5, 5), pady=(5, 0))
+btn_reset.grid(row=1, column=1, padx=(5, 5), pady=(5, 5))
+btn_equal.grid(row=5, column=4, padx=(5, 5), pady=(5, 0))
+
+app.mainloop()
