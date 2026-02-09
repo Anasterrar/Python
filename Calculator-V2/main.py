@@ -3,7 +3,7 @@ import customtkinter
 customtkinter.set_appearance_mode("dark")
 app = customtkinter.CTk()
 app.title("Calculator")
-app.geometry("345x580")
+app.geometry("350x580")
 
 max_chiffres = 9
 max_result = 999999999
@@ -36,10 +36,9 @@ def press_btn(btn):
     elif btn == "=":
         execute_operation(current_operation)
         return  
-    elif btn == "=":
-        equal()
     elif btn == "CE":
         reset()
+        return
     update_screen(get_number_from_pile())
 
 
@@ -83,17 +82,19 @@ def execute_operation(operation):
             error = True
         if not error:
             current_nbr = result
-
-        current_operation =False
+        
+        current_operation = False
         pile_ecran.clear()
         if error:
             update_screen("Erreur")
         else:
-            update_screen(str(current_nbr))
-
+            if "." in str(result):
+                update_screen(f"{current_nbr:.8g}")
+            else:
+                update_screen(str(current_nbr))
 
 def equal():
-    execute_operation()
+    execute_operation(current_operation)
 
 def reset():
     global current_nbr, current_operation, error
@@ -101,21 +102,18 @@ def reset():
     current_operation = False
     error = False
     pile_ecran.clear()
-    update_screen
-
-    
+    update_screen()
  
-
 #----------Ecran-------------#
-screen_font = ('Courier', 55, 'bold')
-screen= customtkinter.CTkLabel(app, text="0", font=screen_font, fg_color="black")
-screen.grid(row=1, column=0, sticky="E", padx=(10, 10), pady=(30, 10), columnspan=4)
+screen_font = ('Courier', 50, 'bold')
+screen = customtkinter.CTkLabel(app, text="0", font=screen_font)
+screen.grid(row=1, column=4, padx=(0, 0), pady=(0, 0))
 
 #----------Buttons-------------#
 buttons_font = ('Arial', 30, 'bold')
 
 pad = customtkinter.CTkLabel(app, text="")
-pad.grid(row=2, column=0, sticky="WE", padx=(0, 0), pady=(10, 0), columnspan=5)
+pad.grid(row=2, column=0, sticky="WE", padx=(0, 0), pady=(0, 0), columnspan=5)
 
 #Digits
 btn_0 = customtkinter.CTkButton(pad, text="0", width=75, height=75, font=buttons_font, command=lambda : press_btn("0"))
@@ -155,14 +153,12 @@ btn_power.grid(row=5, column=1, padx=(5, 0), pady=(5, 0))
 
 #Other
 btn_dot = customtkinter.CTkButton(pad, text=".", width=75, height=75, font=buttons_font, command=lambda : press_btn("."))
-btn_parenthesis_left = customtkinter.CTkButton(pad, text="(", width=75, height=75, font=buttons_font, command=lambda : press_btn("("))
-btn_parenthesis_right = customtkinter.CTkButton(pad, text=")", width=75, height=75, font=buttons_font, command=lambda : press_btn(")"))
 btn_reset = customtkinter.CTkButton(pad, text="CE", width=75, height=75, font=buttons_font, command=lambda : press_btn("CE"))
 btn_equal = customtkinter.CTkButton(pad, text="=", height=75, width=75, font=buttons_font, command=lambda : press_btn("="))
+btn_history = customtkinter.CTkButton(app, text="📃", height=10, width=10, font=buttons_font)
 
+btn_history.grid(row=0, column=0, padx=(0, 0), pady=(0, 0), sticky="w")
 btn_dot.grid(row=5, column=3, padx=(5, 5), pady=(5, 0))
-btn_parenthesis_left.grid(row=1, column=2, padx=(5, 5), pady=(5, 5))
-btn_parenthesis_right.grid(row=1, column=3, padx=(5, 5), pady=(5, 5))
 btn_reset.grid(row=1, column=1, padx=(5, 5), pady=(5, 5))
 btn_equal.grid(row=5, column=4, padx=(5, 5), pady=(5, 0))
 
